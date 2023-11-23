@@ -7,8 +7,8 @@ console.log(
 - The URL of the menu page differs from the URL of the home page (e.g. your-site.com for the home page and your-site.com/menu for the menu page): +2 ❌
 
 2. The layout matches the design: +40 ❌
-- <header> block on each page: +4 ❌
-- Enjoy block on home page: +6 ❌
+- <header> block on each page: +4 ✅
+- Enjoy block on home page: +6 ✅
 - Favourites Coffee block on home page: +6 ❌
 - About block on home page: +6 ❌
 - Mobile App block on home page: +6 ❌
@@ -18,7 +18,7 @@ console.log(
 3. CSS Requirements: +10 ❌
 - For positioning images in About block on home page and products in Menu block on menu page used Flexbox or Grid Layout: +4 ❌
 - When scaling the browser page (<100%) or increasing the page width (>1440px), the layout of both pages is centered rather than shifted to the side and not stretched across the entire width: +4 ❌
-- The background color Body stretches across the entire width of the page: +2 ❌
+- The background color Body stretches across the entire width of the page: +2 ✅
 
 4. Interactivity: +32
 - Navigation elements (except Contact us) lead to corresponding blocks on home page (anchor links): +4 ❌
