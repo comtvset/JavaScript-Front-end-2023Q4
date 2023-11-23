@@ -26,6 +26,8 @@ h2 {
     font-style: normal;
     font-weight: 600;
     line-height: 125%;
+    margin: 0;
+    color: #403f3d;
 }
 
 a {
@@ -58,7 +60,7 @@ nav span::after {
     height: 2px;
     width: 0;
     background: #403f3d;
-    transition: width 0.5s ease 0s, left 0.5s ease 0s;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
 span:hover::after {
@@ -117,7 +119,7 @@ ul > li:first-child {
     height: 2px;
     width: 0;
     background: #403f3d;
-    transition: width 0.5s ease 0s, left 0.5s ease 0s;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
 .menu-item:hover::after {
@@ -139,7 +141,7 @@ ul > li:first-child {
 .burger-button::after {
     left: 31%;
     position: absolute;
-    height: 3%;
+    height: 4%;
     width: 40%;
     transition: 0.3s ease-in-out;
     background-color: #403f3d;
@@ -236,7 +238,195 @@ button {
     color: #403f3d;
 }
 
-.cup-button {
-    display: none;
+.cup-btn {
+    opacity: 0;
+    margin-left: -20px;
+    transition: 0.3s;
+}
+
+button:hover > .cup-btn {
+    opacity: 1;
+    transition: 0.3s;
     margin-left: 8px;
+}
+
+/* FAVOURITES-COFFEE */
+.favourites-coffee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.favourites-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.slant {
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    color: #b0907a;
+    transform: skew(351deg, 360deg);
+}
+
+#btn-left {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100px;
+    border: 1px solid #665f55;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.arrow-svg path {
+    transition: 0.5s;
+}
+
+#btn-left:hover .arrow-svg path {
+    stroke: #e1d4c9;
+    transition: 0.5s;
+}
+
+#btn-left:hover {
+    background-color: #665f55;
+    transition: 0.5s;
+}
+
+.slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.slider-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    height: 640px;
+}
+
+.discription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    height: 140px;
+}
+
+.item-name {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.item-info {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
+}
+
+.item-price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 144px;
+    margin-top: 40px;
+}
+
+#item-1 {
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #665f55;
+}
+
+#item-2 {
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #c1b6ad;
+}
+
+#item-3 {
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #c1b6ad;
+}
+
+/* ABOUT */
+.about {
+    margin-top: 100px;
+}
+
+.about .slant {
+    /* transform: skew(351deg, 360deg); */
+    font-style: italic;
+    display: inline;
+}
+
+.about-photos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo-box-1 {
+    width: 660px;
+    height: 590px;
+    border-radius: 20px;
+    margin-top: 40px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-box-2 {
+    width: 660px;
+    height: 430px;
+    border-radius: 20px;
+    margin-top: 40px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-settings {
+    max-width: 100%;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.photo-settings:hover {
+    transform: scale(1);
+    transition: 0.5s;
 }
