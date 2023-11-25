@@ -440,6 +440,10 @@ footer {
     font-weight: 600;
 }
 
+.row-box > span > a {
+    font-weight: 600;
+}
+
 .icon-svg-footer {
     margin-right: 8px;
 }
