@@ -643,7 +643,10 @@ footer {
 .row-box > span {
     color: #e1d4c9;
     font-weight: 600;
-    margin-left: 8px;
+}
+
+.icon-svg-footer {
+    margin-right: 8px;
 }
 
 .underscore {
