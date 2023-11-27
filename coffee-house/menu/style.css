@@ -41,10 +41,6 @@ a {
     color: #e1d4c9;
 }
 
-a:active {
-    color: #403f3d;
-}
-
 span {
     font-family: Inter;
     font-size: 16px;
