@@ -134,6 +134,14 @@ ul > li:first-child {
     font-weight: 600;
 }
 
+.menu-link {
+    display: flex;
+}
+
+.coffee-cup {
+    margin-left: 9px;
+}
+
 .burger-button {
     display: none;
     width: 44px;
