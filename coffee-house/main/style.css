@@ -39,7 +39,6 @@ a {
     font-weight: 400;
     line-height: 150%;
     color: #e1d4c9;
-    transition: 0.3s;
 }
 
 span {
@@ -67,9 +66,11 @@ nav span::after {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-span:hover::after {
-    width: 100%;
-    left: 0;
+@media (hover: hover) {
+    span:hover::after {
+        width: 100%;
+        left: 0;
+    }
 }
 
 header {
@@ -126,9 +127,11 @@ ul > li:first-child {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-.menu-item:hover::after {
-    width: 100%;
-    left: 0;
+@media (hover: hover) {
+    .menu-item:hover::after {
+        width: 100%;
+        left: 0;
+    }
 }
 
 .menu-item > a {
@@ -173,6 +176,24 @@ ul > li:first-child {
 }
 .burger-button::after {
     bottom: 40%;
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: none;
+    }
+    .menu-item {
+        display: none;
+    }
+    .burger-button {
+        display: flex;
+    }
+}
+
+@media (max-width: 580px) {
+    header {
+        padding: 20px 16px 20px 16px;
+    }
 }
 
 /* ENJOY */
@@ -261,10 +282,62 @@ main {
     transition: 0.3s;
 }
 
-.cup-button:hover > .cup-btn {
-    opacity: 1;
-    transition: 0.3s;
-    margin-left: 8px;
+@media (hover: hover) {
+    .cup-button:hover > .cup-btn {
+        opacity: 1;
+        transition: 0.3s;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .offer {
+        margin: 100px 0px 100px 60px;
+    }
+    .background {
+        margin-top: -644px;
+    }
+    .bg {
+        width: 1248px;
+    }
+    .cup-btn {
+        opacity: 1;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 723px) {
+    .enjoy span:first-child {
+        font-size: 56px;
+    }
+    h1 {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 580px) {
+    .enjoy {
+        height: 552px;
+    }
+    .enjoy span:first-child {
+        font-size: 42px;
+        line-height: 115%;
+    }
+    h1 {
+        font-size: 42px;
+        line-height: 115%;
+    }
+    main {
+        margin: 0px 16px 0px 16px;
+    }
+    .offer {
+        margin: 60px 0px 60px 16px;
+        width: 91%;
+        max-height: 432px;
+    }
+    .background {
+        margin-top: -564px;
+    }
 }
 
 /* FAVOURITES-COFFEE */
@@ -307,14 +380,16 @@ main {
     transition: 0.3s;
 }
 
-.btn:hover .arrow-svg path {
-    stroke: #e1d4c9;
-    transition: 0.3s;
-}
+@media (hover: hover) {
+    .btn:hover .arrow-svg path {
+        stroke: #e1d4c9;
+        transition: 0.3s;
+    }
 
-.btn:hover {
-    background-color: #665f55;
-    transition: 0.3s;
+    .btn:hover {
+        background-color: #665f55;
+        transition: 0.3s;
+    }
 }
 
 .slider {
@@ -393,6 +468,33 @@ main {
     background-color: #c1b6ad;
 }
 
+@media (max-width: 767px) {
+    .btn {
+        display: none;
+    }
+    .slider {
+        justify-content: center;
+    }
+    .slider-box {
+        max-width: 348px;
+        height: 532px;
+        justify-content: space-between;
+    }
+    .discription {
+        margin-top: 0px;
+        height: 164px;
+    }
+}
+
+@media (max-width: 680px) {
+    .favourites-title {
+        font-size: 32px;
+    }
+    .slant {
+        font-size: 32px;
+    }
+}
+
 /* ABOUT */
 
 .about {
@@ -446,9 +548,40 @@ main {
     transition: 0.5s;
 }
 
-.photo-settings:hover {
-    transform: scale(1);
-    transition: 0.5s;
+@media (hover: hover) {
+    .photo-settings:hover {
+        transform: scale(1);
+        transition: 0.5s;
+    }
+}
+
+@media (max-width: 1405px) {
+    .photo-box-1 {
+        width: 688px;
+    }
+    .about-photos {
+        flex-direction: column;
+        align-items: center;
+    }
+    .photo-box-2 {
+        display: none;
+    }
+    .photo-settings {
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 700px) {
+    .about-title {
+        font-size: 32px;
+    }
+    .photo-box-1 {
+        width: 100%;
+        max-width: 348px;
+    }
+    .photo-settings {
+        transform: scale(2.1);
+    }
 }
 
 /* MOBILE-APP */
@@ -500,24 +633,26 @@ main {
     transition: 0.3s;
 }
 
-.app-button:hover .app-svg path {
-    fill: #e1d4c9;
-    transition: 0.3s;
-}
+@media (hover: hover) {
+    .app-button:hover .app-svg path {
+        fill: #e1d4c9;
+        transition: 0.3s;
+    }
 
-.app-button:hover {
-    background-color: #665f55;
-    transition: 0.3s;
-}
+    .app-button:hover {
+        background-color: #665f55;
+        transition: 0.3s;
+    }
 
-.app-button:hover .app-content > :first-child {
-    color: #e1d4c9;
-    transition: 0.3s;
-}
+    .app-button:hover .app-content > :first-child {
+        color: #e1d4c9;
+        transition: 0.3s;
+    }
 
-.app-button:hover .app-content > :last-child {
-    color: #e1d4c9;
-    transition: 0.3s;
+    .app-button:hover .app-content > :last-child {
+        color: #e1d4c9;
+        transition: 0.3s;
+    }
 }
 
 .app-icon {
@@ -539,6 +674,38 @@ main {
 .app-content > :last-child {
     font-weight: 600;
     transition: 0.3s;
+}
+
+@media (max-width: 1270px) {
+    .mobile-app {
+        flex-direction: column;
+    }
+    .download {
+        margin-bottom: 100px;
+        max-width: 688px;
+    }
+}
+
+@media (max-width: 677px) {
+    .mobile-size {
+        width: 348px;
+    }
+    .app-title > h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 475px) {
+    .download {
+        height: 380px;
+        margin-bottom: 40px;
+    }
+    .app-box {
+        flex-direction: column;
+        width: 310px;
+        height: 148px;
+        justify-content: space-between;
+    }
 }
 
 /* FOOTER */
@@ -608,14 +775,16 @@ footer {
     transition: 0.3s;
 }
 
-.social-icon:hover .icon-svg path {
-    stroke: #403f3d;
-    transition: 0.3s;
-}
+@media (hover: hover) {
+    .social-icon:hover .icon-svg path {
+        stroke: #403f3d;
+        transition: 0.3s;
+    }
 
-.social-icon:hover {
-    background-color: #e1d4c9;
-    transition: 0.3s;
+    .social-icon:hover {
+        background-color: #e1d4c9;
+        transition: 0.3s;
+    }
 }
 
 .contacts {
@@ -676,7 +845,50 @@ footer {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-.underscore:hover::after {
-    width: 95%;
-    left: 0;
+@media (hover: hover) {
+    .underscore:hover::after {
+        width: 95%;
+        left: 0;
+    }
+}
+
+@media (max-width: 1290px) {
+    footer {
+        padding: 100px 60px 69px 60px;
+        flex-direction: column;
+        height: 567px;
+    }
+    .tagline {
+        max-width: 568px;
+    }
+    .contacts {
+        max-width: 568px;
+    }
+}
+
+@media (max-width: 650px) {
+    .tagline-box > span {
+        font-size: 32px;
+    }
+    .slope {
+        font-size: 32px;
+        display: inline;
+    }
+}
+
+@media (max-width: 580px) {
+    footer {
+        margin: 0px 16px 40px 16px;
+        padding: 60px 16px 60px 16px;
+        height: 406px;
+    }
+    .tagline {
+        height: 180px;
+    }
+    .contacts {
+        height: 186px;
+    }
+    .contacts > span {
+        height: 65px;
+    }
 }
