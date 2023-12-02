@@ -335,6 +335,17 @@ h1 {
     padding: 20px 20px 20px 20px;
 }
 
+.btn-refresh {
+    display: none;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100px;
+    border: 1px solid #665f55;
+}
+
 .item-name {
     font-size: 24px;
     font-style: normal;
@@ -362,6 +373,13 @@ h1 {
     .offers {
         justify-content: center;
         gap: 38px;
+    }
+    .btn-refresh {
+        display: flex;
+        margin: 0 30% 0 30%;
+    }
+    .hide {
+        display: none;
     }
 }
 

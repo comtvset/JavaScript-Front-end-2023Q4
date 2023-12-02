@@ -340,6 +340,15 @@ main {
     }
 }
 
+@media (max-width: 380px) {
+    .background {
+        margin-top: -552px;
+    }
+    .bg {
+        width: 1069px;
+    }
+}
+
 /* FAVOURITES-COFFEE */
 
 .favourites-coffee {
