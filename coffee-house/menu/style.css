@@ -382,15 +382,6 @@ h1 {
         display: none;
     }
 }
-/*
-@media (max-width: 768px) {
-    .btn-refresh {
-        display: flex;
-    }
-    .hide {
-        display: none;
-    }
-} */
 
 @media (max-width: 650px) {
     .title > span {
