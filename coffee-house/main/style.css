@@ -327,6 +327,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1;
 }
 
 .enjoy span:first-child {
@@ -399,6 +400,7 @@ main {
 @media (max-width: 768px) {
     .offer {
         margin: 100px 0px 100px 60px;
+        z-index: 0;
     }
     .background {
         margin-top: -644px;
@@ -515,12 +517,23 @@ main {
     justify-content: space-between;
 }
 
+.slider-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 480px;
+    height: 640px;
+    overflow: hidden;
+}
+
 .slider-box {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 480px;
     height: 640px;
+    padding: 0px 100px 0px 100px;
+    transform: translateX(-100px);
+    transition: all 1s;
 }
 
 .discription {
@@ -566,7 +579,15 @@ main {
     width: 40px;
     height: 4px;
     border-radius: 100px;
+    background-color: #c1b6ad;
+    transition: 0.3s;
+}
+.filling {
+    position: absolute;
     background-color: #665f55;
+    width: 0px;
+    height: 4px;
+    border-radius: 100px;
 }
 
 #item-2 {
@@ -589,6 +610,10 @@ main {
     }
     .slider {
         justify-content: center;
+    }
+    .slider-container {
+        max-width: 348px;
+        height: 532px;
     }
     .slider-box {
         max-width: 348px;
