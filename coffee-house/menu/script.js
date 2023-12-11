@@ -4,7 +4,6 @@ const burgerMenu = document.querySelector('.burger-menu');
 const menuItem = document.querySelector('.menu-item');
 let allTegA = document.querySelectorAll('a');
 
-
 function openBurger() {
     burgerMenu.classList.add('active');
     menuItem.classList.add('active');
@@ -42,6 +41,165 @@ allTegA.map((item) =>
 );
 // BURGER MENU <-- end
 
+// PRODUCTS --> start
+let item = document.querySelectorAll('.item');
+let hidden = document.querySelectorAll('.hidden');
+const html = document.querySelector('html');
+const offers = document.querySelector('.offers');
+let productsList;
+let createCounter = 0;
+
+async function afterRequest() {
+    const response = await fetch('./products.json');
+    const products = await response.json();
+    productsList = products;
+    setCards();
+    btnCreateRefresh();
+    createMenu();
+}
+
+afterRequest();
+
+function setCards() {
+    productsList;
+}
+
+const btnRefresh = document.createElement('div');
+const svg = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="refresh">
+                    <path
+                        d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8"
+                        stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round" />
+                    <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+            </svg>`;
+
+function actalWidth() {
+    let size = html.clientWidth;
+
+    if (size > 1072) {
+        hidden = document.querySelectorAll('.hidden');
+        btnRefresh.style.display = 'none';
+        hidden.forEach((item) => item.classList.add('hide'));
+    }
+    if (size <= 1072) {
+        hidden = document.querySelectorAll('.hidden');
+        btnRefresh.style.display = 'flex';
+        hidden.forEach((item) => item.classList.add('hide'));
+    }
+}
+
+window.addEventListener('resize', actalWidth);
+
+function btnCreateRefresh() {
+    offers.appendChild(btnRefresh);
+    btnRefresh.classList.add('btn-refresh');
+    btnRefresh.innerHTML = svg;
+}
+
+
+const btnChoice = document.querySelectorAll('.btn-choice');
+
+btnChoice.forEach((item) => {
+    let segment = item.outerText.toLowerCase();
+    item.addEventListener('click', function () {
+        btnChoice.forEach((item) => {
+            item.classList.remove('pressed');
+        });
+
+        while (offers.firstChild) {
+            offers.removeChild(offers.firstChild);
+        }
+
+        item.classList.add('pressed');
+        createMenu(segment);
+    });
+});
+
+function createMenu(segment = 'coffee') {
+    let count = 1;
+    console.dir(productsList);
+
+    for (let i = 0; i < productsList.length; i++) {
+        if (productsList[i].category.includes(segment)) {
+            createCard(
+                productsList[i].category,
+                [count++],
+                productsList[i].name,
+                productsList[i].description,
+                productsList[i].price
+            );
+            createCounter++;
+        }
+    }
+
+    if (count > 5) {
+        btnCreateRefresh();
+        actalWidth();
+    }
+    createCounter = 0;
+}
+
+function createCard(category, ordinal, name, description, price) {
+    const divItem = document.createElement('div');
+    offers.appendChild(divItem);
+    divItem.classList.add('item');
+
+    if (createCounter > 3) {
+        divItem.classList.add('hidden');
+        divItem.classList.add('hide');
+    }
+
+    const divImgItem = document.createElement('div');
+    divItem.appendChild(divImgItem);
+    divImgItem.classList.add('img-item');
+    const IMG = document.createElement('img');
+    divImgItem.appendChild(IMG);
+    IMG.classList.add('img-settings');
+    IMG.setAttribute('src', `../assets/images/${category}-${ordinal}.png`);
+
+    const divDiscription = document.createElement('div');
+    divItem.appendChild(divDiscription);
+    divDiscription.classList.add('discription');
+
+    const div = document.createElement('div');
+    divDiscription.appendChild(div);
+
+    const spanItemName = document.createElement('span');
+    div.appendChild(spanItemName);
+    spanItemName.classList.add('item-name');
+    spanItemName.innerHTML = name;
+
+    const spanItemInfo = document.createElement('span');
+    div.appendChild(spanItemInfo);
+    spanItemInfo.classList.add('item-info');
+    spanItemInfo.innerHTML = description;
+
+    const spanItemPrice = document.createElement('span');
+    divDiscription.appendChild(spanItemPrice);
+    spanItemPrice.classList.add('item-price');
+    spanItemPrice.innerHTML = `$${price}`;
+}
+
+btnRefresh.addEventListener('click', function () {
+    console.log('click');
+
+    item = document.querySelectorAll('.item');
+    btnRefresh.style.display = 'none';
+    item.forEach((item) => item.classList.remove('hide'));
+});
+
+// createCard(
+//     'coffee',
+//     1,
+//     'Irish coffee',
+//     'Fragrant black coffee with Jameson Irish whiskey and whipped milk',
+//     '7.00'
+// );
+
+// PRODUCTS <-- end
 
 console.log(
     `
@@ -67,12 +225,12 @@ console.log(
 - When manually switching, the progress bar state of the switched slide resets, and the progress bar of the displayed slide starts to fill: +2 ✅
 - When switching to the right after the third element, it returns to the first. When switching to the left after the first element, it returns to the third: +2 ✅
 
-3. Categories of products on the menu page: +16 ❌
-- The Coffee category is active and the corresponding products are displayed when opening or reloading the menu page: +2 ❌
-- When switching categories, the products of the selected category are displayed: +2 ❌
-- For screens with a width of 768px or less, when opening/reloading the page or switching categories, only 4 products are displayed. If there are more than 4 products in the displayed category, a Load More button is displayed below: +4 ❌
-- When clicking the Load More button below the displayed products, the missing products are added, and the Load More button is hidden: +4 ❌
-- When changing the screen width, the product display mode (8 products per page or 4 products with a Load More button) changes without page reloading: +4 ❌
+3. Categories of products on the menu page: +16 ✅
+- The Coffee category is active and the corresponding products are displayed when opening or reloading the menu page: +2 ✅
+- When switching categories, the products of the selected category are displayed: +2 ✅
+- For screens with a width of 768px or less, when opening/reloading the page or switching categories, only 4 products are displayed. If there are more than 4 products in the displayed category, a Load More button is displayed below: +4 ✅
+- When clicking the Load More button below the displayed products, the missing products are added, and the Load More button is hidden: +4 ✅
+- When changing the screen width, the product display mode (8 products per page or 4 products with a Load More button) changes without page reloading: +4 ✅
 
 4. The Modal on the menu page: +20 ❌
 - The Modal with the description of a specific product opens when clicking on any part of a card of product: +2 ❌

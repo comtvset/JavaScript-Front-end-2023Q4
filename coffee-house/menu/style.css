@@ -437,6 +437,7 @@ h1 {
 
     border-radius: 100px;
     border: 1px solid #665f55;
+    cursor: pointer;
 }
 
 .item-name {
