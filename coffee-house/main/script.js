@@ -173,6 +173,7 @@ const btnLeft = document.getElementById('btn-left');
 const btnRight = document.getElementById('btn-right');
 
 btnLeft.addEventListener('click', () => {
+    setTime = 5000;
     let size = sliderContainer.clientWidth;
     if (size >= 480) {
         if (currentPosition === 100) {
@@ -194,6 +195,7 @@ btnLeft.addEventListener('click', () => {
 });
 
 btnRight.addEventListener('click', () => {
+    setTime = 5000;
     let size = sliderContainer.clientWidth;
     if (size >= 480) {
         if (currentPosition === 100) {
