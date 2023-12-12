@@ -177,6 +177,10 @@ ul > li:first-child {
     bottom: 40%;
 }
 
+body.lock {
+    overflow: hidden;
+}
+
 @media (max-width: 768px) {
     /* BURGER START*/
     body.lock {
@@ -678,7 +682,7 @@ footer {
 /* MODAL WINDOW*/
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -687,7 +691,7 @@ footer {
     opacity: 0;
     transition: opacity 0.5s;
     z-index: -1;
-    height: 200%;
+    height: auto;
 }
 
 body .active-modal + .overlay {
