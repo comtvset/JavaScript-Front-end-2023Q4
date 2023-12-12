@@ -306,7 +306,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 1;
+    z-index: 0;
 }
 
 .enjoy span:first-child {
