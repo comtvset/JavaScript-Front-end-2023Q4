@@ -54,7 +54,6 @@ async function afterRequest() {
     const products = await response.json();
     productsList = products;
     setCards();
-    btnCreateRefresh();
     getItem();
 }
 
@@ -131,6 +130,8 @@ function createMenu(segment = 'coffee') {
             createCounter++;
         }
     }
+
+    console.log(count)
 
     if (count > 5) {
         btnCreateRefresh();
