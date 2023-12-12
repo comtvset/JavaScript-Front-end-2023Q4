@@ -115,7 +115,6 @@ btnChoice.forEach((item) => {
 
         item.classList.add('pressed');
         createMenu(segment);
-        getItem();
     });
 });
 
@@ -197,16 +196,15 @@ const body = document.querySelector('body');
 const modalName = document.querySelector('.item-name');
 const modalInfo = document.querySelector('.item-info');
 const modalPrice = document.getElementById('modal-price');
+const overlay = document.querySelector('.overlay');
 let modalImg = document.querySelector('.img-settings');
-const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
-const modalAdditivesChoice = document.querySelectorAll('.modal-additives-choice');
+let priceArray = [];
 
 function getItem() {
     item = document.querySelectorAll('.item');
     item.forEach((item) => {
         item.addEventListener('click', () => {
             openModal();
-            modalChoice();
 
             modalName.innerHTML =
                 item.childNodes[1].childNodes[0].childNodes[0].innerHTML;
@@ -214,6 +212,8 @@ function getItem() {
                 item.childNodes[1].childNodes[0].childNodes[1].innerHTML;
             modalPrice.innerHTML = item.childNodes[1].childNodes[1].innerHTML;
             modalImg.src = item.childNodes[0].childNodes[0].src;
+
+            modalChoice();
         });
     });
 }
@@ -232,16 +232,35 @@ modalButton.addEventListener('click', () => {
     modal.classList.remove('active-modal');
     modal.classList.remove('modal-visible');
     document.body.classList.remove('lock');
+
+    priceArray = [];
+
+    const modalAdditivesChoice = document.querySelectorAll(
+        '.modal-additives-choice'
+    );
+    modalAdditivesChoice.forEach((item) => {
+        item.classList.remove('pressed');
+    });
 });
 
-let priceArray = [];
+overlay.addEventListener('click', () => {
+    modal.classList.remove('active-modal');
+    modal.classList.remove('modal-visible');
+    document.body.classList.remove('lock');
 
+    priceArray = [];
+});
 
 function modalChoice() {
+    const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
+    const modalAdditivesChoice = document.querySelectorAll(
+        '.modal-additives-choice'
+    );
+
     let count = 0;
     let actualPrice = modalPrice.innerHTML.slice(1);
     priceArray.push('S');
-    priceArray.push(+actualPrice);
+    priceArray.push(actualPrice);
 
     function check() {
         let countCheck = 0;
@@ -260,6 +279,7 @@ function modalChoice() {
             item.classList.remove('pressed');
         }
 
+
         count++;
 
         item.addEventListener('click', function () {
@@ -267,7 +287,6 @@ function modalChoice() {
                 item.classList.remove('pressed');
             });
             item.classList.add('pressed');
-
             let size = item.childNodes[0].innerText;
 
             if (size === 'S') {
@@ -321,19 +340,27 @@ function modalChoice() {
     });
 
     modalAdditivesChoice.forEach((item) => {
-        item.classList.remove('pressed');
         item.addEventListener('click', function () {
+            // modalAdditivesChoice.forEach((item) => {
+            //     if (item.classList.contains('pressed')) {
+            //         item.classList.remove('pressed');
+            //     }
+            // });
+
+
             if (!item.classList.contains('pressed')) {
                 item.classList.add('pressed');
-                let newPrice = priceArray[1] + 0.5;
+                let newPrice = +priceArray[1] + 0.5;
                 priceArray.pop();
                 priceArray.push(newPrice);
+                // console.log(priceArray);
                 modalPrice.innerHTML = `$${newPrice.toFixed(2)}`;
             } else {
                 item.classList.remove('pressed');
-                let newPrice = priceArray[1] - 0.5;
+                let newPrice = +priceArray[1] - 0.5;
                 priceArray.pop();
                 priceArray.push(newPrice);
+                // console.log(priceArray);
                 modalPrice.innerHTML = `$${newPrice.toFixed(2)}`;
             }
         });
@@ -355,7 +382,7 @@ function modalChoice() {
 // - The placement and dimensions of elements in the burger menu match the layout (horizontal centering of menu items): +2 ✅
 // - When the page width increases to 769px or higher, the burger icon and the open burger menu hide, and the navigation panel appears: +2 ✅
 
-// 2. Implementation of the carousel on the home page: +24 ❌
+// 2. Implementation of the carousel on the home page: +24 ✅/❌
 // - Carousel elements are automatically scroll to the left with a specified time interval by default. The time interval duration is at the student's choose, but the recommended value is 5-7 seconds: +4 ✅
 // - The current state until the next automatic switch is shown in the progress bar of the corresponding slide by filling it with color: +4 ✅
 // - Only the progress bar of the current slide can be filled; the rest remain in their default state: +2 ✅
@@ -373,15 +400,15 @@ function modalChoice() {
 // - When clicking the Load More button below the displayed products, the missing products are added, and the Load More button is hidden: +4 ✅
 // - When changing the screen width, the product display mode (8 products per page or 4 products with a Load More button) changes without page reloading: +4 ✅
 
-// 4. The Modal on the menu page: +20 ❌
-// - The Modal with the description of a specific product opens when clicking on any part of a card of product: +2 ❌
-// - The part of the page outside the Modal is darkened: +2 ❌
-// - When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2 ❌
+// 4. The Modal on the menu page: +20 ✅/❌
+// - The Modal with the description of a specific product opens when clicking on any part of a card of product: +2 ✅
+// - The part of the page outside the Modal is darkened: +2 ✅
+// - When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2 ✅
 // - Clicking on the area around the Modal and Close button closes it: +2 ❌
-// - The Modal is centered on both axes, sizes of modal elements and their layout match the design: +2 ❌
-// - After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2 ❌
-// - Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4 ❌
-// - Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4 ❌
+// - The Modal is centered on both axes, sizes of modal elements and their layout match the design: +2 ✅
+// - After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2 ✅
+// - Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4 ✅
+// - Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4 ✅❌
 
 // 5. Video on the home page: +8 ✅
 // - In the Enjoy block of the home page, a video is played in the background instead of an image, without sound and control elements, and without the ability to interact with it: +4 ✅
