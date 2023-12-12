@@ -9,6 +9,10 @@ body {
     background-color: #e1d4c9;
 }
 
+main {
+    transition: all 0.5s;
+}
+
 h1 {
     font-family: Inter;
     font-size: 72px;
@@ -80,6 +84,7 @@ header {
     align-items: center;
     position: relative;
     z-index: 1;
+    transition: all 0.5s;
 }
 
 header span {
@@ -127,7 +132,7 @@ ul > li:first-child {
 }
 
 @media (hover: hover) {
-    .menu-item:hover::after {
+    .menu-item:burger-buttonhover::after {
         width: 100%;
         left: 0;
     }
@@ -160,10 +165,11 @@ ul > li:first-child {
 .burger-button::after {
     left: 31%;
     position: absolute;
-    height: 4%;
+    height: 1px;
     width: 40%;
     transition: 0.3s ease-in-out;
     background-color: #403f3d;
+    border-radius: 100px;
 }
 .burger-button::before,
 .burger-button::after {
@@ -178,15 +184,95 @@ ul > li:first-child {
 }
 
 @media (max-width: 768px) {
+    /* BURGER START*/
+    body.lock {
+        overflow: hidden;
+    }
     .burger-menu {
+        display: none;
+    }
+    .burger-menu > ul {
+        position: fixed;
+        top: 100px;
+        left: 0%;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 57px;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #e1d4c9;
+        animation: slideOutRight 0.5s both;
+    }
+    .burger-menu.active > ul {
+        animation: slideInRight 0.5s both;
+    }
+
+    .burger-menu > ul > li {
+        margin: 0px 0px 47px 0px;
+    }
+    .burger-menu > ul > li > a > span {
+        font-size: 32px;
+    }
+    .burger-menu > ul > li > a > span::after {
         display: none;
     }
     .menu-item {
         display: none;
+        justify-content: center;
+        position: fixed;
+        top: 597px;
+        left: -10px;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        animation: slideOutRight 0.5s both;
+    }
+    .menu-item.active {
+        animation: slideInRight 0.5s both;
+    }
+    .menu-item > a {
+        font-size: 32px;
+    }
+    .coffee-cup {
+        margin-left: 16px;
+    }
+    .coffee-cup > svg {
+        width: 200%;
+        height: 90%;
     }
     .burger-button {
         display: flex;
     }
+    .burger-button.active::before {
+        top: 47.5%;
+        transform: rotate(45deg);
+    }
+    .burger-button.active::after {
+        bottom: 47.5%;
+        transform: rotate(-45deg);
+    }
+
+    @keyframes slideInRight {
+        0% {
+            transform: translateX(100%);
+            visibility: visible;
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideOutRight {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            visibility: hidden;
+            transform: translateX(100%);
+        }
+    }
+    /* BURGER END */
 }
 
 @media (max-width: 580px) {
@@ -220,6 +306,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1;
 }
 
 .enjoy span:first-child {
@@ -292,6 +379,7 @@ main {
 @media (max-width: 768px) {
     .offer {
         margin: 100px 0px 100px 60px;
+        /* z-index: 0; */
     }
     .background {
         margin-top: -644px;
@@ -408,12 +496,23 @@ main {
     justify-content: space-between;
 }
 
+.slider-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 480px;
+    height: 640px;
+    overflow: hidden;
+}
+
 .slider-box {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 480px;
     height: 640px;
+    padding: 0px 100px 0px 100px;
+    transform: translateX(-100px);
+    transition: all 1s;
 }
 
 .discription {
@@ -459,7 +558,15 @@ main {
     width: 40px;
     height: 4px;
     border-radius: 100px;
+    background-color: #c1b6ad;
+    transition: 0.3s;
+}
+.filling {
+    position: absolute;
     background-color: #665f55;
+    width: 0px;
+    height: 4px;
+    border-radius: 100px;
 }
 
 #item-2 {
@@ -482,6 +589,10 @@ main {
     }
     .slider {
         justify-content: center;
+    }
+    .slider-container {
+        max-width: 348px;
+        height: 532px;
     }
     .slider-box {
         max-width: 348px;

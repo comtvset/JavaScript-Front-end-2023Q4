@@ -53,7 +53,7 @@
         </div>
 
         <div class="choice">
-            <span class="btn-choice active"><span class="btn-circle">
+            <span class="btn-choice pressed"><span class="btn-circle">
                     <img src="../assets/icons/coffee.png" alt="img">
                 </span>Coffee</span>
             <span class="btn-choice"><span class="btn-circle">
@@ -64,113 +64,7 @@
                 </span>Dessert</span>
         </div>
 
-        <div class="offers">
-            <div class="item">
-                <div class="img-item"><img src="../assets/images/coffee-1.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Irish coffee</span>
-                        <span class="item-info">Fragrant black coffee with Jameson Irish whiskey and whipped milk</span>
-                    </div>
-
-                    <span class="item-price">$7.00</span>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="img-item"><img src="../assets/images/coffee-2.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Kahlua coffee</span>
-                        <span class="item-info">Classic coffee with milk and Kahlua liqueur under a cap of frothed
-                            milk</span>
-                    </div>
-
-                    <span class="item-price">$7.00</span>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="img-item"><img src="../assets/images/coffee-3.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Honey raf</span>
-                        <span class="item-info">Espresso with frothed milk, cream and aromatic honey</span>
-                    </div>
-                    <span class="item-price">$5.50</span>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="img-item"><img src="../assets/images/coffee-4.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Ice cappuccino</span>
-                        <span class="item-info">Cappuccino with soft thick foam in summer version with ice</span>
-                    </div>
-                    <span class="item-price">$5.00</span>
-                </div>
-            </div>
-
-            <div class="btn-refresh">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="refresh">
-                        <path
-                            d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8"
-                            stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round" />
-                        <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                </svg>
-            </div>
-
-            <div class="item hide">
-                <div class="img-item"><img src="../assets/images/coffee-5.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Espresso</span>
-                        <span class="item-info">Classic black coffee</span>
-                    </div>
-                    <span class="item-price">$4.50</span>
-                </div>
-            </div>
-
-            <div class="item hide">
-                <div class="img-item"><img src="../assets/images/coffee-6.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Latte</span>
-                        <span class="item-info">Espresso coffee with the addition of steamed milk and dense milk
-                            foam</span>
-                    </div>
-                    <span class="item-price">$5.50</span>
-                </div>
-            </div>
-
-            <div class="item hide">
-                <div class="img-item"><img src="../assets/images/coffee-7.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Latte macchiato</span>
-                        <span class="item-info">Espresso with frothed milk and chocolate</span>
-                    </div>
-                    <span class="item-price">$5.50</span>
-                </div>
-            </div>
-
-            <div class="item hide">
-                <div class="img-item"><img src="../assets/images/coffee-8.png" alt="img" class="img-settings"></div>
-                <div class="discription">
-                    <div>
-                        <span class="item-name">Coffee with cognac</span>
-                        <span class="item-info">Fragrant black coffee with cognac and whipped cream</span>
-                    </div>
-                    <span class="item-price">$6.50</span>
-                </div>
-            </div>
-
-
-        </div>
+        <div class="offers"></div>
     </main>
     <footer>
         <div class="tagline">
@@ -275,6 +169,65 @@
             </div>
         </div>
     </footer>
+
+    <!-- MODAL -->
+    <div class="modal">
+        <div class="modal-window">
+            <div class="img-item">
+                <img src="../assets/images/coffee-1.png" alt="img" class="img-settings">
+            </div>
+            <div class="modal-discription">
+                <div>
+                    <span class="item-name">Irish coffee</span>
+                    <span class="item-info">Fragrant black coffee with Jameson Irish whiskey and whipped milk</span>
+                </div>
+
+                <div class="modal-choose">
+                    <span>Size</span>
+                    <div class="options">
+                        <span class="modal-size-choice pressed"><span class="btn-circle">
+                                S
+                            </span>200 ml</span>
+                        <span class="modal-size-choice"><span class="btn-circle">
+                                M
+                            </span>300 ml</span>
+                        <span class="modal-size-choice"><span class="btn-circle">
+                                L
+                            </span>400 ml</span>
+                    </div>
+                </div>
+
+                <div class="modal-choose">
+                    <span>Additives</span>
+                    <div class="options">
+                        <span class="modal-additives-choice"><span class="btn-circle">
+                                1
+                            </span>Sugar</span>
+                        <span class="modal-additives-choice"><span class="btn-circle">
+                                2
+                            </span>Cinnamon</span>
+                        <span class="modal-additives-choice"><span class="btn-circle">
+                                3
+                            </span>Syrup</span>
+                    </div>
+                </div>
+
+                <div class="modal-total">
+                    <span class="item-price">Total:</span>
+                    <span class="item-price" id="modal-price">$7.00</span>
+                </div>
+                <div class="modal-info">
+                    <img src="../assets/icons/info-empty.png" alt="img" class="info-empty-size">
+                    <span>The cost is not final. Download our mobile app to see the final price and place your order.
+                        Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
+                </div>
+                <div class="modal-button">Close</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="overlay"></div>
+
 
     <script type="module" src="script.js"></script>
 </body>
