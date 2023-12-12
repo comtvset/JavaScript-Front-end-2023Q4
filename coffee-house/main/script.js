@@ -231,7 +231,7 @@ console.log(
 - The placement and dimensions of elements in the burger menu match the layout (horizontal centering of menu items): +2 ✅
 - When the page width increases to 769px or higher, the burger icon and the open burger menu hide, and the navigation panel appears: +2 ✅
 
-2. Implementation of the carousel on the home page: +24 ❌
+2. Implementation of the carousel on the home page: +24 ✅/❌
 - Carousel elements are automatically scroll to the left with a specified time interval by default. The time interval duration is at the student's choose, but the recommended value is 5-7 seconds: +4 ✅
 - The current state until the next automatic switch is shown in the progress bar of the corresponding slide by filling it with color: +4 ✅
 - Only the progress bar of the current slide can be filled; the rest remain in their default state: +2 ✅
@@ -249,15 +249,15 @@ console.log(
 - When clicking the Load More button below the displayed products, the missing products are added, and the Load More button is hidden: +4 ✅
 - When changing the screen width, the product display mode (8 products per page or 4 products with a Load More button) changes without page reloading: +4 ✅
 
-4. The Modal on the menu page: +20 ❌
-- The Modal with the description of a specific product opens when clicking on any part of a card of product: +2 ❌
-- The part of the page outside the Modal is darkened: +2 ❌
-- When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2 ❌
+4. The Modal on the menu page: +20 ✅/❌
+- The Modal with the description of a specific product opens when clicking on any part of a card of product: +2 ✅
+- The part of the page outside the Modal is darkened: +2 ✅
+- When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2 ✅
 - Clicking on the area around the Modal and Close button closes it: +2 ❌
-- The Modal is centered on both axes, sizes of modal elements and their layout match the design: +2 ❌
-- After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2 ❌
-- Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4 ❌
-- Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4 ❌
+- The Modal is centered on both axes, sizes of modal elements and their layout match the design: +2 ✅
+- After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2 ✅
+- Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4 ✅
+- Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4 ✅❌
 
 5. Video on the home page: +8 ✅
 - In the Enjoy block of the home page, a video is played in the background instead of an image, without sound and control elements, and without the ability to interact with it: +4 ✅

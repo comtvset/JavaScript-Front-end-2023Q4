@@ -56,27 +56,6 @@ span {
     position: relative;
 }
 
-/* .overlay-burger {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #e1d4c9;
-    opacity: 0;
-    transition: opacity 0.5s;
-    z-index: -1;
-}
-
-main.active .overlay-burger {
-    opacity: 1;
-    z-index: 2;
-}
-
-header.active {
-    z-index: 3;
-} */
-
 /* HEADER */
 
 nav span::after {
@@ -153,7 +132,7 @@ ul > li:first-child {
 }
 
 @media (hover: hover) {
-    .menu-item:hover::after {
+    .menu-item:burger-buttonhover::after {
         width: 100%;
         left: 0;
     }
@@ -400,7 +379,7 @@ main {
 @media (max-width: 768px) {
     .offer {
         margin: 100px 0px 100px 60px;
-        z-index: 0;
+        /* z-index: 0; */
     }
     .background {
         margin-top: -644px;
