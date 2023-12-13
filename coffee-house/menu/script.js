@@ -125,13 +125,11 @@ function createMenu(segment = 'coffee') {
                 [count++],
                 productsList[i].name,
                 productsList[i].description,
-                productsList[i].price
+                productsList[i].price,
             );
             createCounter++;
         }
     }
-
-    console.log(count)
 
     if (count > 5) {
         btnCreateRefresh();
@@ -184,6 +182,54 @@ function createCard(category, ordinal, name, description, price) {
     divDiscription.appendChild(spanItemPrice);
     spanItemPrice.classList.add('item-price');
     spanItemPrice.innerHTML = `$${price}`;
+
+
+
+    const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
+    const modalAdditivesChoice = document.querySelectorAll(
+        '.modal-additives-choice'
+    );
+
+    if(category === 'coffee') {
+        let sizes = Object.entries(productsList[0].sizes);
+        let additives = Object.entries(productsList[0].additives);
+
+        modalSizeChoice.forEach((item, index) => {
+            let size = sizes[index][1].size;
+            item.childNodes[1].textContent = size;
+        });
+        modalAdditivesChoice.forEach((item, index) => {
+            let additive = additives[index][1].name;
+            item.childNodes[1].textContent = additive;
+        });
+    }
+    if(category === 'tea') {
+        let sizes = Object.entries(productsList[9].sizes);
+        let additives = Object.entries(productsList[9].additives);
+
+        modalSizeChoice.forEach((item, index) => {
+            let size = sizes[index][1].size;
+            item.childNodes[1].textContent = size;
+        });
+        modalAdditivesChoice.forEach((item, index) => {
+            let additive = additives[index][1].name;
+            item.childNodes[1].textContent = additive;
+        });
+
+    }
+    if(category === 'dessert') {
+        let sizes = Object.entries(productsList[19].sizes);
+        let additives = Object.entries(productsList[19].additives);
+
+        modalSizeChoice.forEach((item, index) => {
+            let size = sizes[index][1].size;
+            item.childNodes[1].textContent = size;
+        });
+        modalAdditivesChoice.forEach((item, index) => {
+            let additive = additives[index][1].name;
+            item.childNodes[1].textContent = additive;
+        });
+    }
 }
 
 btnRefresh.addEventListener('click', function () {
@@ -231,6 +277,14 @@ function openModal() {
     modal.classList.add('active-modal');
     modal.classList.add('modal-visible');
     document.body.classList.add('lock');
+
+    // const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
+    // modalSizeChoice.forEach((item) => {
+    //     console.dir(item.childNodes[1].textContent = '400 ml')
+    // });
+
+    // // console.log(productsList[i].sizes)
+    // console.log(productsList[0].sizes)
 }
 
 const modalButton = document.querySelector('.modal-button');
