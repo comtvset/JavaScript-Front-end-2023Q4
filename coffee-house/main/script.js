@@ -85,6 +85,14 @@ function loop(position) {
         }
     }
 
+    let myArr = controls.children;
+
+    for (let i = 0; i < myArr.length; i++) {
+        if (myArr[i].firstChild) {
+            myArr[i].removeChild(myArr[i].firstChild);
+        }
+    }
+
     sliderBox.forEach((item) => {
         item.style.transform = `translateX(-${position}px)`;
     });
@@ -120,7 +128,7 @@ sliderContainer.addEventListener('mouseleave', function () {
 function filling(item) {
     let count = 0;
     const length = 40;
-    let unit = length / (setTime / 4.4);
+    let unit = length / (setTime / 5);
 
     let time = setTime;
 
@@ -135,12 +143,14 @@ function filling(item) {
             span.style.width = `${count}px`;
         }
 
-        if (count >= length + 1) {
+        if (count > length) {
             clearInterval(interval);
+
             if (item.contains(span)) {
                 item.removeChild(span);
             }
         }
+
         if (isPause) {
             return (setTime = time);
         }
@@ -183,7 +193,8 @@ btnLeft.addEventListener('click', () => {
         } else if (currentPosition === 1460) {
             reset(item2, 780);
         }
-    } else { //this size for touch move
+    } else {
+        //this size for touch move
         if (currentPosition === 100) {
             reset(item3, 1200);
         } else if (currentPosition === 650) {
@@ -205,7 +216,8 @@ btnRight.addEventListener('click', () => {
         } else if (currentPosition === 1460) {
             reset(item1, 100);
         }
-    } else { //this size for touch move
+    } else {
+        //this size for touch move
         if (currentPosition === 100) {
             reset(item2, 650);
         } else if (currentPosition === 650) {
@@ -231,11 +243,11 @@ console.log(
 - The placement and dimensions of elements in the burger menu match the layout (horizontal centering of menu items): +2 ✅
 - When the page width increases to 769px or higher, the burger icon and the open burger menu hide, and the navigation panel appears: +2 ✅
 
-2. Implementation of the carousel on the home page: +24 ✅/❌
+2. Implementation of the carousel on the home page: +24 ✅
 - Carousel elements are automatically scroll to the left with a specified time interval by default. The time interval duration is at the student's choose, but the recommended value is 5-7 seconds: +4 ✅
 - The current state until the next automatic switch is shown in the progress bar of the corresponding slide by filling it with color: +4 ✅
 - Only the progress bar of the current slide can be filled; the rest remain in their default state: +2 ✅
-- When hovering the mouse or touch-and-hold on the displayed carousel element, the time to the element switch is paused. When the mouse cursor moves out, or the hold ends, the time continues from where it stopped: +2 ✅/❌
+- When hovering the mouse or touch-and-hold on the displayed carousel element, the time to the element switch is paused. When the mouse cursor moves out, or the hold ends, the time continues from where it stopped: +2 ✅
 - The switch slides is accompanied by like the carousel animation (the method of animation execution is not verified): +4 ✅
 - Manual switching in the corresponding direction is implemented by pressing left arrow button or right arrow button: +2 ✅
 - For mobile devices, manual switching in the corresponding direction is additionally implemented by swiping left or right: +2 ❌
