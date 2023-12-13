@@ -53,6 +53,8 @@ const controls = document.querySelector('.controls');
 const item1 = document.getElementById('item-1');
 const item2 = document.getElementById('item-2');
 const item3 = document.getElementById('item-3');
+let sizeWindow = window.innerWidth;
+let touchMoveHandler;
 
 function run(isPause) {
     if (!isPause) {
@@ -66,6 +68,7 @@ function run(isPause) {
 run();
 
 function loop(position) {
+
     pause();
     setTime = 5000;
     resume();
@@ -176,6 +179,8 @@ function reset(setItem, position) {
 }
 
 window.addEventListener('resize', () => {
+    sizeWindow = window.innerWidth;
+    touchMode();
     reset(item1, 100);
 });
 
@@ -228,28 +233,35 @@ btnRight.addEventListener('click', () => {
     }
 });
 
-sliderContainer.addEventListener('touchmove', () => {
-    setTime = 5000;
-    let size = sliderContainer.clientWidth;
-    if (size >= 480) {
+function touchMode() {
+    if (touchMoveHandler) {
+        sliderContainer.removeEventListener('touchmove', touchMoveHandler);
+    }
+
+    touchMoveHandler = touchMove;
+
+    if (sizeWindow <= 767) {
+        sliderContainer.addEventListener('touchmove', touchMoveHandler);
+    }
+
+    function touchMove() {
+        setTime = 5000;
+
         if (currentPosition === 100) {
-            reset(item3, 1460);
-        } else if (currentPosition === 780) {
-            reset(item1, 100);
-        } else if (currentPosition === 1460) {
-            reset(item2, 780);
-        }
-    } else {
-        //this size for touch move
-        if (currentPosition === 100) {
-            reset(item3, 1200);
+            setTimeout(() => {
+                reset(item3, 1200);
+            }, 50);
         } else if (currentPosition === 650) {
-            reset(item1, 100);
+            setTimeout(() => {
+                reset(item1, 100);
+            }, 50);
         } else if (currentPosition === 1200) {
-            reset(item2, 650);
+            setTimeout(() => {
+                reset(item2, 650);
+            }, 50);
         }
     }
-});
+}
 
 // CAROUSEL <-- end
 
