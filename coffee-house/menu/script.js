@@ -125,7 +125,7 @@ function createMenu(segment = 'coffee') {
                 [count++],
                 productsList[i].name,
                 productsList[i].description,
-                productsList[i].price,
+                productsList[i].price
             );
             createCounter++;
         }
@@ -183,14 +183,12 @@ function createCard(category, ordinal, name, description, price) {
     spanItemPrice.classList.add('item-price');
     spanItemPrice.innerHTML = `$${price}`;
 
-
-
     const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
     const modalAdditivesChoice = document.querySelectorAll(
         '.modal-additives-choice'
     );
 
-    if(category === 'coffee') {
+    if (category === 'coffee') {
         let sizes = Object.entries(productsList[0].sizes);
         let additives = Object.entries(productsList[0].additives);
 
@@ -203,7 +201,7 @@ function createCard(category, ordinal, name, description, price) {
             item.childNodes[1].textContent = additive;
         });
     }
-    if(category === 'tea') {
+    if (category === 'tea') {
         let sizes = Object.entries(productsList[9].sizes);
         let additives = Object.entries(productsList[9].additives);
 
@@ -215,9 +213,8 @@ function createCard(category, ordinal, name, description, price) {
             let additive = additives[index][1].name;
             item.childNodes[1].textContent = additive;
         });
-
     }
-    if(category === 'dessert') {
+    if (category === 'dessert') {
         let sizes = Object.entries(productsList[19].sizes);
         let additives = Object.entries(productsList[19].additives);
 
@@ -277,14 +274,6 @@ function openModal() {
     modal.classList.add('active-modal');
     modal.classList.add('modal-visible');
     document.body.classList.add('lock');
-
-    // const modalSizeChoice = document.querySelectorAll('.modal-size-choice');
-    // modalSizeChoice.forEach((item) => {
-    //     console.dir(item.childNodes[1].textContent = '400 ml')
-    // });
-
-    // // console.log(productsList[i].sizes)
-    // console.log(productsList[0].sizes)
 }
 
 const modalButton = document.querySelector('.modal-button');
@@ -340,13 +329,11 @@ function removePressed() {
         }
 
         countI++;
-    })
-
+    });
 }
 
 modalSizeChoice.forEach((item) => {
     item.addEventListener('click', function () {
-
         modalSizeChoice.forEach((item) => {
             item.classList.remove('pressed');
         });
