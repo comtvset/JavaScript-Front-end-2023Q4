@@ -76,12 +76,12 @@ const svg = `
 function actalWidth() {
     let size = html.clientWidth;
 
-    if (size > 1072) {
+    if (size > 768) {
         hidden = document.querySelectorAll('.hidden');
         btnRefresh.style.display = 'none';
         hidden.forEach((item) => item.classList.add('hide'));
     }
-    if (size <= 1072) {
+    if (size <= 768) {
         hidden = document.querySelectorAll('.hidden');
         btnRefresh.style.display = 'flex';
         hidden.forEach((item) => item.classList.add('hide'));
