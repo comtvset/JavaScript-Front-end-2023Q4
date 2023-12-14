@@ -472,6 +472,16 @@ h1 {
         justify-content: center;
         gap: 38px;
     }
+    /* .btn-refresh {
+        display: flex;
+        margin: 0 30% 0 30%;
+    } */
+    /* .hide {
+        display: none;
+    } */
+}
+
+@media (max-width: 768px) {
     .btn-refresh {
         display: flex;
         margin: 0 30% 0 30%;
@@ -852,5 +862,28 @@ body .active-modal + .overlay {
     }
     .modal-window {
         width: 310px;
+    }
+}
+
+@media (hover: hover) {
+    .modal-size-choice:hover {
+        color: #e1d4c9;
+        background: #665f55;
+        transition: 0.3s;
+    }
+
+    .modal-size-choice:hover > .btn-circle {
+        background: #e1d4c9;
+        transition: 0.3s;
+    }
+    .modal-additives-choice:hover {
+        color: #e1d4c9;
+        background: #665f55;
+        transition: 0.3s;
+    }
+
+    .modal-additives-choice:hover > .btn-circle {
+        background: #e1d4c9;
+        transition: 0.3s;
     }
 }
