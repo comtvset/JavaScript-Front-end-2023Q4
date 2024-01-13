@@ -1,3 +1,119 @@
+html {
+    scroll-behavior: smooth;
+    transition: all 0.5s;
+}
+
 body {
     background-color: rgb(37, 37, 37);
+    color: rgb(209, 155, 6);
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+/* ANIAMTION */
+.animation {
+    background-color: rgb(80, 80, 80);
+    padding: 20px;
+}
+
+.animation-wrap {
+    position: relative;
+}
+
+.gallows {
+    width: 200px;
+}
+
+.action {
+    position: absolute;
+    top: -65px;
+    left: -106px;
+}
+
+.head {
+    position: absolute;
+    top: 149px;
+    left: 253px;
+    height: 50px;
+}
+
+.body-person {
+    position: absolute;
+    top: 199px;
+    left: 278px;
+    height: 80px;
+}
+
+.left-arm {
+    position: absolute;
+    top: 211px;
+    left: 239px;
+    height: 50px;
+}
+
+.right-arm {
+    position: absolute;
+    top: 211px;
+    left: 278px;
+    height: 50px;
+}
+
+.left-leg {
+    position: absolute;
+    top: 277px;
+    left: 239px;
+    height: 50px;
+}
+
+.right-leg {
+    position: absolute;
+    top: 277px;
+    left: 278px;
+    height: 50px;
+}
+
+/* INTERACTION */
+.interaction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 20px;
+    background-color: rgb(78, 71, 61);
+}
+
+.alphabet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 300px;
+    justify-content: center;
+}
+
+.letter {
+    border: 1px solid rgb(185, 115, 57);
+    padding: 5px;
+    margin: 2px;
+    width: 15px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.letter:hover {
+    background-color: rgb(187, 89, 33);
+    transition: 0.5s;
+}
+
+.disable {
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(219, 90, 15, 0.514);
 }

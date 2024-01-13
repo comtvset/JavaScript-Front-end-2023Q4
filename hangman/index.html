@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,31 @@
     <link rel="stylesheet" href="style.css">
     <title>hangman</title>
 </head>
-<body>
+
+<body class="body">
+    <section class="animation">
+        <div class="animation-wrap">
+            <img src="./assets/images/gallows_static.png" alt="img" class="gallows">
+            <div class="action">
+                <img src="./assets/images/head_1.png" alt="img" class="head">
+                <img src="./assets/images/body_2.png" alt="img" class="body-person">
+                <img src="./assets/images/left-arm_3.png" alt="img" class="left-arm">
+                <img src="./assets/images/right-arm_4.png" alt="img" class="right-arm">
+                <img src="./assets/images/left-leg_5.png" alt="img" class="left-leg">
+                <img src="./assets/images/right-leg_6.png" alt="img" class="right-leg">
+            </div>
+        </div>
+    </section>
+    <section class="interaction">
+        <div class="answer"></div>
+        <div class="question">"In which country did the dish paella originate?"</div>
+        <div class="count">Incorrect guesses: 0 / 6</div>
+        <div class="alphabet"></div>
+        <button>refresh</button>
+    </section>
+
+
 </body>
 <script type="module" src="script.js"></script>
+
 </html>
