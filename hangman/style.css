@@ -11,7 +11,7 @@ html {
 
 body {
     /* background-color: rgb(37, 37, 37); */
-    color: rgb(209, 155, 6);
+    color: rgb(255, 196, 35);
 
     /* width: 100%;
     height: 100%; */
@@ -25,6 +25,25 @@ header {
     padding: 20px;
     font-size: 46px;
     text-align: center;
+    color: rgba(70, 70, 70, 0.87);
+    font-weight: 800;
+}
+
+button {
+    background-color: rgba(241, 240, 126, 0.247);
+    border: 1px solid rgb(255, 196, 35);
+    border-radius: 5px;
+    color: rgb(211, 208, 11);
+    width: 100px;
+    height: 30px;
+}
+
+h1 {
+    color: rgba(255, 60, 0, 0.87);
+}
+
+h2 {
+    color: rgba(255, 174, 0, 0.87);
 }
 
 .main {
@@ -152,12 +171,25 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 300px;
+    /* width: 300px; */
     justify-content: center;
     margin: 10px 0px 10px 0px;
+    transition: 0.5s;
+}
+
+@media (max-width: 430px) {
+
+    .alphabet {
+        width: 300px;
+    }
+    /* .gallows {
+        width: 200px;
+    } */
 }
 
 .letter {
-    border: 1px solid rgb(185, 115, 57);
+    border: 1px solid rgb(185, 166, 57);
+    background-color: rgba(58, 54, 40, 0.253);
     padding: 5px;
     margin: 2px;
     width: 15px;
