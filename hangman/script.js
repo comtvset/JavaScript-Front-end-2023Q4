@@ -1,7 +1,53 @@
 import questionsAndAnswers from './questions.js';
 
-const refresh = document.querySelector('button');
-const alphabet = document.querySelector('.alphabet');
+// create html from js
+const body = document.querySelector('body');
+body.classList.add('body');
+
+const animation = document.createElement('section');
+body.appendChild(animation);
+animation.classList.add('animation');
+
+const animationWrap = document.createElement('div');
+animation.appendChild(animationWrap);
+animationWrap.classList.add('animation-wrap');
+
+animationWrap.innerHTML = `<img src="./assets/images/gallows_static.png" alt="img" class="gallows">
+    <div class="action">
+        <img src="./assets/images/head_1.png" alt="img" class="head">
+        <img src="./assets/images/body_2.png" alt="img" class="body-person">
+        <img src="./assets/images/left-arm_3.png" alt="img" class="left-arm">
+        <img src="./assets/images/right-arm_4.png" alt="img" class="right-arm">
+        <img src="./assets/images/left-leg_5.png" alt="img" class="left-leg">
+        <img src="./assets/images/right-leg_6.png" alt="img" class="right-leg">
+    </div>`;
+
+const interaction = document.createElement('section');
+body.appendChild(interaction);
+interaction.classList.add('interaction');
+
+const answerField = document.createElement('div');
+interaction.appendChild(answerField);
+answerField.classList.add('answer');
+
+const questionField = document.createElement('div');
+interaction.appendChild(questionField);
+questionField.classList.add('question');
+
+const countField = document.createElement('div');
+interaction.appendChild(countField);
+countField.classList.add('count');
+countField.innerHTML = 'Incorrect guesses: 0 / 6';
+
+const alphabet = document.createElement('div');
+interaction.appendChild(alphabet);
+alphabet.classList.add('alphabet');
+
+const refresh = document.createElement('button');
+interaction.appendChild(refresh);
+refresh.classList.add('button');
+refresh.innerHTML = 'refresh';
+//
 
 const entries = Object.entries(questionsAndAnswers);
 
@@ -24,16 +70,12 @@ function random() {
     return result;
 }
 
-const answerField = document.querySelector('.answer');
-const questionField = document.querySelector('.question');
-
 let answer = '';
 let length = 0;
 
 let countNumber = ['something'];
 
 function question(any) {
-
     if (countNumber.includes(any)) {
         question(random());
     } else {
@@ -63,8 +105,6 @@ const leftArm = document.querySelector('.left-arm');
 const rightArm = document.querySelector('.right-arm');
 const leftLeg = document.querySelector('.left-leg');
 const rightLeg = document.querySelector('.right-leg');
-
-const countField = document.querySelector('.count');
 
 const part = [head, bodyPerson, leftArm, rightArm, leftLeg, rightLeg];
 
