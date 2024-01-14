@@ -1,7 +1,7 @@
 const questionsAndAnswers = {
     '1. In which country did the dish paella originate?': 'Spain',
-    '2. Which country is known as the Land of the Rising Sun?': 'Japan',
-    '3. Which animal is known as the "Ship of the Desert"?': 'Camel',
+    // '2. Which country is known as the Land of the Rising Sun?': 'Japan',
+    // '3. Which animal is known as the "Ship of the Desert"?': 'Camel',
     // '4. Name the National animal of India?': 'Tiger',
     // 'Name the place known as the Roof of the World?': 'Tibet',
     // 'Name the longest river on the Earth?': 'Nile',
