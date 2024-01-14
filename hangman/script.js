@@ -3,6 +3,8 @@ import questionsAndAnswers from './questions.js';
 const refresh = document.querySelector('button');
 const alphabet = document.querySelector('.alphabet');
 
+const entries = Object.entries(questionsAndAnswers);
+
 function createAlphabet() {
     let alpha = Array.from({ length: 26 }, (_, index) =>
         String.fromCharCode(65 + index)
@@ -18,9 +20,8 @@ function createAlphabet() {
 createAlphabet();
 
 function random() {
-    const result = Math.floor(Math.random() * 24) + 1;
-    console.log(result)
-    return result
+    const result = Math.floor(Math.random() * entries.length);
+    return result;
 }
 
 const answerField = document.querySelector('.answer');
@@ -29,11 +30,23 @@ const questionField = document.querySelector('.question');
 let answer = '';
 let length = 0;
 
+let countNumber = ['something'];
+
 function question(any) {
-    length = answer.length;
-    let entries = Object.entries(questionsAndAnswers);
-    questionField.innerHTML = entries[any][0];
-    answer = entries[any][1];
+
+    if (countNumber.includes(any)) {
+        question(random());
+    } else {
+        if (countNumber.length <= entries.length + 1) {
+            countNumber.push(any);
+            length = answer.length;
+
+            questionField.innerHTML = entries[any][0];
+            answer = entries[any][1];
+        } else {
+            win();
+        }
+    }
 }
 
 question(random());
@@ -44,13 +57,22 @@ function setSecredWord(answer) {
 }
 setSecredWord(answer);
 
-function check(result) {
-    length;
+const head = document.querySelector('.head');
+const bodyPerson = document.querySelector('.body-person');
+const leftArm = document.querySelector('.left-arm');
+const rightArm = document.querySelector('.right-arm');
+const leftLeg = document.querySelector('.left-leg');
+const rightLeg = document.querySelector('.right-leg');
 
+const countField = document.querySelector('.count');
+
+const part = [head, bodyPerson, leftArm, rightArm, leftLeg, rightLeg];
+
+let incorrect = 0;
+
+function check(result) {
     const word = answer.toUpperCase().split('');
     let field = answerField.innerHTML.split(' ');
-    // console.log(word)
-    // console.log(field);
 
     if (word.includes(result.innerHTML)) {
         for (let i = 0; i < word.length; i++) {
@@ -61,9 +83,26 @@ function check(result) {
             }
         }
     } else {
-        console.log('Incorrect');
+        incorrect++;
+
+        result.classList.add('wrong');
+        countField.innerHTML = `Incorrect guesses: ${incorrect} / 6`;
+
+        part[incorrect - 1].style.display = 'block';
+
+        if (incorrect === 6) {
+            gameOver();
+        }
     }
     answerField.innerHTML = field.join(' ');
+
+    if (!field.includes('_')) {
+        if (countNumber.length - 1 >= entries.length) {
+            win();
+        } else {
+            nextQuestion();
+        }
+    }
 }
 const letters = document.querySelectorAll('.letter');
 
@@ -78,12 +117,99 @@ function pressLetter(callback) {
 
 pressLetter(check);
 
-refresh.addEventListener('click', () => {
+function win() {
+    // console.clear();
+    console.log('Win');
+
+    letters.forEach((item) => {
+        item.classList.add('allDisable');
+    });
+    // => opening modal window
+    // message: You Win!
+    // message: show secret word
+    // button: restart
+}
+
+function gameOver() {
+    // console.clear();
+    console.log('Game Over');
+
+    letters.forEach((item) => {
+        item.classList.add('allDisable');
+    });
+
+    // => opening modal window
+    // message: Game Over:(
+    // message: show secret word
+
+    // button: restart
+}
+
+document.addEventListener('keyup', function (event) {
+    const key = event.key.toUpperCase();
+
+    letters.forEach((item) => {
+        if (item.innerHTML === key) {
+            if (item.classList.length > 1) {
+                true;
+            } else {
+                const result = item;
+                check(result);
+            }
+        }
+    });
+});
+
+function nextQuestion() {
     question(random());
     setSecredWord(answer);
     length = answer.length;
 
     letters.forEach((item) => {
         item.classList.remove('disable');
+        item.classList.remove('wrong');
+        item.classList.remove('allDisable');
     });
+}
+
+refresh.addEventListener('click', () => {
+    countNumber = ['something'];
+    question(random());
+    setSecredWord(answer);
+    length = answer.length;
+    incorrect = 0;
+
+    letters.forEach((item) => {
+        item.classList.remove('disable');
+        item.classList.remove('wrong');
+        item.classList.remove('allDisable');
+    });
+
+    head.style.display = 'none';
+    bodyPerson.style.display = 'none';
+    leftArm.style.display = 'none';
+    rightArm.style.display = 'none';
+    leftLeg.style.display = 'none';
+    rightLeg.style.display = 'none';
+
+    countField.innerHTML = `Incorrect guesses: ${incorrect} / 6`;
 });
+
+// console.log(
+//     `
+//     1. Responsive/adaptive UI from 1440px to 360px viewport: +10 ❌
+//     2. The generation of DOM elements is implemented. body in the index.html is empty (can contain only script tag). This requirement can be checked by pressing Ctrl+U (Windows) or Option(⌥)+Command(⌘)+U (Mac): +20 ❌
+//     3. The game starts with the correct default view (empty gallows, underscores for secret word, etc.) and a random question: +5 ❌
+//     4. The user can play the game by using the virtual keyboard: +20 ✅
+//     5. The user can play the game by using the physical keyboard: +20 ❌
+//     6. When the letter is correct, it appears instead of the corresponding underscore. If the letter repeats in the word, all corresponding underscores must be replaced by it: +15 ✅
+//     7. When the letter is incorrect:
+//       - the incorrect guesses counter is updated: +5 ❌
+//       - a body part is added to the gallows: +10 ❌
+//     8. The clicked/pressed letter is disabled: +5 ✅
+//     9. The body parts appear on the gallows in the logical order (head, body, left arm, right arm, left leg, right leg): +5 ❌
+//     10. When the user runs out of 6 attempts or wins the game, the modal window appears: +10 ❌
+//     11. The modal window includes the message about the game's outcome (winning or losing), the secret word and the 'play again' button: +10 ❌
+//     12. When the user clicks the 'play again' button, the game starts over by showing a new question and resetting the gallows, the incorrect guesses counter and the underscores for the secret word: ❌
+//     `
+// );

@@ -36,6 +36,7 @@ body {
 }
 
 .head {
+    display: none;
     position: absolute;
     top: 149px;
     left: 253px;
@@ -43,6 +44,7 @@ body {
 }
 
 .body-person {
+    display: none;
     position: absolute;
     top: 199px;
     left: 278px;
@@ -50,6 +52,7 @@ body {
 }
 
 .left-arm {
+    display: none;
     position: absolute;
     top: 211px;
     left: 239px;
@@ -57,6 +60,7 @@ body {
 }
 
 .right-arm {
+    display: none;
     position: absolute;
     top: 211px;
     left: 278px;
@@ -64,6 +68,7 @@ body {
 }
 
 .left-leg {
+    display: none;
     position: absolute;
     top: 277px;
     left: 239px;
@@ -71,6 +76,7 @@ body {
 }
 
 .right-leg {
+    display: none;
     position: absolute;
     top: 277px;
     left: 278px;
@@ -116,4 +122,16 @@ body {
     pointer-events: none;
     cursor: default;
     background-color: rgba(219, 90, 15, 0.514);
+}
+
+.wrong {
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(167, 167, 167, 0.767);
+}
+
+.allDisable {
+    pointer-events: none;
+    cursor: default;
+    background-color: rgba(15, 219, 151, 0.514);
 }
