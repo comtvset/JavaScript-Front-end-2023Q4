@@ -1,11 +1,22 @@
 import questionsAndAnswers from './questions.js';
 
+const html = document.querySelector('html');
+
 // create html from js
 const body = document.querySelector('body');
-body.classList.add('body');
+// body.classList.add('body');
+
+const header = document.createElement('header');
+body.appendChild(header);
+header.classList.add('header');
+header.innerHTML = 'Hangman';
+
+const main = document.createElement('main');
+body.appendChild(main);
+main.classList.add('main');
 
 const animation = document.createElement('section');
-body.appendChild(animation);
+main.appendChild(animation);
 animation.classList.add('animation');
 
 const animationWrap = document.createElement('div');
@@ -23,28 +34,32 @@ animationWrap.innerHTML = `<img src="./assets/images/gallows_static.png" alt="im
     </div>`;
 
 const interaction = document.createElement('section');
-body.appendChild(interaction);
+main.appendChild(interaction);
 interaction.classList.add('interaction');
 
+const interactionWrap = document.createElement('div');
+interaction.appendChild(interactionWrap);
+interactionWrap.classList.add('interaction-wrap');
+
 const answerField = document.createElement('div');
-interaction.appendChild(answerField);
+interactionWrap.appendChild(answerField);
 answerField.classList.add('answer');
 
 const questionField = document.createElement('div');
-interaction.appendChild(questionField);
+interactionWrap.appendChild(questionField);
 questionField.classList.add('question');
 
 const countField = document.createElement('div');
-interaction.appendChild(countField);
+interactionWrap.appendChild(countField);
 countField.classList.add('count');
 countField.innerHTML = 'Incorrect guesses: 0 / 6';
 
 const alphabet = document.createElement('div');
-interaction.appendChild(alphabet);
+interactionWrap.appendChild(alphabet);
 alphabet.classList.add('alphabet');
 
 const modalWindow = document.createElement('div');
-interaction.appendChild(modalWindow);
+html.appendChild(modalWindow);
 modalWindow.classList.add('modal-window');
 
 const message = document.createElement('h1');
@@ -53,7 +68,7 @@ modalWindow.appendChild(message);
 
 const messageWord = document.createElement('h2');
 modalWindow.appendChild(messageWord);
-// message.classList.add('---');
+// messageWord.classList.add('---');
 
 const refresh = document.createElement('button');
 //
@@ -105,6 +120,8 @@ question(random());
 function setSecredWord(answer) {
     const secretWord = answer.toUpperCase().split('').fill('_').join(' ');
     answerField.innerHTML = secretWord;
+    console.clear()
+    console.log('Ask the question: '+answer)
 }
 setSecredWord(answer);
 
@@ -122,6 +139,7 @@ let incorrect = 0;
 function check(result) {
     const word = answer.toUpperCase().split('');
     let field = answerField.innerHTML.split(' ');
+
 
     if (word.includes(result.innerHTML)) {
         for (let i = 0; i < word.length; i++) {
@@ -167,14 +185,14 @@ function pressLetter(callback) {
 pressLetter(check);
 
 function win() {
-    // console.clear();
+    console.clear();
     console.log('Win');
 
     letters.forEach((item) => {
         item.classList.add('allDisable');
     });
 
-    modalWindow.style.display = 'block';
+    modalWindow.style.display = 'flex';
     message.innerHTML = 'You Win!';
     messageWord.innerHTML = `Secret word: ${answer}`;
 
@@ -184,14 +202,14 @@ function win() {
 }
 
 function gameOver() {
-    // console.clear();
+    console.clear();
     console.log('Game Over');
 
     letters.forEach((item) => {
         item.classList.add('allDisable');
     });
 
-    modalWindow.style.display = 'block';
+    modalWindow.style.display = 'flex';
 
     message.innerHTML = 'You Loose:(';
     messageWord.innerHTML = `Secret word: ${answer}`;
@@ -255,7 +273,7 @@ refresh.addEventListener('click', () => {
 
 // console.log(
 //     `
-//     1. Responsive/adaptive UI from 1440px to 360px viewport: +10 ❌
+//     1. Responsive/adaptive UI from 1440px to 360px viewport: +10 ✅
 //     2. The generation of DOM elements is implemented. body in the index.html is empty (can contain only script tag). This requirement can be checked by pressing Ctrl+U (Windows) or Option(⌥)+Command(⌘)+U (Mac): +20 ✅
 //     3. The game starts with the correct default view (empty gallows, underscores for secret word, etc.) and a random question: +5 ✅
 //     4. The user can play the game by using the virtual keyboard: +20 ✅
