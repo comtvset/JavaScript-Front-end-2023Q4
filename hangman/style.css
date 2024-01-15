@@ -337,6 +337,7 @@ h3 {
     padding: 8px;
     border-radius: 5px;
     transition: 0.5s;
+    font-size: 28px;
 }
 
 .question {
@@ -497,5 +498,9 @@ h3 {
     .correct {
         width: 55px;
         height: 55px;
+    }
+
+    .answer {
+        font-size: 18px;
     }
 }
