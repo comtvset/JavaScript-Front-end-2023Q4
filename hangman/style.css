@@ -410,6 +410,24 @@ h3 {
     transition: 0.5s;
 }
 
+.sound {
+    position: absolute;
+    top: 106px;
+    left: 148px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 5px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.sound:hover {
+    opacity: 1;
+    background-color: rgba(247, 224, 18, 0.219);
+    transition: 0.5s;
+}
+
 .modal-window {
     display: none;
     width: 100%;
@@ -439,5 +457,12 @@ h3 {
         padding: 5px;
         margin: 2px;
         width: 15px;
+    }
+
+    .sound {
+        top: 84px;
+        left: 126px;
+        width: 18px;
+        padding: 2px;
     }
 }
