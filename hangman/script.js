@@ -32,6 +32,11 @@ animationWrap.innerHTML = `<img src="./assets/images/gallows_static.png" alt="im
         <img src="./assets/images/right-leg_6.png" alt="img" class="right-leg">
     </div>`;
 
+const warning = document.createElement('span');
+body.appendChild(warning);
+warning.classList.add('warning');
+warning.innerHTML = 'Please, use only English alphabet';
+
 const interaction = document.createElement('section');
 main.appendChild(interaction);
 interaction.classList.add('interaction');
@@ -119,8 +124,8 @@ question(random());
 function setSecredWord(answer) {
     const secretWord = answer.toUpperCase().split('').fill('_').join(' ');
     answerField.innerHTML = secretWord;
-    console.clear()
-    console.log('Ask the question: '+answer)
+    console.clear();
+    console.log('Ask the question: ' + answer);
 }
 setSecredWord(answer);
 
@@ -138,7 +143,6 @@ let incorrect = 0;
 function check(result) {
     const word = answer.toUpperCase().split('');
     let field = answerField.innerHTML.split(' ');
-
 
     if (word.includes(result.innerHTML)) {
         for (let i = 0; i < word.length; i++) {
@@ -221,6 +225,18 @@ function gameOver() {
 document.addEventListener('keyup', function (event) {
     const key = event.key.toUpperCase();
 
+    let alpha = Array.from({ length: 26 }, (_, index) =>
+        String.fromCharCode(65 + index)
+    );
+
+    if (!alpha.includes(key)) {
+        warning.style.opacity = '1';
+        setTimeout(function () {
+            warning.style.opacity = '0';
+        }, 1000);
+        return;
+    }
+
     letters.forEach((item) => {
         if (item.innerHTML === key) {
             if (item.classList.length > 1) {
@@ -268,7 +284,6 @@ refresh.addEventListener('click', () => {
     countField.innerHTML = `Incorrect guesses: ${incorrect} / 6`;
     modalWindow.style.display = 'none';
 });
-
 
 // console.log(
 //     `
