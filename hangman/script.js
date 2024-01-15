@@ -263,7 +263,9 @@ document.addEventListener('keyup', function (event) {
 
 function nextQuestion() {
     question(random());
-    setSecredWord(answer);
+    setTimeout(function () {
+        setSecredWord(answer);
+    }, 300);
     length = answer.length;
 
     letters.forEach((item) => {
