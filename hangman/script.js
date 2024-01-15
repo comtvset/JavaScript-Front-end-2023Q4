@@ -262,8 +262,9 @@ document.addEventListener('keyup', function (event) {
 });
 
 function nextQuestion() {
-    question(random());
+    // question(random());
     setTimeout(function () {
+        question(random());
         setSecredWord(answer);
     }, 300);
     length = answer.length;
