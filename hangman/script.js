@@ -1,8 +1,6 @@
 import questionsAndAnswers from './questions.js';
 
 const html = document.querySelector('html');
-
-// create html from js
 const body = document.querySelector('body');
 
 const header = document.createElement('header');
@@ -31,6 +29,19 @@ animationWrap.innerHTML = `<img src="./assets/images/gallows_static.png" alt="im
         <img src="./assets/images/left-leg_5.png" alt="img" class="left-leg">
         <img src="./assets/images/right-leg_6.png" alt="img" class="right-leg">
     </div>`;
+
+const action = document.querySelector('.action');
+
+const soundPlay = document.createElement('img');
+action.appendChild(soundPlay);
+soundPlay.src = './assets/icons/sound.png';
+
+soundPlay.classList.add('sound');
+
+const warning = document.createElement('span');
+body.appendChild(warning);
+warning.classList.add('warning');
+warning.innerHTML = 'Please, use only English alphabet';
 
 const interaction = document.createElement('section');
 main.appendChild(interaction);
@@ -63,15 +74,11 @@ modalWindow.classList.add('modal-window');
 
 const message = document.createElement('h2');
 modalWindow.appendChild(message);
-// message.classList.add('---');
 
 const messageWord = document.createElement('h3');
 modalWindow.appendChild(messageWord);
-// messageWord.classList.add('---');
 
 const refresh = document.createElement('button');
-//
-
 const entries = Object.entries(questionsAndAnswers);
 
 function createAlphabet() {
@@ -119,8 +126,8 @@ question(random());
 function setSecredWord(answer) {
     const secretWord = answer.toUpperCase().split('').fill('_').join(' ');
     answerField.innerHTML = secretWord;
-    console.clear()
-    console.log('Ask the question: '+answer)
+    console.clear();
+    console.log('Ask the question: ' + answer);
 }
 setSecredWord(answer);
 
@@ -138,7 +145,6 @@ let incorrect = 0;
 function check(result) {
     const word = answer.toUpperCase().split('');
     let field = answerField.innerHTML.split(' ');
-
 
     if (word.includes(result.innerHTML)) {
         for (let i = 0; i < word.length; i++) {
@@ -221,6 +227,18 @@ function gameOver() {
 document.addEventListener('keyup', function (event) {
     const key = event.key.toUpperCase();
 
+    let alpha = Array.from({ length: 26 }, (_, index) =>
+        String.fromCharCode(65 + index)
+    );
+
+    if (!alpha.includes(key)) {
+        warning.style.opacity = '1';
+        setTimeout(function () {
+            warning.style.opacity = '0';
+        }, 1000);
+        return;
+    }
+
     letters.forEach((item) => {
         if (item.innerHTML === key) {
             if (item.classList.length > 1) {
@@ -269,22 +287,42 @@ refresh.addEventListener('click', () => {
     modalWindow.style.display = 'none';
 });
 
+const audio = document.createElement('audio');
+audio.controls = true;
 
-// console.log(
-//     `
-//     1. Responsive/adaptive UI from 1440px to 360px viewport: +10 ✅
-//     2. The generation of DOM elements is implemented. body in the index.html is empty (can contain only script tag). This requirement can be checked by pressing Ctrl+U (Windows) or Option(⌥)+Command(⌘)+U (Mac): +20 ✅
-//     3. The game starts with the correct default view (empty gallows, underscores for secret word, etc.) and a random question: +5 ✅
-//     4. The user can play the game by using the virtual keyboard: +20 ✅
-//     5. The user can play the game by using the physical keyboard: +20 ✅
-//     6. When the letter is correct, it appears instead of the corresponding underscore. If the letter repeats in the word, all corresponding underscores must be replaced by it: +15 ✅
-//     7. When the letter is incorrect:
-//       - the incorrect guesses counter is updated: +5 ✅
-//       - a body part is added to the gallows: +10 ✅
-//     8. The clicked/pressed letter is disabled: +5 ✅
-//     9. The body parts appear on the gallows in the logical order (head, body, left arm, right arm, left leg, right leg): +5 ✅
-//     10. When the user runs out of 6 attempts or wins the game, the modal window appears: +10 ✅
-//     11. The modal window includes the message about the game's outcome (winning or losing), the secret word and the 'play again' button: +10 ✅
-//     12. When the user clicks the 'play again' button, the game starts over by showing a new question and resetting the gallows, the incorrect guesses counter and the underscores for the secret word: ✅
-//     `
-// );
+const source = document.createElement('source');
+source.src = './assets/sound/sound.mp3';
+source.type = 'audio/mp3';
+audio.appendChild(source);
+audio.style.display = 'none';
+
+body.appendChild(audio);
+
+audio.loop = true;
+audio.autoplay = true;
+soundPlay.addEventListener('click', function () {
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+});
+
+console.log(
+    `
+    1. Responsive/adaptive UI from 1440px to 360px viewport: +10 ✅
+    2. The generation of DOM elements is implemented. body in the index.html is empty (can contain only script tag). This requirement can be checked by pressing Ctrl+U (Windows) or Option(⌥)+Command(⌘)+U (Mac): +20 ✅
+    3. The game starts with the correct default view (empty gallows, underscores for secret word, etc.) and a random question: +5 ✅
+    4. The user can play the game by using the virtual keyboard: +20 ✅
+    5. The user can play the game by using the physical keyboard: +20 ✅
+    6. When the letter is correct, it appears instead of the corresponding underscore. If the letter repeats in the word, all corresponding underscores must be replaced by it: +15 ✅
+    7. When the letter is incorrect:
+      - the incorrect guesses counter is updated: +5 ✅
+      - a body part is added to the gallows: +10 ✅
+    8. The clicked/pressed letter is disabled: +5 ✅
+    9. The body parts appear on the gallows in the logical order (head, body, left arm, right arm, left leg, right leg): +5 ✅
+    10. When the user runs out of 6 attempts or wins the game, the modal window appears: +10 ✅
+    11. The modal window includes the message about the game's outcome (winning or losing), the secret word and the 'play again' button: +10 ✅
+    12. When the user clicks the 'play again' button, the game starts over by showing a new question and resetting the gallows, the incorrect guesses counter and the underscores for the secret word: ✅
+    `
+);

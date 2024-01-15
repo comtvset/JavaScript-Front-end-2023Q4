@@ -394,6 +394,40 @@ h3 {
     background-color: rgba(230, 198, 21, 0.336);
 }
 
+.warning {
+    opacity: 0;
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.692);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(241, 7, 7, 0.308);
+    border-radius: 5px;
+    padding: 5px;
+    width: 90%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.sound {
+    position: absolute;
+    top: 106px;
+    left: 148px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 5px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.sound:hover {
+    opacity: 1;
+    background-color: rgba(247, 224, 18, 0.219);
+    transition: 0.5s;
+}
+
 .modal-window {
     display: none;
     width: 100%;
@@ -423,5 +457,12 @@ h3 {
         padding: 5px;
         margin: 2px;
         width: 15px;
+    }
+
+    .sound {
+        top: 84px;
+        left: 126px;
+        width: 18px;
+        padding: 2px;
     }
 }
