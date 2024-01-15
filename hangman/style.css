@@ -3,18 +3,19 @@ html {
     transition: all 0.5s;
     background-image: url(./assets/images/background.jpg);
     background-repeat: no-repeat;
-    /* background-size: cover; */
     background-position: center top;
     background-size: 110%;
     background-color: #040e10;
 }
 
 body {
-    /* background-color: rgb(37, 37, 37); */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
     color: rgb(255, 196, 35);
 
-    /* width: 100%;
-    height: 100%; */
+    width: 100%;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -22,46 +23,166 @@ body {
 }
 
 header {
-    padding: 20px;
-    font-size: 46px;
     text-align: center;
-    color: rgba(70, 70, 70, 0.87);
-    font-weight: 800;
+    color: rgba(199, 18, 18, 0.87);
+    animation: text-flicker 3s linear infinite;
+}
+
+.offset {
+    display: inline-flex;
+    rotate: 13deg;
+    animation: letter-flicker 2s linear infinite;
+}
+
+@keyframes text-flicker {
+    0% {
+        opacity: 0.1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    2% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    8% {
+        opacity: 0.1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    9% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    12% {
+        opacity: 0.1;
+        text-shadow: 0px 0px rgba(242, 22, 22, 1);
+    }
+    20% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    25% {
+        opacity: 0.3;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    30% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    70% {
+        opacity: 0.7;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    72% {
+        opacity: 0.2;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    77% {
+        opacity: 0.9;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    100% {
+        opacity: 0.9;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+}
+
+@keyframes letter-flicker {
+    0% {
+        opacity: 0.1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    2% {
+        opacity: 0.1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    4% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    19% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    21% {
+        opacity: 0.1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    23% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+
+    80% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    83% {
+        opacity: 0.4;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
+    87% {
+        opacity: 1;
+        text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+    }
 }
 
 button {
-    background-color: rgba(241, 240, 126, 0.247);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+    background-color: transparent;
     border: 1px solid rgb(255, 196, 35);
     border-radius: 5px;
     color: rgb(211, 208, 11);
-    width: 100px;
-    height: 30px;
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: rgba(241, 240, 126, 0.247);
+    transition: 0.5s;
 }
 
 h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: normal;
     color: rgba(255, 60, 0, 0.87);
+    font-size: 54px;
+    margin: 0;
 }
 
 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(255, 60, 0, 0.87);
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: normal;
     color: rgba(255, 174, 0, 0.87);
 }
 
 .main {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-@media (max-width: 1000px) {
-    .main {
-        flex-direction: column;
-    }
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 /* ANIAMTION */
 .animation {
-    padding: 20px;
-    /* max-height: 350px; */
+    padding: 0px 27px 0px 27px;
 }
 
 .animation-wrap {
@@ -70,8 +191,7 @@ h2 {
 }
 
 .gallows {
-    width: 200px;
-    /* width: 100%; */
+    width: 400px;
 }
 
 .action {
@@ -83,55 +203,121 @@ h2 {
 .head {
     display: none;
     position: absolute;
-    top: 149px;
-    left: 253px;
-    height: 65px;
+    top: 228px;
+    left: 404px;
+    height: 122px;
 }
 
 .body-person {
     display: none;
     position: absolute;
-    top: 209px;
-    left: 259px;
-    height: 59px;
+    top: 342px;
+    left: 417px;
+    height: 108px;
 }
 
 .left-arm {
     display: none;
     position: absolute;
-    top: 183px;
-    left: 197px;
-    height: 45px;
+    top: 299px;
+    left: 315px;
+    height: 75px;
 }
 
 .right-arm {
     display: none;
     position: absolute;
-    top: 211px;
-    left: 293px;
-    height: 32px;
+    top: 346px;
+    left: 479px;
+    height: 55px;
 }
 
 .left-leg {
     display: none;
     position: absolute;
-    top: 261px;
-    left: 247px;
-    height: 81px;
+    top: 431px;
+    left: 394px;
+    height: 160px;
 }
 
 .right-leg {
     display: none;
     position: absolute;
-    top: 264px;
-    left: 278px;
-    height: 78px;
+    top: 438px;
+    left: 452px;
+    height: 154px;
+}
+
+@media (max-width: 855px) {
+    body {
+        width: 65%;
+        font-size: 14px;
+    }
+
+    header {
+        height: 80px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .main {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .gallows {
+        width: 200px;
+    }
+
+    .action {
+        top: -65px;
+        left: -106px;
+    }
+
+    .head {
+        top: 149px;
+        left: 253px;
+        height: 65px;
+    }
+
+    .body-person {
+        top: 209px;
+        left: 259px;
+        height: 59px;
+    }
+
+    .left-arm {
+        top: 183px;
+        left: 197px;
+        height: 45px;
+    }
+
+    .right-arm {
+        top: 211px;
+        left: 293px;
+        height: 32px;
+    }
+
+    .left-leg {
+        top: 261px;
+        left: 247px;
+        height: 81px;
+    }
+
+    .right-leg {
+        top: 264px;
+        left: 278px;
+        height: 78px;
+    }
 }
 
 /* INTERACTION */
 .interaction {
     display: flex;
     justify-content: center;
+    padding: 0px 5px 0px 5px;
 }
 
 .interaction-wrap {
@@ -142,16 +328,7 @@ h2 {
 
     padding: 20px;
     height: auto;
-    max-width: 300px;
-}
-
-@media (max-width: 1000px) {
-    .interaction-wrap {
-        max-width: 500px;
-    }
-    /* .gallows {
-        width: 200px;
-    } */
+    max-width: 575px;
 }
 
 .answer {
@@ -170,29 +347,24 @@ h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 300px;
-    /* width: 300px; */
+    width: 100%;
     justify-content: center;
     margin: 10px 0px 10px 0px;
     transition: 0.5s;
 }
 
 @media (max-width: 430px) {
-
     .alphabet {
         width: 300px;
     }
-    /* .gallows {
-        width: 200px;
-    } */
 }
 
 .letter {
     border: 1px solid rgb(185, 166, 57);
     background-color: rgba(58, 54, 40, 0.253);
-    padding: 5px;
-    margin: 2px;
-    width: 15px;
+    padding: 8px;
+    margin: 3px;
+    width: 35px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
@@ -219,11 +391,10 @@ h2 {
 .allDisable {
     pointer-events: none;
     cursor: default;
-    background-color: rgba(15, 219, 151, 0.514);
+    background-color: rgba(230, 198, 21, 0.336);
 }
 
 .modal-window {
-    /* display: flex; */
     display: none;
     width: 100%;
     height: 100%;
@@ -237,4 +408,20 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 855px) {
+    .interaction-wrap {
+        max-width: 300px;
+    }
+
+    .alphabet {
+        width: 300px;
+    }
+
+    .letter {
+        padding: 5px;
+        margin: 2px;
+        width: 15px;
+    }
 }

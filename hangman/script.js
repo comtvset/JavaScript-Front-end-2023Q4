@@ -4,12 +4,11 @@ const html = document.querySelector('html');
 
 // create html from js
 const body = document.querySelector('body');
-// body.classList.add('body');
 
 const header = document.createElement('header');
 body.appendChild(header);
 header.classList.add('header');
-header.innerHTML = 'Hangman';
+header.innerHTML = '<h1>HA<p class="offset">N</p>GMAN</h1>';
 
 const main = document.createElement('main');
 body.appendChild(main);
@@ -62,11 +61,11 @@ const modalWindow = document.createElement('div');
 html.appendChild(modalWindow);
 modalWindow.classList.add('modal-window');
 
-const message = document.createElement('h1');
+const message = document.createElement('h2');
 modalWindow.appendChild(message);
 // message.classList.add('---');
 
-const messageWord = document.createElement('h2');
+const messageWord = document.createElement('h3');
 modalWindow.appendChild(messageWord);
 // messageWord.classList.add('---');
 
