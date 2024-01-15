@@ -43,6 +43,11 @@ body.appendChild(warning);
 warning.classList.add('warning');
 warning.innerHTML = 'Please, use only English alphabet';
 
+const correct = document.createElement('span');
+body.appendChild(correct);
+correct.classList.add('correct');
+correct.innerHTML = 'Correct';
+
 const interaction = document.createElement('section');
 main.appendChild(interaction);
 interaction.classList.add('interaction');
@@ -173,6 +178,11 @@ function check(result) {
             win();
         } else {
             nextQuestion();
+            correct.style.opacity = '1';
+            setTimeout(function () {
+                correct.style.opacity = '0';
+            }, 500);
+            return;
         }
     }
 }
@@ -227,11 +237,11 @@ function gameOver() {
 document.addEventListener('keyup', function (event) {
     const key = event.key.toUpperCase();
 
-    let alpha = Array.from({ length: 26 }, (_, index) =>
-        String.fromCharCode(65 + index)
+    let alphaCyrillic = Array.from({ length: 32 }, (_, index) =>
+        String.fromCharCode(1040 + index)
     );
 
-    if (!alpha.includes(key)) {
+    if (alphaCyrillic.includes(key)) {
         warning.style.opacity = '1';
         setTimeout(function () {
             warning.style.opacity = '0';
