@@ -43,11 +43,6 @@ body.appendChild(warning);
 warning.classList.add('warning');
 warning.innerHTML = 'Please, use only English alphabet';
 
-const correct = document.createElement('span');
-body.appendChild(correct);
-correct.classList.add('correct');
-correct.innerHTML = 'Correct';
-
 const interaction = document.createElement('section');
 main.appendChild(interaction);
 interaction.classList.add('interaction');
@@ -84,6 +79,7 @@ const messageWord = document.createElement('h3');
 modalWindow.appendChild(messageWord);
 
 const refresh = document.createElement('button');
+const next = document.createElement('button');
 const entries = Object.entries(questionsAndAnswers);
 
 function createAlphabet() {
@@ -105,32 +101,34 @@ function random() {
     return result;
 }
 
+let question = '';
 let answer = '';
 let length = 0;
 
 let countNumber = ['something'];
 
-function question(any) {
+function setQuestion(any) {
     if (countNumber.includes(any)) {
-        question(random());
+        setQuestion(random());
     } else {
         if (countNumber.length <= entries.length + 1) {
             countNumber.push(any);
             length = answer.length;
 
-            questionField.innerHTML = entries[any][0];
+            question = entries[any][0];
             answer = entries[any][1];
         } else {
-            win();
+            finish();
         }
     }
 }
 
-question(random());
+setQuestion(random());
 
 function setSecredWord(answer) {
     const secretWord = answer.toUpperCase().split('').fill('_').join(' ');
     answerField.innerHTML = secretWord;
+    questionField.innerHTML = question;
     console.clear();
     console.log('Ask the question: ' + answer);
 }
@@ -175,13 +173,25 @@ function check(result) {
 
     if (!field.includes('_')) {
         if (countNumber.length - 1 >= entries.length) {
-            win();
+            finish();
         } else {
-            nextQuestion();
-            correct.style.opacity = '1';
-            setTimeout(function () {
-                correct.style.opacity = '0';
-            }, 500);
+            win();
+            setQuestion(random());
+
+            next.addEventListener('click', function () {
+                nextQuestion();
+
+                setSecredWord(answer);
+                length = answer.length;
+                incorrect = 0;
+
+                letters.forEach((item) => {
+                    item.classList.remove('disable');
+                    item.classList.remove('wrong');
+                    item.classList.remove('allDisable');
+                });
+                modalWindow.style.display = 'none';
+            });
             return;
         }
     }
@@ -199,21 +209,47 @@ function pressLetter(callback) {
 
 pressLetter(check);
 
-function win() {
+function finish() {
     console.clear();
-    console.log('Win');
+    console.log('You won!');
 
     letters.forEach((item) => {
         item.classList.add('allDisable');
     });
 
     modalWindow.style.display = 'flex';
-    message.innerHTML = 'You Win!';
+    message.innerHTML = 'My congratulations on your win!';
+    messageWord.innerHTML = `Secret word: ${answer}`;
+
+    next.style.display = 'none';
+
+    modalWindow.appendChild(refresh);
+    refresh.classList.add('button');
+    refresh.style.display = 'block';
+    refresh.innerHTML = 'Restart';
+}
+
+function win() {
+    console.clear();
+    console.log('Correct');
+
+    letters.forEach((item) => {
+        item.classList.add('allDisable');
+    });
+
+    modalWindow.style.display = 'flex';
+    message.innerHTML = 'You answered correct!';
     messageWord.innerHTML = `Secret word: ${answer}`;
 
     modalWindow.appendChild(refresh);
     refresh.classList.add('button');
-    refresh.innerHTML = 'Restart';
+    refresh.style.display = 'block';
+    refresh.innerHTML = 'Play again';
+
+    modalWindow.appendChild(next);
+    next.classList.add('button');
+    next.style.display = 'block';
+    next.innerHTML = 'Next question';
 }
 
 function gameOver() {
@@ -229,8 +265,11 @@ function gameOver() {
     message.innerHTML = 'You Loose:(';
     messageWord.innerHTML = `Secret word: ${answer}`;
 
+    next.style.display = 'none';
+
     modalWindow.appendChild(refresh);
     refresh.classList.add('button');
+    refresh.style.display = 'block';
     refresh.innerHTML = 'Try again';
 }
 
@@ -262,11 +301,7 @@ document.addEventListener('keyup', function (event) {
 });
 
 function nextQuestion() {
-    // question(random());
-    setTimeout(function () {
-        question(random());
-        setSecredWord(answer);
-    }, 300);
+    setSecredWord(answer);
     length = answer.length;
 
     letters.forEach((item) => {
@@ -278,7 +313,7 @@ function nextQuestion() {
 
 refresh.addEventListener('click', () => {
     countNumber = ['something'];
-    question(random());
+    setQuestion(random());
     setSecredWord(answer);
     length = answer.length;
     incorrect = 0;
