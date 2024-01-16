@@ -28,6 +28,15 @@ header {
     animation: text-flicker 3s linear infinite;
 }
 
+a {
+    color: rgb(12, 231, 23);
+    text-decoration: none;
+}
+
+a:visited {
+    /* color: inherit; */
+}
+
 .offset {
     display: inline-flex;
     rotate: 13deg;
