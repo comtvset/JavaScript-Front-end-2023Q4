@@ -75,6 +75,9 @@ modalWindow.classList.add('modal-window');
 const message = document.createElement('h2');
 modalWindow.appendChild(message);
 
+const messageMoreInfo = document.createElement('h3');
+modalWindow.appendChild(messageMoreInfo);
+
 const messageWord = document.createElement('h3');
 modalWindow.appendChild(messageWord);
 
@@ -218,8 +221,10 @@ function finish() {
 
     modalWindow.style.display = 'flex';
     message.innerHTML = 'My congratulations on your win!';
-    messageWord.innerHTML = `Secret word: ${answer}`;
 
+    messageWord.innerHTML = `Secret word: ${answer}`;
+    messageMoreInfo.style.display = 'block';
+    messageMoreInfo.innerHTML = `<span>Would you like play in <a href="https://comtvset.github.io/JS-FE-Pre-School-2023Q2/tic-tac-toe/" title="open Game" target="_blank">"Tic Tac Toe"</a> or just listen to <a href="https://comtvset.github.io/JS-FE-Pre-School-2023Q2/js30-audio-player/" title="open Player" target="_blank">music</a>?</span>`
     next.style.display = 'none';
 
     modalWindow.appendChild(refresh);
@@ -238,6 +243,7 @@ function win() {
 
     modalWindow.style.display = 'flex';
     message.innerHTML = 'You answered correct!';
+    messageMoreInfo.style.display = 'none';
     messageWord.innerHTML = `Secret word: ${answer}`;
 
     modalWindow.appendChild(refresh);
@@ -262,6 +268,7 @@ function gameOver() {
     modalWindow.style.display = 'flex';
 
     message.innerHTML = 'You Loose:(';
+    messageMoreInfo.style.display = 'none';
     messageWord.innerHTML = `Secret word: ${answer}`;
 
     next.style.display = 'none';
