@@ -183,7 +183,6 @@ function check(result) {
 
                 setSecredWord(answer);
                 length = answer.length;
-                incorrect = 0;
 
                 letters.forEach((item) => {
                     item.classList.remove('disable');
