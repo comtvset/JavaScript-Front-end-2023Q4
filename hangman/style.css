@@ -6,6 +6,8 @@ html {
     background-position: center top;
     background-size: 110%;
     background-color: #040e10;
+    display: flex;
+    justify-content: center;
 }
 
 body {
@@ -15,11 +17,11 @@ body {
     font-size: 24px;
     color: rgb(255, 196, 35);
 
-    width: 100%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: 100%;
+    left: 0%;
+    transform: translate(0%, 0%);
+    margin-top: 10%;
 }
 
 header {
@@ -31,10 +33,6 @@ header {
 a {
     color: rgb(12, 231, 23);
     text-decoration: none;
-}
-
-a:visited {
-    /* color: inherit; */
 }
 
 .offset {
