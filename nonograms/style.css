@@ -5,4 +5,90 @@ html {
 
 body {
     color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 120px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+}
+
+.game_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.game_bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.game_top_left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.game_top_right {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.game_bottom_right {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.game_bottom_left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.black {
+    background-color: rgb(47, 150, 124);
+}
+
+.cross {
+    background-color: rgb(250, 250, 250);
+    color: black;
+    text-align: center;
+}
+
+.clue {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(173, 173, 173);
+    background-color: rgb(202, 200, 166);
+    color: black;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#test-button {
+    width: 80px;
 }
