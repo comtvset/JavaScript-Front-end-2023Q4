@@ -1,55 +1,9 @@
+import { duck } from './gameCollection.js'
+
 const answer = document.querySelector('.game_top_left');
 const clueY = document.querySelector('.game_top_right');
 const clueX = document.querySelector('.game_bottom_left');
 const field = document.querySelector('.game_bottom_right');
-
-const plane = [
-    [0, 0, 1, 0, 0],
-    [0, 1, 1, 1, 0],
-    [1, 1, 1, 1, 1],
-    [0, 0, 1, 0, 0],
-    [0, 1, 1, 1, 0],
-];
-
-const hash = [
-    [0, 1, 0, 1, 0],
-    [1, 1, 1, 1, 1],
-    [0, 1, 0, 1, 0],
-    [1, 1, 1, 1, 1],
-    [0, 1, 0, 1, 0],
-];
-
-const dog = [
-    [0, 0, 0, 1, 0],
-    [1, 0, 1, 1, 1],
-    [0, 1, 1, 1, 0],
-    [0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0],
-];
-
-const duck = [
-    [0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
-    [0, 1, 1, 1, 0, 0, 1, 0, 0, 0],
-    [1, 1, 1, 1, 1, 0, 1, 0, 0, 0],
-    [0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-    [0, 0, 1, 0, 0, 0, 1, 1, 1, 1],
-    [0, 1, 0, 0, 1, 0, 0, 0, 0, 1],
-    [0, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-    [0, 1, 1, 0, 0, 1, 1, 1, 0, 1],
-];
-
-const fish = [
-    [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
-    [1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
-    [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
-    [1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
-];
 
 let arrY = [];
 let arrX = [];
@@ -226,8 +180,8 @@ function createClueX(array, cellX, test) {
 // createFild(plane, 2, 1);
 // createFild(hash, 2, 2);
 // createFild(dog, 1, 2);
-// createFild(duck, 4, 3);
-createFild(fish, 3, 2);
+createFild(duck, 4, 3);
+// createFild(fish, 3, 2);
 
 // console.log(
 //     `
