@@ -1,4 +1,21 @@
-import { duck } from './gameCollection.js'
+import {
+    plane,
+    hash,
+    dog,
+    hart,
+    camel,
+    duck,
+    cat,
+    bomb,
+    yinYang,
+    train,
+    chameleon,
+    mushroom,
+    pc,
+    camera,
+    rs,
+    fish,
+} from './gameCollection.js';
 
 const answer = document.querySelector('.game_top_left');
 const clueY = document.querySelector('.game_top_right');
@@ -14,11 +31,10 @@ function createFild(arr, cellY, cellX) {
     const x = arr[0].length;
     const y = arr.length;
 
-    console.log(x)
-    console.log(y)
+    console.log(x);
+    console.log(y);
 
     const sizeCell = 22;
-
 
     const cell = x * y;
     const width = x * sizeCell;
@@ -69,7 +85,7 @@ function createFild(arr, cellY, cellX) {
     // console.log(arrY);
 
     if (cellY > 1 || cellX > 1) {
-        for (let i = 0; i < cellY*cellX; i++) {
+        for (let i = 0; i < cellY * cellX; i++) {
             const clue = document.createElement('div');
             answer.appendChild(clue);
             clue.classList.add('clue');
@@ -116,7 +132,7 @@ function createClueY(array, cellY, test) {
     // console.log(arrY);
 
     if (enterY === length) {
-        console.log(arrY)
+        console.log(arrY);
         for (let i = 0; i < arrY.length; i++) {
             for (let j = 0; j < arrY[i].length; j++) {
                 const clue = document.createElement('div');
@@ -157,7 +173,7 @@ function createClueX(array, cellX, test) {
 
     if (cellX > 1) {
         for (let i = 0; i < arrX.length; i++) {
-            if (arrX[i].length < cellX) {
+            while (arrX[i].length < cellX) {
                 arrX[i].unshift('');
             }
         }
@@ -177,10 +193,24 @@ function createClueX(array, cellX, test) {
     }
 }
 
-// createFild(plane, 2, 1);
+createFild(plane, 2, 1);
 // createFild(hash, 2, 2);
 // createFild(dog, 1, 2);
-createFild(duck, 4, 3);
+// createFild(hart, 1, 2);
+// createFild(camel, 1, 2);
+
+// createFild(duck, 4, 3);
+// createFild(cat, 2, 4);
+// createFild(bomb, 2, 4);
+// createFild(yinYang, 3, 3);
+// createFild(train, 3, 4);
+
+// createFild(chameleon, 3, 3);
+// createFild(mushroom, 3, 5);
+// createFild(pc, 6, 7);
+// createFild(camera, 5, 5);
+// createFild(rs, 3, 4);
+
 // createFild(fish, 3, 2);
 
 // console.log(
