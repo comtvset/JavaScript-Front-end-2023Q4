@@ -1,5 +1,6 @@
 import { exp_select } from './buildHTML.js';
 import { selectGame } from './select.js';
+import { leftClick, rightClick } from './action.js';
 
 const { select } = exp_select();
 
@@ -7,14 +8,17 @@ select.addEventListener('change', () => {
     if (select.value === 'random') {
         select.value = '';
         selectGame('random');
+        leftClick();
+        rightClick();
     } else {
         selectGame(select.value);
+        leftClick();
+        rightClick();
     }
 });
 
-// game.addEventListener('contextmenu', function() {
-//     console.log('hello')
-// });
+leftClick();
+rightClick();
 
 // console.log(
 //     `

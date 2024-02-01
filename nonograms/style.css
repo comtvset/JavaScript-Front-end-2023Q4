@@ -77,9 +77,10 @@ body {
 }
 
 .cross {
-    background-color: rgb(250, 250, 250);
-    color: black;
+    background-color: transparent;
+    color: red;
     text-align: center;
+    cursor: default;
 }
 
 .clue {
