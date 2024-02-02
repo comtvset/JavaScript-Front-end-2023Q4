@@ -1,24 +1,18 @@
-import { exp_select } from './buildHTML.js';
-import { selectGame } from './select.js';
-import { leftClick, rightClick } from './action.js';
+import {
+    selectClick,
+    leftClick,
+    rightClick,
+    restartGame,
+    showSolution,
+    randomGame,
+} from './action.js';
 
-const { select } = exp_select();
-
-select.addEventListener('change', () => {
-    if (select.value === 'random') {
-        select.value = '';
-        selectGame('random');
-        leftClick();
-        rightClick();
-    } else {
-        selectGame(select.value);
-        leftClick();
-        rightClick();
-    }
-});
-
+selectClick();
 leftClick();
 rightClick();
+restartGame();
+showSolution();
+randomGame();
 
 // console.log(
 //     `

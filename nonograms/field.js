@@ -3,8 +3,10 @@ import { buildHTML } from './buildHTML.js';
 
 const { clueX, clueY, field, answer } = buildHTML();
 
-export function createField(arr, cellY, cellX) {
+let currentArr = [];
 
+export function createField(arr, cellY, cellX) {
+    currentArr = arr;
     const x = arr[0].length;
     const y = arr.length;
 
@@ -23,12 +25,12 @@ export function createField(arr, cellY, cellX) {
     }
 
     for (let i = 0; i < cell; i++) {
-
         const cell = document.createElement('div');
         field.appendChild(cell);
         cell.classList.add('cell');
 
         if (width === 220) {
+            field.style.width = `${width+1}px`
             if (i >= 50 && i <= 59) {
                 cell.classList.add('lineX');
             }
@@ -41,7 +43,8 @@ export function createField(arr, cellY, cellX) {
             cell.classList.add('cell');
         }
 
-        if (width === 330) {
+        if (width+0 === 330) {
+            field.style.width = `${width+2}px`
             if ((i >= 75 && i <= 89) || (i >= 150 && i <= 164)) {
                 cell.classList.add('lineX');
             }
@@ -68,7 +71,7 @@ export function createField(arr, cellY, cellX) {
     for (let i = 0; i < flatArr.length; i++) {
         if (flatArr[i] === 1) {
             cells[i].classList.add('true');
-        }
+        } else {cells[i].classList.add('false');}
     }
 
     let columnArr = [];
@@ -102,4 +105,8 @@ export function createField(arr, cellY, cellX) {
     for (let i = 0; i < rowArr.length; i++) {
         createClueX(rowArr[i], cellX, rowArr.length);
     }
+}
+
+export function sendArr() {
+    return currentArr;
 }
