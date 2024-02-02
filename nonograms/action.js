@@ -17,6 +17,8 @@ const {
     modalMessage,
     modalClose,
     saveButton,
+    clueX,
+    clueY,
 } = buildHTML();
 const { startTimer, stopTimer, resetTimer, updateTime } = timer();
 
@@ -47,6 +49,7 @@ export function selectClick() {
             resetTimer();
         }
         checkArrName();
+        reset();
     });
 }
 
@@ -94,6 +97,28 @@ export function rightClick() {
             startTimer();
         });
     });
+
+    let x = clueX.querySelectorAll('.clue');
+
+    x.forEach((cell) => {
+        cell.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            if (cell.innerHTML !== '') {
+                cell.classList.toggle('cross-for-clue');
+            }
+        });
+    });
+
+    let y = clueY.querySelectorAll('.clue');
+
+    y.forEach((cell) => {
+        cell.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            if (cell.innerHTML !== '') {
+                cell.classList.toggle('cross-for-clue');
+            }
+        });
+    });
 }
 
 function check() {
@@ -101,6 +126,7 @@ function check() {
     let trueCells = 0;
     let count = 0;
     let emptyCells = 0;
+
     cells.forEach((cell) => {
         if (cell.classList.contains('true')) {
             trueCells++;
@@ -144,10 +170,23 @@ function reset() {
         cell.innerHTML = '';
 
         cell.classList.remove('solution-image');
-        field.classList.remove('pointer');
     });
+
     saveButton.disabled = false;
     solutionButton.disabled = false;
+    field.classList.remove('pointer');
+    clueY.classList.remove('pointer');
+    clueX.classList.remove('pointer');
+
+    let x = clueX.querySelectorAll('.clue');
+    x.forEach((cell) => {
+        cell.classList.remove('cross-for-clue');
+    });
+
+    let y = clueY.querySelectorAll('.clue');
+    y.forEach((cell) => {
+        cell.classList.remove('cross-for-clue');
+    });
 }
 
 export function restartGame() {
@@ -165,14 +204,27 @@ export function showSolution() {
             if (cell.classList.contains('true')) {
                 cell.classList.add('solution-image');
             }
-            field.classList.add('pointer');
+
             cell.classList.remove('cross');
             cell.classList.remove('black');
             cell.innerHTML = '';
-
-            resetTimer();
-            saveButton.disabled = true;
-            solutionButton.disabled = true;
         });
+
+        let x = clueX.querySelectorAll('.clue');
+        x.forEach((cell) => {
+            cell.classList.remove('cross-for-clue');
+        });
+
+        let y = clueY.querySelectorAll('.clue');
+        y.forEach((cell) => {
+            cell.classList.remove('cross-for-clue');
+        });
+
+        field.classList.add('pointer');
+        clueY.classList.add('pointer');
+        clueX.classList.add('pointer');
+        resetTimer();
+        saveButton.disabled = true;
+        solutionButton.disabled = true;
     });
 }

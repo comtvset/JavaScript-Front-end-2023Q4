@@ -220,5 +220,7 @@ export function buildHTML() {
         modalMessage,
         modalClose,
         saveButton,
+        clueX,
+        clueY,
     };
 }

@@ -87,6 +87,34 @@ body {
     justify-content: center;
 }
 
+.cross-for-clue {
+    background-color: transparent;
+    color: red;
+    font-size: 30px;
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cross-for-clue::before,
+.cross-for-clue::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: red;
+}
+
+.cross-for-clue::before {
+    transform: rotate(45deg);
+}
+
+.cross-for-clue::after {
+    transform: rotate(-45deg);
+}
+
 .clue {
     width: 20px;
     height: 20px;
