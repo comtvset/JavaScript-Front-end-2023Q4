@@ -242,5 +242,6 @@ export function buildHTML() {
         resultWindow,
         resultClose,
         resultMessage,
+        soundButton,
     };
 }

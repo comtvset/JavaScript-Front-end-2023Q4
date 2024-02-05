@@ -145,11 +145,15 @@ button {
     width: 70px;
 }
 
+.press {
+    background-color: rgba(165, 42, 42, 0.747);
+}
+
 #restart {
     color: black;
 }
 #sound {
-    color: red;
+    color: black;
 }
 #theme {
     color: red;
@@ -167,7 +171,7 @@ button {
     color: black;
 }
 #results {
-    color: red;
+    color: black;
 }
 
 .lineY {

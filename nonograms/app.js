@@ -8,6 +8,7 @@ import {
     saveGame,
     loadGame,
     topResults,
+    sound,
 } from './action.js';
 
 selectClick();
@@ -19,6 +20,7 @@ randomGame();
 saveGame();
 loadGame();
 topResults();
+sound();
 
 // console.log(
 //     `

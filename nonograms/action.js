@@ -24,8 +24,20 @@ const {
     resultWindow,
     resultClose,
     resultMessage,
+    soundButton,
 } = buildHTML();
 const { startTimer, resumeTimer, stopTimer, resetTimer } = timer();
+
+const soundClickLeft = document.createElement('audio');
+soundClickLeft.src = './assets/sound/click_left.mp3';
+const soundClickRight = document.createElement('audio');
+soundClickRight.src = './assets/sound/click_right.mp3';
+const soundCellEmpty = document.createElement('audio');
+soundCellEmpty.src = './assets/sound/cell_empty.mp3';
+const soundWin = document.createElement('audio');
+soundWin.src = './assets/sound/win.mp3';
+
+let off = false;
 
 const difficultArr = [];
 for (let i = 0; i < select.length; i++) {
@@ -61,6 +73,7 @@ export function selectClick() {
         }
         checkArrName();
         reset();
+        saveButton.disabled = true;
     });
 }
 
@@ -82,6 +95,21 @@ export function leftClick() {
     cells.forEach((cell) => {
         cell.addEventListener('click', () => {
             cell.classList.toggle('black');
+
+            if (cell.classList.contains('black')) {
+                if (off === true) {
+                    soundClickLeft.play();
+                } else {
+                    soundClickLeft.pause();
+                }
+            } else {
+                if (off === true) {
+                    soundCellEmpty.play();
+                } else {
+                    soundCellEmpty.pause();
+                }
+            }
+
             if (cell.innerHTML === '×') {
                 cell.innerHTML = '';
                 cell.classList.remove('cross');
@@ -125,10 +153,23 @@ export function rightClick() {
             }
             if (cell.innerHTML === '×') {
                 cell.innerHTML = '';
+
+                if (off === true) {
+                    soundCellEmpty.play();
+                } else {
+                    soundCellEmpty.pause();
+                }
             } else {
                 cell.innerHTML = '×';
+
+                if (off === true) {
+                    soundClickRight.play();
+                } else {
+                    soundClickRight.pause();
+                }
             }
             startTimer();
+            saveButton.disabled = false;
         });
     });
 
@@ -194,6 +235,12 @@ function check(trueCells, count, emptyCells) {
             modalWindow.style.display = 'none';
             reset();
         });
+
+        if (off === true) {
+            soundWin.play();
+        } else {
+            soundWin.pause();
+        }
 
         let difficult = '';
 
@@ -345,6 +392,7 @@ export function saveGame() {
             };
         });
         localStorage.setItem('saveField', JSON.stringify(childrenDataField));
+        loadGame()
     });
 }
 
@@ -450,5 +498,16 @@ export function topResults(status) {
     resultClose.addEventListener('click', () => {
         overlay.style.display = 'none';
         resultWindow.style.display = 'none';
+    });
+}
+
+export function sound() {
+    soundButton.addEventListener('click', () => {
+        if (off) {
+            soundButton.classList.remove('press');
+        } else {
+            soundButton.classList.add('press');
+        }
+        off = !off;
     });
 }
