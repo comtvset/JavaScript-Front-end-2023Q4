@@ -107,6 +107,9 @@ randomButton.setAttribute('id', 'random');
 const resultsButton = document.createElement('button');
 resultsButton.setAttribute('id', 'results');
 
+const title = document.createElement('h1');
+title.className = 'title';
+
 const time = document.createElement('div');
 time.className = 'time';
 
@@ -134,6 +137,15 @@ resultClose.classList.add('result-close');
 const resultMessage = document.createElement('span');
 resultMessage.classList.add('result-message');
 
+const wrapper = document.createElement('div');
+wrapper.classList.add('wrapper');
+
+const wrapperField = document.createElement('div');
+wrapperField.classList.add('wrapper-field');
+
+const wrapperControl = document.createElement('div');
+wrapperControl.classList.add('wrapper-control');
+
 html.appendChild(overlay);
 html.appendChild(modalWindow);
 html.appendChild(resultWindow);
@@ -144,7 +156,10 @@ resultWindow.appendChild(resultMessage);
 resultMessage.innerHTML = 'empty';
 
 body.appendChild(container);
-game.appendChild(time);
+
+container.appendChild(title);
+container.appendChild(time);
+
 gameTop.appendChild(answer);
 gameTop.appendChild(clueY);
 
@@ -154,9 +169,19 @@ gameBottom.appendChild(field);
 game.appendChild(gameTop);
 game.appendChild(gameBottom);
 
-container.appendChild(game);
-container.appendChild(control);
-control.appendChild(select);
+
+container.appendChild(wrapper);
+
+wrapper.appendChild(wrapperField);
+
+wrapperField.appendChild(game);
+container.appendChild(select);
+
+wrapper.appendChild(wrapperField);
+wrapper.appendChild(wrapperControl);
+
+wrapperControl.appendChild(control);
+
 control.appendChild(restartButton);
 control.appendChild(soundButton);
 control.appendChild(themeButton);
@@ -187,6 +212,8 @@ select.appendChild(gameRS);
 time.appendChild(timeText);
 
 timeText.textContent = '00:00';
+
+title.innerHTML = 'nonograms';
 
 modalClose.innerHTML = '&#215;';
 resultClose.innerHTML = '&#215;';

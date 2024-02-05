@@ -13,16 +13,37 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    /* margin-top: 120px; */
     flex-direction: column;
     align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.wrapper-field {
+    margin: 0px 20px 0px 20px;
+}
+
+.wrapper-control {
+    display: flex;
+}
+
+.control {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    max-width: 320px;
 }
 
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .game_top {
@@ -129,13 +150,6 @@ body {
     justify-content: center;
 }
 
-.control {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
 .select {
     margin: 20px;
 }
@@ -143,6 +157,7 @@ body {
 button {
     margin: 5px;
     width: 70px;
+    height: 25px;
 }
 
 .press {
@@ -200,10 +215,6 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-
-    /* flex-direction: column;
-    align-items: center;
-    justify-content: center; */
 }
 
 .modal-window {
@@ -259,4 +270,11 @@ button {
 
 .result-message {
     padding: 0px 20px 10px 20px ;
+}
+
+@media (max-width: 610px) {
+    .wrapper {
+        flex-direction: row;
+        flex-wrap: wrap
+    }
 }
