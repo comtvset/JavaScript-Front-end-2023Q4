@@ -262,14 +262,11 @@ export function buildHTML() {
         modalClose,
         saveButton,
         loadButton,
-        clueX,
-        clueY,
         resultsButton,
         resultWindow,
         resultClose,
         resultMessage,
         soundButton,
         themeButton,
-        ht
     };
 }
