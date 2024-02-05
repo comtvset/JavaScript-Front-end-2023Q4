@@ -25,6 +25,7 @@ const {
     resultClose,
     resultMessage,
     soundButton,
+    themeButton,
 } = buildHTML();
 const { startTimer, resumeTimer, stopTimer, resetTimer } = timer();
 
@@ -37,7 +38,8 @@ soundCellEmpty.src = './assets/sound/cell_empty.mp3';
 const soundWin = document.createElement('audio');
 soundWin.src = './assets/sound/win.mp3';
 
-let off = false;
+let soundHandler = false;
+let themeHandler = false;
 
 const difficultArr = [];
 for (let i = 0; i < select.length; i++) {
@@ -97,13 +99,13 @@ export function leftClick() {
             cell.classList.toggle('black');
 
             if (cell.classList.contains('black')) {
-                if (off === true) {
+                if (soundHandler === true) {
                     soundClickLeft.play();
                 } else {
                     soundClickLeft.pause();
                 }
             } else {
-                if (off === true) {
+                if (soundHandler === true) {
                     soundCellEmpty.play();
                 } else {
                     soundCellEmpty.pause();
@@ -154,7 +156,7 @@ export function rightClick() {
             if (cell.innerHTML === '×') {
                 cell.innerHTML = '';
 
-                if (off === true) {
+                if (soundHandler === true) {
                     soundCellEmpty.play();
                 } else {
                     soundCellEmpty.pause();
@@ -162,7 +164,7 @@ export function rightClick() {
             } else {
                 cell.innerHTML = '×';
 
-                if (off === true) {
+                if (soundHandler === true) {
                     soundClickRight.play();
                 } else {
                     soundClickRight.pause();
@@ -236,7 +238,7 @@ function check(trueCells, count, emptyCells) {
             reset();
         });
 
-        if (off === true) {
+        if (soundHandler === true) {
             soundWin.play();
         } else {
             soundWin.pause();
@@ -392,7 +394,7 @@ export function saveGame() {
             };
         });
         localStorage.setItem('saveField', JSON.stringify(childrenDataField));
-        loadGame()
+        loadGame();
     });
 }
 
@@ -503,11 +505,29 @@ export function topResults(status) {
 
 export function sound() {
     soundButton.addEventListener('click', () => {
-        if (off) {
+        if (soundHandler) {
             soundButton.classList.remove('press');
         } else {
             soundButton.classList.add('press');
         }
-        off = !off;
+        soundHandler = !soundHandler;
+    });
+}
+
+
+export function theme() {
+    const html = document.querySelector('html');
+
+    themeButton.addEventListener('click', () => {
+        if (themeHandler) {
+            console.log('white')
+            html.style.backgroundColor = 'white'
+            // soundButton.classList.remove('press');
+        } else {
+            console.log('black')
+            html.style.backgroundColor = '#2b2b2b'
+            // soundButton.classList.add('press');
+        }
+        themeHandler = !themeHandler;
     });
 }

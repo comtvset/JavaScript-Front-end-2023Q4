@@ -9,6 +9,7 @@ import {
     loadGame,
     topResults,
     sound,
+    theme,
 } from './action.js';
 
 selectClick();
@@ -21,6 +22,7 @@ saveGame();
 loadGame();
 topResults();
 sound();
+theme();
 
 // console.log(
 //     `

@@ -169,7 +169,6 @@ gameBottom.appendChild(field);
 game.appendChild(gameTop);
 game.appendChild(gameBottom);
 
-
 container.appendChild(wrapper);
 
 wrapper.appendChild(wrapperField);
@@ -270,5 +269,7 @@ export function buildHTML() {
         resultClose,
         resultMessage,
         soundButton,
+        themeButton,
+        ht
     };
 }
