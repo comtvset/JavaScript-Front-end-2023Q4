@@ -155,13 +155,16 @@ button {
     color: red;
 }
 #solution {
-    color: rgb(5, 196, 5);
+    color: black;
 }
 #random {
     color: black;
 }
 #save {
-    color: red;
+    color: black;
+}
+#load {
+    color: black;
 }
 #results {
     color: red;

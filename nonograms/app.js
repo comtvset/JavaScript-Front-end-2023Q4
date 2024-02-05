@@ -5,6 +5,8 @@ import {
     restartGame,
     showSolution,
     randomGame,
+    saveGame,
+    loadGame,
 } from './action.js';
 
 selectClick();
@@ -13,6 +15,8 @@ rightClick();
 restartGame();
 showSolution();
 randomGame();
+saveGame();
+loadGame();
 
 // console.log(
 //     `

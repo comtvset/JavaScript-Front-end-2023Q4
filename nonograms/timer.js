@@ -13,6 +13,15 @@ function startTimer() {
     }
 }
 
+function resumeTimer(saveTime) {
+    if (!isTimerRunning) {
+        const [min, sec] = saveTime.split(':');
+        seconds = parseInt(min) * 60 + parseInt(sec) + 1;
+        timerId = setInterval(updateTime, 1000);
+        isTimerRunning = true;
+    }
+}
+
 function stopTimer() {
     clearInterval(timerId);
     isTimerRunning = false;
@@ -41,5 +50,5 @@ function formatTime(seconds) {
 }
 
 export function timer() {
-    return { startTimer, stopTimer, resetTimer, updateTime };
+    return { startTimer, resumeTimer, stopTimer, resetTimer };
 }

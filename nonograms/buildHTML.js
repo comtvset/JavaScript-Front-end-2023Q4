@@ -38,9 +38,6 @@ gameDefault.text = 'Select game';
 gameDefault.selected = true;
 select.insertBefore(gameDefault, select.firstChild);
 
-// const gameRandom = document.createElement('option');
-// gameRandom.setAttribute('value', 'random');
-
 const gamePlane = document.createElement('option');
 gamePlane.setAttribute('value', 'plane');
 
@@ -101,6 +98,9 @@ solutionButton.setAttribute('id', 'solution');
 const saveButton = document.createElement('button');
 saveButton.setAttribute('id', 'save');
 
+const loadButton = document.createElement('button');
+loadButton.setAttribute('id', 'load');
+
 const randomButton = document.createElement('button');
 randomButton.setAttribute('id', 'random');
 
@@ -111,7 +111,7 @@ const time = document.createElement('div');
 time.className = 'time';
 
 const timeText = document.createElement('h2');
-timeText.setAttribute('id', 'time-finish');
+timeText.setAttribute('id', 'time-current');
 
 const overlay = document.createElement('div');
 overlay.classList.add('overlay');
@@ -149,9 +149,9 @@ control.appendChild(themeButton);
 control.appendChild(solutionButton);
 control.appendChild(randomButton);
 control.appendChild(saveButton);
+control.appendChild(loadButton);
 control.appendChild(resultsButton);
 
-// select.appendChild(gameRandom);
 select.appendChild(gamePlane);
 select.appendChild(gameHash);
 select.appendChild(gameDog);
@@ -180,10 +180,10 @@ soundButton.innerHTML = 'sound';
 themeButton.innerHTML = 'theme';
 solutionButton.innerHTML = 'solution';
 saveButton.innerHTML = 'save';
+loadButton.innerHTML = 'load';
 randomButton.innerHTML = 'random';
 resultsButton.innerHTML = 'results';
 
-// gameRandom.innerHTML = 'random';
 gamePlane.innerHTML = '5x5 plane';
 gameHash.innerHTML = '5x5 hash';
 gameDog.innerHTML = '5x5 dog';
@@ -220,7 +220,10 @@ export function buildHTML() {
         modalMessage,
         modalClose,
         saveButton,
+        loadButton,
         clueX,
         clueY,
+        gameTop,
+        gameBottom,
     };
 }
