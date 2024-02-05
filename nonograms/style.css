@@ -3,6 +3,13 @@ html {
     background-color: #ffffff;
 }
 
+h1 {
+    font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+}
+
 body {
     color: rgb(0, 0, 0);
     display: flex;
@@ -152,41 +159,41 @@ body {
 
 .select {
     margin: 20px;
+    background-color: transparent;
 }
 
 button {
     margin: 5px;
     width: 70px;
     height: 25px;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.644);
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.dark {
+    color: #d6d6d6;
+    background: rgba(236, 140, 140, 0.644);
+    transition: 0.3s;
+}
+
+button:hover {
+    background: rgba(173, 147, 116, 0.548);
+    transition: 0.3s;
+}
+
+button[disabled] {
+    background-color: rgba(233, 233, 233, 0.479);
+    border: 1px solid rgb(155, 155, 155);
+    color: rgb(177, 177, 177);
+    cursor: default;
 }
 
 .press {
     background-color: rgba(165, 42, 42, 0.747);
-}
-
-#restart {
-    color: black;
-}
-#sound {
-    color: black;
-}
-#theme {
-    color: black;
-}
-#solution {
-    color: black;
-}
-#random {
-    color: black;
-}
-#save {
-    color: black;
-}
-#load {
-    color: black;
-}
-#results {
-    color: black;
 }
 
 .lineY {
@@ -219,7 +226,7 @@ button {
 
 .modal-window {
     display: none;
-    background-color: #ffffff;
+    background-color: #ffffffd5;
     border: 1px solid black;
     position: fixed;
     top: 50%;
@@ -245,7 +252,7 @@ button {
 .result-window {
     display: none;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #ffffffd5;
     border: 1px solid black;
     position: fixed;
     top: 50%;

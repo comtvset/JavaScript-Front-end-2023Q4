@@ -76,6 +76,15 @@ export function selectClick() {
         checkArrName();
         reset();
         saveButton.disabled = true;
+
+        const { dark, white } = theme();
+        if (themeHandler) {
+            dark();
+        } else {
+            white();
+        }
+
+        theme()
     });
 }
 
@@ -89,6 +98,15 @@ export function randomGame() {
         reset();
         select.selectedIndex = 0;
         saveButton.disabled = true;
+
+        const { dark, white } = theme();
+        if (themeHandler) {
+            dark();
+        } else {
+            white();
+        }
+
+        theme()
     });
 }
 
@@ -465,6 +483,15 @@ export function loadGame() {
                     currentField[i].innerHTML = '×';
                 }
             }
+
+            const { dark, white } = theme();
+            if (themeHandler) {
+                dark();
+            } else {
+                white();
+            }
+
+            theme()
         });
     } else {
         loadButton.disabled = true;
@@ -517,17 +544,59 @@ export function sound() {
 
 export function theme() {
     const html = document.querySelector('html');
+    const title = document.querySelector('.title');
+    const time = document.getElementById('time-current');
+    const buttons = document.querySelectorAll('button');
+    const clues = document.querySelectorAll('.clue');
+    const select = document.querySelector('.select');
+    const options = select.options;
 
     themeButton.addEventListener('click', () => {
         if (themeHandler) {
-            console.log('white')
-            html.style.backgroundColor = 'white'
-            // soundButton.classList.remove('press');
+            functions.white()
         } else {
-            console.log('black')
-            html.style.backgroundColor = '#2b2b2b'
-            // soundButton.classList.add('press');
+            functions.dark();
         }
         themeHandler = !themeHandler;
     });
+
+    const functions = {
+        white: function() {
+                html.style.backgroundColor = 'white';
+                title.style.color = 'black';
+                time.style.color = 'black';
+                select.style.color = 'black';
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove('dark');
+
+                }
+                for (let i = 0; i < clues.length; i++) {
+                    clues[i].style.backgroundColor = 'rgb(179, 179, 179)';
+                    clues[i].style.color = 'black';
+                }
+                for (let i = 0; i < options.length; i++) {
+                    options[i].style.backgroundColor = 'white';
+                }
+            },
+
+            dark: function() {
+                html.style.backgroundColor = 'rgb(73 73 73)'
+                title.style.color = 'white';
+                time.style.color = 'red';
+                select.style.color = 'white';
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.add('dark');
+
+                }
+                for (let i = 0; i < clues.length; i++) {
+                    clues[i].style.backgroundColor = 'rgb(42 37 37 / 82%)';
+                    clues[i].style.color = '#d6d6d6';
+                }
+                for (let i = 0; i < options.length; i++) {
+                    options[i].style.backgroundColor = 'grey';
+                }
+            }
+        }
+
+        return functions;
 }
