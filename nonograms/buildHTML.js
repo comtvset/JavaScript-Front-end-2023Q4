@@ -125,10 +125,24 @@ modalClose.classList.add('modal-close');
 const modalMessage = document.createElement('span');
 modalMessage.classList.add('modal-message');
 
+const resultWindow = document.createElement('div');
+resultWindow.classList.add('result-window');
+
+const resultClose = document.createElement('div');
+resultClose.classList.add('result-close');
+
+const resultMessage = document.createElement('span');
+resultMessage.classList.add('result-message');
+
 html.appendChild(overlay);
 html.appendChild(modalWindow);
+html.appendChild(resultWindow);
 modalWindow.appendChild(modalMessage);
 modalWindow.appendChild(modalClose);
+resultWindow.appendChild(resultClose);
+resultWindow.appendChild(resultMessage);
+resultMessage.innerHTML = 'empty';
+
 body.appendChild(container);
 game.appendChild(time);
 gameTop.appendChild(answer);
@@ -175,6 +189,7 @@ time.appendChild(timeText);
 timeText.textContent = '00:00';
 
 modalClose.innerHTML = '&#215;';
+resultClose.innerHTML = '&#215;';
 restartButton.innerHTML = 'restart';
 soundButton.innerHTML = 'sound';
 themeButton.innerHTML = 'theme';
@@ -223,7 +238,9 @@ export function buildHTML() {
         loadButton,
         clueX,
         clueY,
-        gameTop,
-        gameBottom,
+        resultsButton,
+        resultWindow,
+        resultClose,
+        resultMessage,
     };
 }

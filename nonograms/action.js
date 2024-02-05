@@ -20,8 +20,17 @@ const {
     loadButton,
     clueX,
     clueY,
+    resultsButton,
+    resultWindow,
+    resultClose,
+    resultMessage,
 } = buildHTML();
 const { startTimer, resumeTimer, stopTimer, resetTimer } = timer();
+
+const difficultArr = [];
+for (let i = 0; i < select.length; i++) {
+    difficultArr.push(select.options[i].innerHTML);
+}
 
 function checkArrName() {
     const currentArr = sendArr();
@@ -152,6 +161,9 @@ function check(trueCells, count, emptyCells) {
     count = 0;
     emptyCells = 0;
 
+    const value = checkArrName();
+    const currentTime = timeCurrent.innerHTML;
+
     cells.forEach((cell) => {
         if (cell.classList.contains('true')) {
             trueCells++;
@@ -169,9 +181,6 @@ function check(trueCells, count, emptyCells) {
             emptyCells++;
         }
     });
-    // console.log('true: ' + trueCells);
-    // console.log('count: ' + count);
-    // console.log('empty: ' + emptyCells);
 
     if (trueCells === count && emptyCells === 0) {
         const nameGame = checkArrName();
@@ -185,6 +194,39 @@ function check(trueCells, count, emptyCells) {
             modalWindow.style.display = 'none';
             reset();
         });
+
+        let difficult = '';
+
+        for (let i = 0; i < difficultArr.length; i++) {
+            if (difficultArr[i].endsWith(value)) {
+                const substr = difficultArr[i].substring(
+                    0,
+                    difficultArr[i].indexOf(' ')
+                );
+                difficult = substr;
+            }
+        }
+
+        let readLS = JSON.parse(localStorage.getItem('saveResult')) || [];
+
+        const saveResult = {
+            time: currentTime,
+            nameGame: value,
+            difficult: difficult,
+        };
+
+        readLS.push(saveResult);
+
+        let sortResult = readLS.sort((a, b) =>
+            Object.values(a)[0].localeCompare(Object.values(b)[0])
+        );
+
+        if (sortResult.length > 5) {
+            sortResult = sortResult.slice(0, -1);
+        }
+        localStorage.setItem('saveResult', JSON.stringify(sortResult));
+
+        topResults('win');
     }
     return { cells, trueCells, count, emptyCells };
 }
@@ -218,6 +260,7 @@ function reset() {
     y.forEach((cell) => {
         cell.classList.remove('cross-for-clue');
     });
+    loadGame();
 }
 
 export function restartGame() {
@@ -264,6 +307,8 @@ export function showSolution() {
 
 export function saveGame() {
     saveButton.addEventListener('click', () => {
+        loadButton.disabled = false;
+
         const { trueCells, count, emptyCells } = check();
         const value = checkArrName();
         const currentTime = timeCurrent.innerHTML;
@@ -304,68 +349,106 @@ export function saveGame() {
 }
 
 export function loadGame() {
-    loadButton.addEventListener('click', () => {
-        saveButton.disabled = false;
-        const saveItems = JSON.parse(localStorage.getItem('saveItems'));
+    const checkSave = JSON.parse(localStorage.getItem('saveItems'));
 
-        const time = saveItems.time;
-        const trueCells = saveItems.trueCells;
-        const count = saveItems.count;
-        const emptyCells = saveItems.emptyCells;
-        const value = saveItems.nameGame;
+    if (checkSave != null) {
+        loadButton.addEventListener('click', () => {
+            saveButton.disabled = false;
+            const saveItems = JSON.parse(localStorage.getItem('saveItems'));
 
-        select.selectedIndex = 0;
+            const time = saveItems.time;
+            const trueCells = saveItems.trueCells;
+            const count = saveItems.count;
+            const emptyCells = saveItems.emptyCells;
+            const value = saveItems.nameGame;
 
-        timeCurrent.innerHTML = time;
+            select.selectedIndex = 0;
 
-        stopTimer();
-        resumeTimer(time);
+            timeCurrent.innerHTML = time;
 
-        selectGame(value);
-        leftClick();
-        rightClick();
+            stopTimer();
+            resumeTimer(time);
 
-        check(trueCells, count, emptyCells);
+            selectGame(value);
+            leftClick();
+            rightClick();
 
-        const saveGlueY = JSON.parse(localStorage.getItem('saveGlueY'));
+            check(trueCells, count, emptyCells);
 
-        const currentGlueY = clueY.children;
-        for (let i = 0; i < currentGlueY.length; i++) {
-            if (saveGlueY[i].className === 'clue cross-for-clue') {
-                currentGlueY[i].classList.add('cross-for-clue');
+            const saveGlueY = JSON.parse(localStorage.getItem('saveGlueY'));
+
+            const currentGlueY = clueY.children;
+            for (let i = 0; i < currentGlueY.length; i++) {
+                if (saveGlueY[i].className === 'clue cross-for-clue') {
+                    currentGlueY[i].classList.add('cross-for-clue');
+                }
+                if (saveGlueY[i].className === 'clue lineY cross-for-clue') {
+                    currentGlueY[i].classList.add('cross-for-clue');
+                }
             }
-            if (saveGlueY[i].className === 'clue lineY cross-for-clue') {
-                currentGlueY[i].classList.add('cross-for-clue');
+
+            const saveGlueX = JSON.parse(localStorage.getItem('saveGlueX'));
+
+            const currentGlueX = clueX.children;
+            for (let i = 0; i < currentGlueX.length; i++) {
+                if (saveGlueX[i].className === 'clue cross-for-clue') {
+                    currentGlueX[i].classList.add('cross-for-clue');
+                }
+                if (saveGlueX[i].className === 'clue lineX cross-for-clue') {
+                    currentGlueX[i].classList.add('cross-for-clue');
+                }
             }
+
+            const saveField = JSON.parse(localStorage.getItem('saveField'));
+
+            const currentField = field.children;
+
+            for (let i = 0; i < currentField.length; i++) {
+                const classList = saveField[i].className.split(' ');
+
+                if (classList.includes('black')) {
+                    currentField[i].classList.add('black');
+                }
+
+                if (classList.includes('cross')) {
+                    currentField[i].classList.add('cross');
+                    currentField[i].innerHTML = '×';
+                }
+            }
+        });
+    } else {
+        loadButton.disabled = true;
+    }
+}
+
+export function topResults(status) {
+    let readLS = JSON.parse(localStorage.getItem('saveResult'));
+
+    if (status === 'win') {
+        const spans = document.querySelectorAll('.result-message');
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].remove();
         }
+    }
 
-        const saveGlueX = JSON.parse(localStorage.getItem('saveGlueX'));
+    for (const key in readLS) {
+        resultMessage.innerHTML = '';
 
-        const currentGlueX = clueX.children;
-        for (let i = 0; i < currentGlueX.length; i++) {
-            if (saveGlueX[i].className === 'clue cross-for-clue') {
-                currentGlueX[i].classList.add('cross-for-clue');
-            }
-            if (saveGlueX[i].className === 'clue lineX cross-for-clue') {
-                currentGlueX[i].classList.add('cross-for-clue');
-            }
-        }
+        const resultMessageCur = document.createElement('span');
+        resultMessageCur.classList.add('result-message');
+        resultWindow.appendChild(resultMessageCur);
 
-        const saveField = JSON.parse(localStorage.getItem('saveField'));
+        const element = readLS[key];
+        resultMessageCur.innerHTML = `${element.nameGame} - ${element.difficult} - ${element.time}`;
+    }
 
-        const currentField = field.children;
+    resultsButton.addEventListener('click', () => {
+        overlay.style.display = 'flex';
+        resultWindow.style.display = 'flex';
+    });
 
-        for (let i = 0; i < currentField.length; i++) {
-            const classList = saveField[i].className.split(' ');
-
-            if (classList.includes('black')) {
-                currentField[i].classList.add('black');
-            }
-
-            if (classList.includes('cross')) {
-                currentField[i].classList.add('cross');
-                currentField[i].innerHTML = '×';
-            }
-        }
+    resultClose.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        resultWindow.style.display = 'none';
     });
 }
