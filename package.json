@@ -1,26 +1,8 @@
 {
-  "name": "hangman",
-  "version": "1.0.0",
-  "description": "development game hangman",
-  "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rolling-scopes-school/comtvset-JSFE2023Q4.git"
-  },
-  "keywords": [
-    "JavaScript"
-  ],
-  "author": "comtvset",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rolling-scopes-school/comtvset-JSFE2023Q4/issues"
-  },
-  "homepage": "https://github.com/rolling-scopes-school/comtvset-JSFE2023Q4#readme",
   "devDependencies": {
     "eslint": "^8.56.0",
-    "prettier": "3.1.1"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.4"
   }
 }

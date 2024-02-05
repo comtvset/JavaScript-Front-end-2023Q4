@@ -1,0 +1,280 @@
+html {
+    transition: all 0.5s;
+    background-color: #ffffff;
+}
+
+body {
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.wrapper-field {
+    margin: 0px 20px 0px 20px;
+}
+
+.wrapper-control {
+    display: flex;
+}
+
+.control {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    max-width: 320px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.game_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.game_bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.game_top_left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    border-right: 2px solid rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.game_top_right {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.game_bottom_right {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.game_bottom_left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    border-right: 2px solid rgb(0, 0, 0);
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(202, 202, 202);
+}
+
+.black {
+    background-color: rgb(0, 0, 0);
+}
+
+.cross {
+    background-color: transparent;
+    color: red;
+    font-size: 30px;
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cross-for-clue {
+    background-color: transparent;
+    color: red;
+    font-size: 30px;
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cross-for-clue::before,
+.cross-for-clue::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: red;
+}
+
+.cross-for-clue::before {
+    transform: rotate(45deg);
+}
+
+.cross-for-clue::after {
+    transform: rotate(-45deg);
+}
+
+.clue {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(146, 146, 146);
+    background-color: rgb(179, 179, 179);
+    color: black;
+    cursor: default;
+
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select {
+    margin: 20px;
+}
+
+button {
+    margin: 5px;
+    width: 70px;
+    height: 25px;
+}
+
+.press {
+    background-color: rgba(165, 42, 42, 0.747);
+}
+
+#restart {
+    color: black;
+}
+#sound {
+    color: black;
+}
+#theme {
+    color: black;
+}
+#solution {
+    color: black;
+}
+#random {
+    color: black;
+}
+#save {
+    color: black;
+}
+#load {
+    color: black;
+}
+#results {
+    color: black;
+}
+
+.lineY {
+    border-left: 2px solid rgb(90, 90, 90);
+}
+
+.lineX {
+    border-top: 2px solid rgb(90, 90, 90);
+}
+
+.solution-image {
+    background-color: rgb(22, 76, 255);
+}
+
+.pointer {
+    pointer-events: none;
+}
+
+.overlay {
+    display: none;
+    width: 100%;
+    height: 101%;
+    background: #353535e8;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.modal-window {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.modal-close {
+    position: relative;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+
+    font-size: 30px;
+}
+
+.modal-message {
+    padding: 20px;
+}
+
+.result-window {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.result-close {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 25px;
+    flex-shrink: 0;
+
+    font-size: 30px;
+    justify-content: flex-end;
+    margin-left: -7px;
+    padding-bottom: 10px;
+}
+
+.result-message {
+    padding: 0px 20px 10px 20px ;
+}
+
+@media (max-width: 610px) {
+    .wrapper {
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+}
