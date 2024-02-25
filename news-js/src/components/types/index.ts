@@ -1,15 +1,15 @@
 export default interface NewsData {
-    author: string;
+    author: string | null;
     content: string;
     description: string;
     publishedAt: string;
     source: {
-        id: string;
+        id: string | null;
         name: string;
     };
     title: string;
     url: string;
-    urlToImage: string;
+    urlToImage: string | null;
 }
 
 export default interface SourcesData {
@@ -44,3 +44,5 @@ interface Sources extends Article {}
 export default interface ViewDataSources {
     sources: Sources[];
 }
+
+export type Callback<T> = (data: T | void) => void;
