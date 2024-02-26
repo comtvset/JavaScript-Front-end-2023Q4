@@ -3,6 +3,7 @@ import { Callback } from '../types/index';
 class Loader {
     baseLink: string;
     options: object;
+
     constructor(baseLink: string, options: object) {
         this.baseLink = baseLink;
         this.options = options;

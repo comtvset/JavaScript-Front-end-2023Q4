@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews<T>(e: MouseEvent, callback: Callback<T>) {
+    getNews<T>(e: MouseEvent | SubmitEvent, callback: Callback<T>) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -32,7 +32,6 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-
             target = target.parentNode as HTMLElement;
         }
     }

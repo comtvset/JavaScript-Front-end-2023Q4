@@ -1,3 +1,10 @@
+.news {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    flex-shrink: 5;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
@@ -9,6 +16,7 @@
     font-family: Arial, sans-serif;
     border-radius: 5px;
     overflow: hidden;
+    max-width: 220px;
 }
 
 .news__item:hover .news__meta-photo {

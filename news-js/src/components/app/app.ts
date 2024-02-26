@@ -20,7 +20,6 @@ class App {
                 if (e instanceof MouseEvent) {
                     this.controller.getNews(e, (data) => {
                         this.view.drawNews(<ViewDataArticle>data);
-                        // console.log('News data:', data);
                     });
                 }
             });
@@ -28,7 +27,6 @@ class App {
 
         this.controller.getSources((data) => {
             this.view.drawSources(<ViewDataSources>data);
-            // console.log('Sources data:', data);
         });
     }
 }
