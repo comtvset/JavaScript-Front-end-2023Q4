@@ -37,6 +37,7 @@
     background-size: cover;
     background-position: center;
     transition: transform 0.2s;
+    background-image: url('/src/assets/images/default.png');
 }
 
 .news__item .news__meta-details,
