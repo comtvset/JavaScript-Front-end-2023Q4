@@ -15,6 +15,17 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader'],
             },
             { test: /\.ts$/i, use: 'ts-loader' },
+            {
+                test: /\.html$/i,
+                use: 'html-loader',
+            },
+            {
+                test: /\.(jpe?g|png|webp|gif|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/images/[name][ext]',
+                },
+            },
         ],
     },
     resolve: {
@@ -23,6 +34,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
+        // assetModuleFilename: 'assets/[name][ext]',
     },
     plugins: [
         new DotenvWebpackPlugin(),
