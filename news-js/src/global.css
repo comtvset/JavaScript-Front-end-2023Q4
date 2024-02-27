@@ -64,7 +64,6 @@ input[type='search'] {
     padding-right: 10px;
     cursor: text;
     font-size: 20px;
-    padding: 1em 1em;
 }
 
 .search:focus {
@@ -87,3 +86,4 @@ input[type='search'] {
     border-radius: 5px;
     cursor: pointer;
 }
+

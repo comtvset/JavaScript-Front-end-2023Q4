@@ -22,7 +22,7 @@ class News {
             if (idx % 2) newsClone.querySelector('.news__item')!.classList.add('alt');
 
             (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
-                item.urlToImage || '/assets/images/default.png'
+                item.urlToImage || 'assets/images/default.png'
             })`;
 
             newsClone.querySelector('.news__meta-author')!.textContent = item.author || item.source.name;

@@ -23,7 +23,6 @@ export function test() {
 
         const searchResults = apiUrl + 'everything?q=' + searchValue + '&apiKey=' + apiKey;
         const result = await getData(searchResults);
-        console.log(result);
         const newsInstance = new News();
         newsInstance.draw(result.articles);
     });
