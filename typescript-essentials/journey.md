@@ -15,13 +15,22 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 
 ## Reflections
 
-**I need again revise all course TypeScript by Microsoft, because on lot of the course things I will be watch differently. I mean that when I developed Migration to TS, I used code for this task and I felt how this works. But I can write about each module not much at all:**
+**I need again revise all course TypeScript by Microsoft, because on lot of the course things I will be watch differently. I mean that when I developed Migration to TS, I used code for this task and I felt how this works.**
+**But I can write about each module not much at all:**
+
 
 **Getting Started with TypeScript**: *This module is very simple. I learned "What is TypeScript?" I wrote code in the Playground*;
+
 **Declare Variable Types in TypeScript**: *I learned primitive types, union and intersection types, collection types. And I learned about "any" and "unknown" types*;
+
 **Implement Interfaces in TypeScript**: *I learned about interfaces. I think that topic isn't hard. Just practice*;
+
 **Develop Typed Functions in TypeScript**: *I made function and this similar as like JavaScript. The main, you need use type*;
+
 **Declare and Instantiate Classes in TypeScript**: *I learned about classes. I learned access modifier as like public, private, protected. In my opinion, one's the main in this topic that extend a class using inheritance*;
+
 **Generics in TypeScript**: *I need to study this module. I have a general picture of topic*;
+
 **Work with External Libraries in TypeScript**: *I need to study this module. I have superficial information of topic*;
+
 **Organize Code with Namespaces in TypeScript**: *This topic I learned when I developed Migration to TS, but revise this topic will be useful for me*;
