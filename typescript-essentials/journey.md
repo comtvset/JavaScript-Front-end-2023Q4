@@ -33,4 +33,4 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 
 **Work with External Libraries in TypeScript**: *I need to study this module. I have superficial information of topic*;
 
-**Organize Code with Namespaces in TypeScript**: *This topic I learned when I developed Migration to TS, but revise this topic will be useful for me*;
+**Organize Code with Namespaces in TypeScript**: *This topic I learned when I developed Migration to TS, but I revise this topic it will be useful for me*;
