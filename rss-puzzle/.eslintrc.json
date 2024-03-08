@@ -1,0 +1,35 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+      "airbnb",
+      "airbnb/hooks",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "project": "**/tsconfig.json",
+      "tsconfigRootDir": "__dirname"
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "overrides": [
+      {
+          "files": ["webpack.config.js"],
+          "rules": {
+              "@typescript-eslint/no-var-requires": "off"
+          }
+      }
+  ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any" : 2,
+      "quotes": ["error", "single"]
+    }
+  }
