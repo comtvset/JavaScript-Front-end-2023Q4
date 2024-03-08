@@ -9,3 +9,6 @@ for (let i = 0; i < array.length; i += 1) {
 const num: number[] = [1, 2];
 console.log(num);
 console.log('test');
+console.log('test');
+console.log('test');
+console.log('test');
