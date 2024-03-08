@@ -4,6 +4,8 @@
     "plugins": ["@typescript-eslint"],
     "extends": [
       "airbnb",
+      "airbnb-base",
+      "airbnb-typescript/base",
       "airbnb/hooks",
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
