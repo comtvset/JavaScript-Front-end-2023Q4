@@ -1,25 +1,28 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "typescript", "prettier", "import"],
     "extends": [
-      "airbnb",
-      "airbnb/hooks",
+      "airbnb-typescript/base",
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
     ],
     "parserOptions": {
       "ecmaVersion": 2020,
       "sourceType": "module",
-      "project": "**/tsconfig.json",
-      "tsconfigRootDir": "__dirname"
+      "project": "**/tsconfig.json"
     },
     "env": {
       "browser": true,
       "node": true,
       "es6": true
     },
+    "ignorePatterns": [
+      "webpack.config.js"
+    ],
     "overrides": [
       {
           "files": ["webpack.config.js"],

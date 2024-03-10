@@ -28,6 +28,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components/login'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -38,4 +41,7 @@ module.exports = {
       exclude: ['/node_modules/', '/dist/'],
     }),
   ],
+  devServer: {
+    static: './dist',
+  },
 };
