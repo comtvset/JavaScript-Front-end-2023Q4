@@ -3,13 +3,17 @@ import Button from './button/button';
 import './login/loginStyle.css';
 import './button/buttonStyle.css';
 import checkForm from './login/check';
+import save from './saveLocalStorage/save';
 
 export default function createLoginWindow() {
+  const inputArr: string[] = [];
   const login = new LoginWindow();
   login.addField('First Name', 'first-name');
   login.addField('Surname', 'second-name');
   const button = new Button(login.getLoginWindowElement());
-  button.addButton('Login', () => {});
+  button.addButton('Login', () => {
+    save(inputArr.slice(-2));
+  });
   checkForm(button);
 
   const formField = document.querySelectorAll('.input-login');
@@ -21,6 +25,7 @@ export default function createLoginWindow() {
         }
         return '';
       });
+      inputArr.push(...inputValues);
       checkForm(button, inputValues);
     });
   });
