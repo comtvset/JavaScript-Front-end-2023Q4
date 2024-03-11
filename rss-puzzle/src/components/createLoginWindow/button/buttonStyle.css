@@ -1,0 +1,10 @@
+.button-style {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+}
+
+.button-style:active {
+    background: rgb(214, 214, 214);
+}
