@@ -22,7 +22,10 @@ export default class LoginWindow {
     const input = document.createElement('input');
     input.setAttribute('id', inputId);
     input.setAttribute('name', inputId);
-    input.setAttribute('title', 'Please use English characters only and first letter have to Uppercase');
+    input.setAttribute(
+      'title',
+      'Please use English characters only and first letter have to Uppercase',
+    );
     input.classList.add('input-login');
     input.minLength = 3;
     input.required = true;

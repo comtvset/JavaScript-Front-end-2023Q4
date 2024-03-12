@@ -1,7 +1,12 @@
-import createGreetingWindow from '../createGreetingWindow/createGreetingWindow';
-import removeGreetingWindow from '../createGreetingWindow/removeGreetingWindow';
-import createLoginWindow from '../createLoginWindow/createLoginWindow';
-import removeLoginWindow from '../createLoginWindow/removeLoginWindow';
+// import createGreetingWindow from '../createLoginWindow/createGreetingWindow';
+// import removeGreetingWindow from '../createLoginWindow/removeGreetingWindow';
+// import createLoginWindow from '../createLoginWindow/createLoginWindow';
+// import removeLoginWindow from '../createLoginWindow/removeLoginWindow';
+
+import createGreetingWindow from '../createWindows/createGreetingWindow';
+import createLoginWindow from '../createWindows/createLoginWindow';
+import removeGreetingWindow from '../createWindows/removeGreetingWindow';
+import removeLoginWindow from '../createWindows/removeLoginWindow';
 
 export default function checkLocalStorage() {
   const keys = Object.keys(localStorage);
@@ -18,7 +23,7 @@ export default function checkLocalStorage() {
     createGreetingWindow();
     removeLoginWindow();
 
-    const exit = document.querySelector('.test');
+    const exit = document.querySelector('.exit');
     exit?.addEventListener('click', function () {
       createLoginWindow();
       removeGreetingWindow();

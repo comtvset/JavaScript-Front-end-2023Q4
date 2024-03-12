@@ -1,6 +1,6 @@
-import LoginWindow from './login/login';
+import LoginWindow from './loginWindow/login/login';
 import Button from './button/button';
-import './login/loginStyle.css';
+import './loginWindow/login/loginStyle.css';
 import './button/buttonStyle.css';
 import checkForm from '../checksData/checkInputs';
 import save from './saveLocalStorage/save';
