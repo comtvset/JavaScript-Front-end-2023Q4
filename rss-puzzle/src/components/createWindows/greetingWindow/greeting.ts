@@ -15,12 +15,19 @@ export default class GreetingWindow {
   }
 
   addElements() {
+    const userDataString = localStorage.getItem('user');
     const wrap = document.createElement('div');
     wrap.classList.add('wrap');
     this.element.appendChild(wrap);
 
     const name = document.createElement('h2');
     wrap.appendChild(name);
+
+    if (userDataString) {
+      const userDataArray = JSON.parse(userDataString);
+      const fulNameUser = userDataArray.join(' ');
+      name.innerHTML = `Hello ${fulNameUser}!`;
+    }
 
     const spanInfo = document.createElement('span');
     wrap.appendChild(spanInfo);
