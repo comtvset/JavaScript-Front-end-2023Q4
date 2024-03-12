@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -24,6 +25,13 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpe?g|png|webp|gif|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]',
+        },
+      },
     ],
   },
   resolve: {
@@ -40,8 +48,16 @@ module.exports = {
       extensions: ['ts', 'tsx'],
       exclude: ['/node_modules/', '/dist/'],
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/', to: 'assets/' },
+      ],
+    }),
   ],
   devServer: {
-    static: './dist',
+    static: {
+      directory: path.join(__dirname, 'dist'),
+      watch: true,
+    }
   },
 };

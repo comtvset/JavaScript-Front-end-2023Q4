@@ -1,3 +1,3 @@
-import createLoginWindow from './createLoginWindow/createLoginWindow';
+import checkLocalStorage from './checksData/checkLocalStorage';
 
-createLoginWindow();
+checkLocalStorage();

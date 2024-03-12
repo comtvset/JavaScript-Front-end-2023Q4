@@ -1,10 +1,8 @@
-import Button from '../button/button';
+import Button from '../createLoginWindow/button/button';
 
 export default function checkForm(button: Button, inputValues?: string[]) {
   const formField = document.querySelectorAll('.input-login');
-  let isFormValid = true;
-  let isFirstName = true;
-  let isSecondName = true;
+  let isFormValid = true, isFirstName = true, isSecondName = true;
   const regex = /^[A-Z][a-zA-Z]*(-[a-zA-Z]*)*$/;
 
   function check() {
