@@ -26,4 +26,6 @@ export default function cutSentence(round: number, words: number) {
       // sizeBrick(mixArray, mixArray[i]);
     }
   }
+
+  return thisWords;
 }

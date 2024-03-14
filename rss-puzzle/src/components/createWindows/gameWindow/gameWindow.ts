@@ -33,4 +33,8 @@ export default class GameWindow {
   }
 
   addWindow() {}
+
+  getLoginWindowElement() {
+    return this.element;
+  }
 }

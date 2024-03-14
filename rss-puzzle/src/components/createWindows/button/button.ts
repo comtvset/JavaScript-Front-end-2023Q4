@@ -26,4 +26,8 @@ export default class Button {
   removeAtt() {
     this.button.removeAttribute('disabled');
   }
+
+  setID(id: string) {
+    this.button.setAttribute('id', `${id}`);
+  }
 }

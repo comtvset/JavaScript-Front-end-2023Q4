@@ -1,8 +1,3 @@
-// import createGreetingWindow from '../createLoginWindow/createGreetingWindow';
-// import removeGreetingWindow from '../createLoginWindow/removeGreetingWindow';
-// import createLoginWindow from '../createLoginWindow/createLoginWindow';
-// import removeLoginWindow from '../createLoginWindow/removeLoginWindow';
-
 import createGreetingWindow from '../createWindows/createGreetingWindow';
 import createLoginWindow from '../createWindows/createLoginWindow';
 import removeGreetingWindow from '../createWindows/removeGreetingWindow';
