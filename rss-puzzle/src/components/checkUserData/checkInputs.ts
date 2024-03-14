@@ -1,5 +1,3 @@
-// import Button from '../createLoginWindow/button/button';
-
 import Button from '../createWindows/button/button';
 
 export default function checkForm(button: Button, inputValues?: string[]) {

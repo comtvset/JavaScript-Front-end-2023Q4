@@ -7,6 +7,7 @@ import createGreetingWindow from '../createWindows/createGreetingWindow';
 import createLoginWindow from '../createWindows/createLoginWindow';
 import removeGreetingWindow from '../createWindows/removeGreetingWindow';
 import removeLoginWindow from '../createWindows/removeLoginWindow';
+import removeGameWindow from '../createWindows/removeGameWindow';
 
 export default function checkLocalStorage() {
   const keys = Object.keys(localStorage);
@@ -26,7 +27,8 @@ export default function checkLocalStorage() {
     const exit = document.querySelector('.exit');
     exit?.addEventListener('click', function () {
       createLoginWindow();
-      removeGreetingWindow();
+      removeGreetingWindow(true);
+      removeGameWindow();
     });
   } else {
     createLoginWindow();

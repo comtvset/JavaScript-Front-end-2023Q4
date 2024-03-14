@@ -1,3 +1,3 @@
-import checkLocalStorage from './checksData/checkLocalStorage';
+import checkLocalStorage from './checkUserData/checkLocalStorage';
 
 checkLocalStorage();

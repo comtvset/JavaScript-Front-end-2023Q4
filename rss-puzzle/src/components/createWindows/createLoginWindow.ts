@@ -2,9 +2,9 @@ import LoginWindow from './loginWindow/login/login';
 import Button from './button/button';
 import './loginWindow/login/loginStyle.css';
 import './button/buttonStyle.css';
-import checkForm from '../checksData/checkInputs';
+import checkForm from '../checkUserData/checkInputs';
 import save from './saveLocalStorage/save';
-import checkLocalStorage from '../checksData/checkLocalStorage';
+import checkLocalStorage from '../checkUserData/checkLocalStorage';
 
 export default function createLoginWindow() {
   const inputArr: string[] = [];

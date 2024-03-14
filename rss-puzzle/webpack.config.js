@@ -35,9 +35,11 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.json'],
     alias: {
-      '@components': path.resolve(__dirname, 'src/components/login'),
+      '@components': path.resolve(__dirname, 'src'),
+      // '@components': path.resolve(__dirname, 'src/components/login'),
+
     },
   },
   plugins: [

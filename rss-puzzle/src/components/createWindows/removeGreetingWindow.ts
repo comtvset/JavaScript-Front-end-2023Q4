@@ -1,9 +1,14 @@
-export default function removeGreetingWindow() {
+export default function removeGreetingWindow(logout = false) {
   const exit = document.querySelector('.exit');
   const greetingWindow = document.querySelector('.greeting-window');
   if (exit) {
-    exit.remove();
-    greetingWindow?.remove();
+    if (logout) {
+      exit.remove();
+      greetingWindow?.remove();
+      localStorage.removeItem('user');
+    } else {
+      greetingWindow?.remove();
+    }
   }
-  localStorage.removeItem('user');
+
 }

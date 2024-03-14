@@ -1,0 +1,51 @@
+.main-window {
+  background-color: rgba(214, 214, 214, 0.897);
+  width: 700px;
+  /* max-width: 700px; */
+  height: 800px;
+
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.guesses-block {
+  background-color: rgb(175, 173, 159);
+  width: 650px;
+  height: 500px;
+  display: flex;
+  flex-wrap: no-wrap;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.guess {
+  display: flex;
+  flex-direction: row;
+}
+
+.source-block {
+  background-color: rgb(175, 173, 159);
+  width: 650px;
+  min-height: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.brick {
+  background-color: rgb(204, 204, 204);
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 17px;
+  cursor: default;
+  user-select: none;
+}
