@@ -6,7 +6,7 @@ export default function createMainWindow() {
   const game = new GameWindow();
   game.addWindow();
 
-  cutSentence(0, 0);
+  cutSentence(0, 2);
   moveBrick();
 
 }
