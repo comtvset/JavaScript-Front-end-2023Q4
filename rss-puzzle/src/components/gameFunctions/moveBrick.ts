@@ -12,5 +12,12 @@ export default function moveBrick() {
         });
       });
     }
+
+    guessesBlock.addEventListener('click', function (event) {
+      const clickBrick = event.target;
+      if (clickBrick instanceof HTMLElement && clickBrick.classList.contains('brick')) {
+        sourceBlock.appendChild(clickBrick);
+      }
+    });
   }
 }
