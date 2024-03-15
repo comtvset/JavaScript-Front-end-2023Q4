@@ -7,11 +7,8 @@ export default function cutSentence(round: number, words: number) {
   const thisWords = thisRound.words[words];
   const textExample = thisWords.textExample;
   const sentenceCut = textExample.split(' ');
-  // console.log(sentenceCut.length);
 
   const mixArray = shuffleArray(sentenceCut);
-  // console.log(sentenceCut);
-  // console.log(sortedArray);
 
   const sourceBlock = document.querySelector('.source-block');
 
@@ -23,7 +20,6 @@ export default function cutSentence(round: number, words: number) {
       sourceBlock.appendChild(brick);
       brick.innerHTML = mixArray[i];
       brick.style.width = `${sizeBrick(mixArray)}px`;
-      // sizeBrick(mixArray, mixArray[i]);
     }
   }
 

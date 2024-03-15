@@ -26,6 +26,7 @@
 .guess {
   display: flex;
   flex-direction: row;
+  border: 2px solid transparent;
 }
 
 .source-block {
@@ -50,4 +51,34 @@
   cursor: default;
   user-select: none;
   font-size: 14px;
+}
+
+.wrong {
+  border: 2px solid red;
+  animation: flash-border-red 2s normal;
+}
+
+.correct {
+  border: 2px solid green;
+  animation: flash-border-green 2s normal;
+}
+
+@keyframes flash-border-red {
+  0%, 50%, 100% {
+    border-color: red;
+  }
+
+  50%, 75% {
+    border-color: transparent;
+  }
+}
+
+@keyframes flash-border-green {
+  0%, 50%, 100% {
+    border-color: green;
+  }
+
+  50%, 75% {
+    border-color: transparent;
+  }
 }

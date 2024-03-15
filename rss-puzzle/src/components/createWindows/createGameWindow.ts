@@ -4,17 +4,20 @@ import cutSentence from '../gameFunctions/cutSentence';
 import moveBrick from '../gameFunctions/moveBrick';
 import Button from './button/button';
 import checkSentence from '../checkUserData/checkSentence';
+import Words from '../checkUserData/interfaceWords';
+import { visualCheck } from '../checkUserData/visualCheck';
 
+let savedThisWords: Words;
 export function nextWord(round: number, words: number, guess: string, button?: Button) {
   const thisWords = cutSentence(round, words);
+  savedThisWords = thisWords;
   moveBrick(thisWords, guess);
   if (button) {
-    button.addButton('Continue', () => {
-      checkSentence(thisWords, guess);
-
+    button.addButton('Check', () => {
+      const currentGuess = checkSentence(savedThisWords);
+      visualCheck(savedThisWords, currentGuess);
     });
   }
-
 }
 
 export default function createMainWindow() {
@@ -26,7 +29,5 @@ export default function createMainWindow() {
   button.setID('continue');
 
   nextWord(0, 0, 'guess_1', button);
+  // visualCheck(savedThisWords, 'guess_1');
 }
-
-
-

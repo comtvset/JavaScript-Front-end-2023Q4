@@ -3,7 +3,6 @@ import Words from '../checkUserData/interfaceWords';
 
 
 export default function moveBrick(thisWords: Words, guess: string) {
-  console.log(guess);
   const sourceBlock = document.querySelector('.source-block');
   const guessesBlock = document.getElementById(`${guess}`);
 
