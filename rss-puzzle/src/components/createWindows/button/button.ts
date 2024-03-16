@@ -19,6 +19,14 @@ export default class Button {
     this.button.addEventListener('click', onClickHandler);
   }
 
+  changeText(text: string) {
+    this.button.innerText = text;
+  }
+
+  onClick(handler: () => void) {
+    this.button.addEventListener('click', handler);
+  }
+
   setAtt() {
     this.button.setAttribute('disabled', 'disabled');
   }
@@ -30,4 +38,8 @@ export default class Button {
   setID(id: string) {
     this.button.setAttribute('id', `${id}`);
   }
+
+  // listener() {
+  //   this.button.addEventListener('click', function () {});
+  // }
 }

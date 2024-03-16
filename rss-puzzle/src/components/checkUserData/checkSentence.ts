@@ -1,10 +1,26 @@
 import { nextWord } from '../createWindows/createGameWindow';
 import Words from './interfaceWords';
+import { visualCheck } from './visualCheck';
 
 let currentGuess = 1;
 let guessCount = 1;
 const round = 0;
 let words = 0;
+let clickHandlerAdded = false;
+
+function handleClick(event: MouseEvent) {
+  const btn = event.target as HTMLButtonElement;
+
+  words += 1;
+  guessCount += 1;
+  currentGuess += 1;
+  nextWord(round, words, `guess_${guessCount}`);
+  btn.setAttribute('disabled', 'disabled');
+  btn.innerHTML = 'Check';
+  btn.removeEventListener('click', handleClick);
+  return currentGuess;
+}
+
 export default function checkSentence(thisWords: Words) {
   const btn = document.getElementById('continue');
   const guess = document.getElementById(`guess_${currentGuess}`);
@@ -23,15 +39,14 @@ export default function checkSentence(thisWords: Words) {
   // console.log(textExample);
 
   if (resultSentence === textExample) {
-    // console.log('true');
-    words += 1;
-    guessCount += 1;
-    currentGuess += 1;
-    nextWord(round, words, `guess_${guessCount}`);
-    btn?.setAttribute('disabled', 'disabled');
-    return currentGuess;
+    if (btn && !clickHandlerAdded) {
+      btn.innerHTML = 'Continue';
+      visualCheck(thisWords, currentGuess);
+      btn.addEventListener('click', handleClick);
+
+    }
   } else {
-    // console.log('false');
-    return currentGuess;
+    clickHandlerAdded = false;
+    visualCheck(thisWords, currentGuess);
   }
 }

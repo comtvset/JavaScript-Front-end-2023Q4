@@ -5,7 +5,6 @@ export function visualCheck(savedThisWords: Words, currentGuess: number) {
   const textExample = savedThisWords.textExample;
   const sentetnceArr: string[] = [];
 
-  // console.log(guess);
 
   if (guess) {
     const bricks = guess.querySelectorAll('.brick');
@@ -16,12 +15,12 @@ export function visualCheck(savedThisWords: Words, currentGuess: number) {
 
   const resultSentence = sentetnceArr.join(' ');
 
-  console.log(resultSentence);
-  console.log(textExample);
+  // console.log(resultSentence);
+  // console.log(textExample);
 
-  if (resultSentence === '' && resultSentence !== textExample) {
+  if (resultSentence === textExample) {
     if (guess instanceof HTMLElement) {
-      const firstChild = guess.parentNode?.childNodes[currentGuess - 2];
+      const firstChild = guess.parentNode?.childNodes[currentGuess - 1];
       if (firstChild instanceof HTMLElement) {
         firstChild.classList.add('correct');
         setTimeout(() => {
