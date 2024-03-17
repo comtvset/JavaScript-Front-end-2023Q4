@@ -2,6 +2,7 @@ import nextWord from '../checkUserData/nextWord';
 import { buffer } from './buffer';
 // import helpMe from './helpMe';
 import Words from './interfaceWords';
+// import showAnswer from './showAnswer';
 import { visualCheck } from './visualCheck';
 
 let currentGuess = 1;
@@ -39,6 +40,8 @@ export default function checkSentence(thisWords: Words) {
   console.log(`Round: ${saveRound}, Words: ${saveWords}`);
 
 
+
+
   const btn = document.getElementById('continue');
   const guess = document.getElementById(`guess_${currentGuess}`);
   const textExample = thisWords.textExample;
@@ -50,6 +53,9 @@ export default function checkSentence(thisWords: Words) {
       sentetnceArr.push(item.innerHTML);
     });
   }
+
+  // showAnswer();
+
 
   const resultSentence = sentetnceArr.join(' ');
   // console.log(resultSentence);

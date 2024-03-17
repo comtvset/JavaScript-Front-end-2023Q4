@@ -7,6 +7,8 @@ export default class GameWindow {
 
   block: HTMLDivElement;
 
+  answer: HTMLDivElement;
+
   constructor() {
     this.body = document.querySelector('body');
 
@@ -14,6 +16,10 @@ export default class GameWindow {
       this.element = document.createElement('div');
       this.element.classList.add('main-window');
       this.body.appendChild(this.element);
+
+      this.answer = document.createElement('div');
+      this.answer.classList.add('answer');
+      this.element.appendChild(this.answer);
 
       this.block = document.createElement('div');
       this.block.classList.add('guesses-block');

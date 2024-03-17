@@ -4,6 +4,7 @@ import moveBrick from '../gameFunctions/moveBrick';
 import { buffer } from './buffer';
 import checkSentence from './checkSentence';
 import Words from './interfaceWords';
+import showAnswer from './showAnswer';
 
 let savedThisWords: Words;
 export default function nextWord(
@@ -21,5 +22,5 @@ export default function nextWord(
     });
   }
   buffer(thisWords, round, words);
-  // buffer2(round, words);
+  showAnswer();
 }

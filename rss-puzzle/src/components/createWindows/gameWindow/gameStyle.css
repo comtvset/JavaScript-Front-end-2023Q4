@@ -12,6 +12,16 @@
   justify-content: space-around;
 }
 
+.answer {
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 18px;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .guesses-block {
   background-color: rgb(175, 173, 159);
   width: 700px;
