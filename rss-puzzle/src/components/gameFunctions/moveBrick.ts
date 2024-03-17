@@ -30,4 +30,6 @@ export default function moveBrick(thisWords: Words, guess: string) {
       }
     });
   }
+
+  return thisWords;
 }

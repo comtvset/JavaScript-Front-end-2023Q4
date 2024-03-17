@@ -1,3 +1,8 @@
+.buttons-wrap {
+    display: flex;
+    margin: 0 auto;
+}
+
 .button-style {
     border: 1px solid grey;
     border-radius: 5px;
@@ -7,6 +12,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    margin: 5px;
 }
 
 .button-style:active {

@@ -1,6 +1,6 @@
 .main-window {
   background-color: rgba(214, 214, 214, 0.897);
-  width: 700px;
+  width: 720px;
   /* max-width: 700px; */
   height: 800px;
 
@@ -14,7 +14,7 @@
 
 .guesses-block {
   background-color: rgb(175, 173, 159);
-  width: 650px;
+  width: 700px;
   height: 500px;
   display: flex;
   flex-wrap: no-wrap;
@@ -31,7 +31,7 @@
 
 .source-block {
   background-color: rgb(175, 173, 159);
-  width: 650px;
+  width: 700px;
   min-height: 35px;
   display: flex;
   flex-wrap: no-wrap;

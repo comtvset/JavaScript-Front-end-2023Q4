@@ -1,9 +1,11 @@
 export default class GameWindow {
   body: HTMLBodyElement | null;
 
-  block: HTMLDivElement;
-
   element: HTMLDivElement;
+
+  buttonsWrap: HTMLDivElement;
+
+  block: HTMLDivElement;
 
   constructor() {
     this.body = document.querySelector('body');
@@ -27,6 +29,10 @@ export default class GameWindow {
       this.block = document.createElement('div');
       this.block.classList.add('source-block');
       this.element.appendChild(this.block);
+
+      this.buttonsWrap = document.createElement('div');
+      this.buttonsWrap.classList.add('buttons-wrap');
+      this.element.appendChild(this.buttonsWrap);
     } else {
       throw new Error('Body element not found!');
     }
@@ -36,5 +42,9 @@ export default class GameWindow {
 
   getLoginWindowElement() {
     return this.element;
+  }
+
+  getButtonsWrap() {
+    return this.buttonsWrap;
   }
 }

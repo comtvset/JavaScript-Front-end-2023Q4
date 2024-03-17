@@ -6,7 +6,7 @@ export default class Button {
   constructor(loginWindowElement: HTMLDivElement) {
     this.loginWindowElement = loginWindowElement;
     this.button = document.createElement('button');
-    this.loginWindowElement = loginWindowElement;
+    // this.loginWindowElement = loginWindowElement;
     this.button.classList.add('button-style');
     loginWindowElement.appendChild(this.button);
   }
@@ -19,13 +19,13 @@ export default class Button {
     this.button.addEventListener('click', onClickHandler);
   }
 
-  changeText(text: string) {
-    this.button.innerText = text;
-  }
+  // changeText(text: string) {
+  //   this.button.innerText = text;
+  // }
 
-  onClick(handler: () => void) {
-    this.button.addEventListener('click', handler);
-  }
+  // onClick(handler: () => void) {
+  //   this.button.addEventListener('click', handler);
+  // }
 
   setAtt() {
     this.button.setAttribute('disabled', 'disabled');
