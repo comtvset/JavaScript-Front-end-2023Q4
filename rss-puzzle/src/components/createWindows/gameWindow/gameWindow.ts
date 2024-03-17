@@ -7,7 +7,11 @@ export default class GameWindow {
 
   block: HTMLDivElement;
 
-  answer: HTMLDivElement;
+  translate: HTMLDivElement;
+
+  infoWrap: HTMLDivElement;
+
+  guessWrap: HTMLDivElement;
 
   constructor() {
     this.body = document.querySelector('body');
@@ -17,9 +21,20 @@ export default class GameWindow {
       this.element.classList.add('main-window');
       this.body.appendChild(this.element);
 
-      this.answer = document.createElement('div');
-      this.answer.classList.add('answer');
-      this.element.appendChild(this.answer);
+      this.infoWrap = document.createElement('div');
+      this.infoWrap.classList.add('info-wrap');
+      this.element.appendChild(this.infoWrap);
+
+
+      this.guessWrap = document.createElement('div');
+      this.guessWrap.classList.add('guess-wrap');
+      this.element.appendChild(this.guessWrap);
+
+
+
+      this.translate = document.createElement('div');
+      this.translate.classList.add('translate');
+      this.element.appendChild(this.translate);
 
       this.block = document.createElement('div');
       this.block.classList.add('guesses-block');
@@ -52,5 +67,13 @@ export default class GameWindow {
 
   getButtonsWrap() {
     return this.buttonsWrap;
+  }
+
+  getInfoWrap() {
+    return this.infoWrap;
+  }
+
+  getGuessWrap() {
+    return this.guessWrap;
   }
 }

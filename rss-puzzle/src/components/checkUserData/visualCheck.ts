@@ -5,7 +5,6 @@ export function visualCheck(savedThisWords: Words, currentGuess: number) {
   const textExample = savedThisWords.textExample;
   const sentetnceArr: string[] = [];
 
-
   if (guess) {
     const bricks = guess.querySelectorAll('.brick');
     bricks.forEach((item) => {
@@ -19,14 +18,9 @@ export function visualCheck(savedThisWords: Words, currentGuess: number) {
   // console.log(textExample);
 
   if (resultSentence === textExample) {
-    if (guess instanceof HTMLElement) {
-      const firstChild = guess.parentNode?.childNodes[currentGuess - 1];
-      if (firstChild instanceof HTMLElement) {
-        firstChild.classList.add('correct');
-        setTimeout(() => {
-          firstChild.classList.remove('correct');
-        }, 1500);
-      }
+    const fieldTranslate = document.querySelector('.translate');
+    if (fieldTranslate) {
+      fieldTranslate.classList.remove('hide');
     }
   } else {
     guess?.classList.add('wrong');

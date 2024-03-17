@@ -2,7 +2,7 @@ import nextWord from '../checkUserData/nextWord';
 import { buffer } from './buffer';
 // import helpMe from './helpMe';
 import Words from './interfaceWords';
-// import showAnswer from './showAnswer';
+// import showTranslate from './showTranslate';
 import { visualCheck } from './visualCheck';
 
 let currentGuess = 1;
@@ -54,7 +54,7 @@ export default function checkSentence(thisWords: Words) {
     });
   }
 
-  // showAnswer();
+  // showTranslate();
 
 
   const resultSentence = sentetnceArr.join(' ');
