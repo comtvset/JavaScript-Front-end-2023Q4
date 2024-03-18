@@ -31,13 +31,13 @@ function handleClick(event: MouseEvent) {
 }
 
 export default function checkSentence(thisWords: Words) {
-  const { saveRound, saveWords } = buffer();
+  const { saveWords } = buffer();
   if (saveWords) {
     currentGuess = saveWords + 1;
     guessCount = saveWords + 1;
   }
 
-  console.log(`Round: ${saveRound}, Words: ${saveWords}`);
+  // console.log(`Round: ${saveRound}, Words: ${saveWords}`);
 
 
 

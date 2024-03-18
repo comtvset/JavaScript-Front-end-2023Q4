@@ -1,12 +1,11 @@
 import { buffer } from './buffer';
 
 export default function showTranslate() {
-  const { saveData, saveRound, saveWords } = buffer();
-  console.log(saveData, saveRound, saveWords);
+  const { saveData } = buffer();
 
-  const answer = document.querySelector('.translate');
+  const fieldTranslate = document.querySelector('.translate');
   const textExampleTranslate = saveData.textExampleTranslate;
-  if (answer) {
-    answer.innerHTML = textExampleTranslate;
+  if (fieldTranslate) {
+    fieldTranslate.innerHTML = textExampleTranslate;
   }
 }

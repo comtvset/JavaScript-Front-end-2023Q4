@@ -31,6 +31,11 @@
   pointer-events: none;
 }
 
+.guess-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 .guesses-block {
   background-color: rgb(175, 173, 159);
   width: 700px;
@@ -100,4 +105,13 @@
   50%, 75% {
     border-color: transparent;
   }
+}
+
+.audio {
+  margin: 0 auto;
+}
+
+.sound-img {
+  width: 30px;
+  cursor: pointer;
 }

@@ -21,8 +21,8 @@ export default class Checkbox {
     this.checkbox.id = id;
   }
 
-  setHide() {
-    const test = document.querySelector('.translate');
+  setHide(currentClass: string) {
+    const test = document.querySelector(`.${currentClass}`);
     if (test && true) {
       test.classList.add('hide');
     }

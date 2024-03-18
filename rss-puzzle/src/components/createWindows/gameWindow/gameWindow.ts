@@ -13,6 +13,8 @@ export default class GameWindow {
 
   guessWrap: HTMLDivElement;
 
+  audio: HTMLDivElement;
+
   constructor() {
     this.body = document.querySelector('body');
 
@@ -30,6 +32,9 @@ export default class GameWindow {
       this.guessWrap.classList.add('guess-wrap');
       this.element.appendChild(this.guessWrap);
 
+      this.audio = document.createElement('div');
+      this.audio.classList.add('audio');
+      this.element.appendChild(this.audio);
 
 
       this.translate = document.createElement('div');
