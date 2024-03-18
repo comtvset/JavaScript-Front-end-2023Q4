@@ -22,6 +22,10 @@ export function visualCheck(savedThisWords: Words, currentGuess: number) {
     if (fieldTranslate) {
       fieldTranslate.classList.remove('hide');
     }
+    const fieldAudio = document.querySelector('.audio');
+    if (fieldAudio) {
+      fieldAudio.classList.remove('hide');
+    }
   } else {
     guess?.classList.add('wrong');
     setTimeout(() => {

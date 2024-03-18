@@ -17,8 +17,10 @@ export default function createMainWindow() {
   checkShowTranslate.setID('show-translate');
   checkShowTranslate.setHide('translate');
   checkShowTranslate.onChange(() => {
+
     const state = checkShowTranslate.getState();
     const fieldTranslate = document.querySelector('.translate');
+
     if (fieldTranslate && state) {
       fieldTranslate.classList.remove('hide');
     } else {

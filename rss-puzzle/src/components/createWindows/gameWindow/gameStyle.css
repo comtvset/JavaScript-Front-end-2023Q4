@@ -118,3 +118,8 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.sound-img:hover {
+  filter: invert(40%);
+  transition: 0.3s;
+}
