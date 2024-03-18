@@ -1,0 +1,103 @@
+.main-window {
+  background-color: rgba(214, 214, 214, 0.897);
+  width: 720px;
+  /* max-width: 700px; */
+  height: 800px;
+
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.translate {
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 18px;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.guesses-block {
+  background-color: rgb(175, 173, 159);
+  width: 700px;
+  height: 500px;
+  display: flex;
+  flex-wrap: no-wrap;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.guess {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid transparent;
+}
+
+.source-block {
+  background-color: rgb(175, 173, 159);
+  width: 700px;
+  min-height: 35px;
+  display: flex;
+  flex-wrap: no-wrap;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.brick {
+  background-color: rgb(204, 204, 204);
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 0px 7px 0px;
+  cursor: default;
+  user-select: none;
+  font-size: 14px;
+}
+
+.wrong {
+  border: 2px solid red;
+  animation: flash-border-red 2s normal;
+}
+
+.correct {
+  border: 2px solid green;
+  animation: flash-border-green 2s normal;
+}
+
+@keyframes flash-border-red {
+  0%, 50%, 100% {
+    border-color: red;
+  }
+
+  50%, 75% {
+    border-color: transparent;
+  }
+}
+
+@keyframes flash-border-green {
+  0%, 50%, 100% {
+    border-color: green;
+  }
+
+  50%, 75% {
+    border-color: transparent;
+  }
+}
