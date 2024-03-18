@@ -15,8 +15,17 @@ export default function playAudio() {
     // console.log(audioExample);
 
     sound.addEventListener('click', () => {
+      sound.classList.add('disabled');
+      sound.style.backgroundColor = 'grey';
       const audioPlayer = new Audio(`https://raw.githubusercontent.com/rolling-scopes-school/rss-puzzle-data/main/${audioExample}`);
       audioPlayer.play();
+      audioPlayer.addEventListener('ended', () => {
+        sound.classList.remove('disabled');
+        sound.style.backgroundColor = '';
+      });
     });
+
+
+
   }
 }
