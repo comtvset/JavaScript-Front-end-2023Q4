@@ -41,7 +41,7 @@
     "*.ts": "eslint --cache \"src/**.ts\""
   },
   "validate-branch-name": {
-    "pattern": "^(feat|fix|refactor|release|chore)/RSS-AR.+",
+    "pattern": "^(feat|fix|refactor|release|chore|init)/RSS-AR.+",
     "errorMsg": "Invalid branch name"
   }
 }
