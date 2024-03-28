@@ -1,5 +1,4 @@
 export default class Button {
-  // parent: HTMLDivElement;
 
   button: HTMLButtonElement;
 
@@ -14,11 +13,11 @@ export default class Button {
     this.button.addEventListener('click', onClickHandler);
   }
 
-  setAtt() {
+  setDisabled() {
     this.button.setAttribute('disabled', 'disabled');
   }
 
-  removeAtt() {
+  removeDisabled() {
     this.button.removeAttribute('disabled');
   }
 

@@ -1,6 +1,11 @@
-import fetchGarage from '../services/apiService';
+import addCar from './blocks/addCarGarage';
+import showInfo from './blocks/infoGarage';
+import pagination from './blocks/pagination';
+import showSettings from './blocks/settingsGarage';
 
 export default function openGarage() {
-  fetchGarage();
-  console.log('fffff');
+  showSettings();
+  showInfo();
+  addCar();
+  pagination();
 }
