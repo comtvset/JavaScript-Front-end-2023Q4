@@ -1,5 +1,5 @@
-import fetchData from '../services/apiService';
+// import fetchData from '../services/apiService';
 
 export default function openWinners() {
-  fetchData('winners');
+  // fetchData('winners');
 }

@@ -39,18 +39,3 @@ toWinner.addButton('to Winner', () => {
 
 openGarage();
 toGarage.setDisabled();
-
-// const pageSelectWrap2 = document.createElement('div');
-// pageSelectWrap2.classList.add('page-select-wrap2');
-// body?.appendChild(pageSelectWrap2);
-
-// const prev = new Button(pageSelectWrap2);
-// const next = new Button(pageSelectWrap2);
-
-// prev.addButton('prev', () => {
-//   console.log('prev');
-// });
-
-// next.addButton('next', () => {
-//   console.log('next');
-// });

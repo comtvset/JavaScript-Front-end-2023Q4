@@ -3,7 +3,6 @@ export default class Form {
 
   constructor(parent: HTMLDivElement) {
     this.form = document.createElement('form');
-    // this.form.classList.add('form-style');
     parent.appendChild(this.form);
   }
 
@@ -26,18 +25,9 @@ export default class Form {
   addButton(buttonText: string, onClickHandler: () => void) {
     const button = document.createElement('input');
     this.form.appendChild(button);
-    button.setAttribute('type', 'button');
+    button.setAttribute('type', 'submit');
     button.setAttribute('value', buttonText);
     button.addEventListener('click', onClickHandler);
+    this.form.setAttribute('id', buttonText.toLocaleLowerCase());
   }
 }
-
-// <form id="create***">
-//     <label for="createTextInput***"></label>
-//     <input type="text" id="createTextInput***" name="createTextInput***" class="textInput">
-
-//     <label for="createColorInput***"></label>
-//     <input type="color" id="createColorInput***" name="createColorInput***" class="colorInput" value="#ffffff">
-
-//     <input type="button" class="buttonInput" value="Create***" onclick="action()***">
-//</form>

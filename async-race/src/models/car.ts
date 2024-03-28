@@ -47,12 +47,8 @@ export default class Car {
     const carImg = document.createElement('div');
     const svgContent = carModel(id);
     carImg.innerHTML = svgContent;
-    // carImg.alt = 'car';
-    // carImg.id = id;
     carImg.classList.add('car-img');
     car.appendChild(carImg);
-
-
 
     controlsWrapInner.appendChild(accelerator);
     controlsWrapInner.appendChild(car);

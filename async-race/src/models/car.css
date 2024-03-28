@@ -1,14 +1,14 @@
 .car-img {
-  width: 150px;
+  width: 130px;
   height: auto;
 }
 
 #car2 {
-  fill: #ffffff9c;
+  fill: #60ec0f9c;
 }
 
 .flag-img {
-  width: 60px;
+  width: 40px;
   filter: invert(100%);
 }
 
@@ -20,9 +20,9 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  background-color: rgb(78, 90, 86);
   justify-content: space-between;
-  height: 100px;
+  height: 85px;
+  margin: 5px;
 }
 
 .car {
@@ -50,6 +50,7 @@
 .content-wrap__car-name {
   font-size: 22px;
   color: white;
+  margin: 10px;
 }
 
 .road {
