@@ -1,4 +1,4 @@
-import addCar from './blocks/addCarGarage';
+import addCar from './blocks/controlGarage';
 import showInfo from './blocks/infoGarage';
 import pagination from './blocks/pagination';
 import showSettings from './blocks/settingsGarage';

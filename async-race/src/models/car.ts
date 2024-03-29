@@ -20,8 +20,10 @@ export default class Car {
     const controlsButton = document.createElement('div');
     controlsButton.classList.add('controls__button');
     const selectButton = document.createElement('button');
+    selectButton.classList.add('select');
     selectButton.textContent = 'select';
     const removeButton = document.createElement('button');
+    removeButton.classList.add('remove');
     removeButton.textContent = 'remove';
     const carNameSpan = document.createElement('span');
     carNameSpan.classList.add('content-wrap__car-name');

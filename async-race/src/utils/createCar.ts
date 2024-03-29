@@ -1,6 +1,7 @@
 import Car from '../models/car';
 import fetchData from '../services/apiService';
 import getNumberOfCars from './getNumberOfCars';
+import removeCar from './removeCar';
 
 export default async function createCar() {
   try {
@@ -52,10 +53,10 @@ export default async function createCar() {
 
           if (carWrap && carWrap instanceof HTMLDivElement) {
             const car = new Car(carWrap);
-            car.createContent(newCar.name, newCar.color, numberOfCars + 1);
+            car.createContent(newCar.name, newCar.color, numberOfCars);
             getNumberOfCars(garageInfo as HTMLHeadingElement);
             if (garageInfo) {
-              garageInfo.innerHTML = `Garage (${numberOfCars + 1})`;
+              garageInfo.innerHTML = `Garage (${numberOfCars})`;
             }
           }
         } catch (error) {
@@ -64,6 +65,7 @@ export default async function createCar() {
       }
 
       saveCarToGarage(newCar);
+      removeCar();
     });
   } catch (error) {
     console.error('show error: ', error);

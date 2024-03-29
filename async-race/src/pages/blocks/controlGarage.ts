@@ -1,5 +1,6 @@
 import createCar from '../../utils/createCar';
 import getCars from '../../utils/getCars';
+import removeCar from '../../utils/removeCar';
 
 export default function addCar() {
   const body = document.querySelector('body');
@@ -9,4 +10,5 @@ export default function addCar() {
 
   getCars(carWrap);
   createCar();
+  removeCar();
 }
