@@ -3,14 +3,16 @@ import carModel from './carModel';
 export default class Car {
   contentWrap: HTMLDivElement;
 
+  road: HTMLDivElement;
+
   constructor(parent: HTMLDivElement) {
     this.contentWrap = document.createElement('div');
     this.contentWrap.classList.add('content-wrap');
     parent.appendChild(this.contentWrap);
 
-    const road = document.createElement('div');
-    road.classList.add('dashed-line');
-    parent.appendChild(road);
+    this.road = document.createElement('div');
+    this.road.classList.add('dashed-line');
+    parent.appendChild(this.road);
   }
 
   createContent(carName: string, color: string, id: string): HTMLDivElement {
@@ -74,5 +76,13 @@ export default class Car {
     }
 
     return this.contentWrap;
+  }
+
+  remove() {
+    while (this.contentWrap.firstChild) {
+      this.contentWrap.removeChild(this.contentWrap.firstChild);
+    }
+    this.contentWrap.remove();
+    this.road.remove();
   }
 }

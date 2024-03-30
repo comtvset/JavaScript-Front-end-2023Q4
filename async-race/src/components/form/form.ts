@@ -16,6 +16,7 @@ export default class Form {
     input.setAttribute('type', type);
     input.setAttribute('id', id);
     input.setAttribute('name', id);
+    input.setAttribute('required', '');
     if (value) {
       input.setAttribute('value', value);
     }

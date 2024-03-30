@@ -3,18 +3,40 @@ import fetchData from '../services/apiService';
 import getNumberOfCars from './getNumberOfCars';
 import removeCar from './removeCar';
 
+interface ICar {
+  name: string;
+  color: string;
+  id: number;
+}
+
 export default async function createCar() {
   try {
     const garageData = await fetchData('garage', 'GET');
-    let numberOfCars = garageData.length;
+    const numberOfCars = garageData.length;
     const form = document.getElementById('create');
 
-    let newCar = {
+    let newCar: ICar = {
       name: 'test',
       color: 'test',
-      id: 100,
+      id: 404,
     };
 
+    const arrayID: number[] = [];
+
+    for (const key of garageData) {
+      arrayID.push(key.id);
+    }
+
+    const createID = function () {
+      let newID = 1;
+      for (let i = 0; i < arrayID.length; i++) {
+        if (arrayID.includes(newID)) {
+          newID += 1;
+        }
+      }
+      arrayID.push(newID);
+      return newID;
+    };
 
     form?.addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -36,15 +58,18 @@ export default async function createCar() {
         }
 
         if (getText !== null && getColor !== null) {
+
           newCar = {
             name: getText,
             color: getColor,
-            id: (numberOfCars += 1),
+            id: 404,
           };
         }
       }
 
-      async function saveCarToGarage(thisCar: object) {
+      async function saveCarToGarage(thisCar: ICar, carID: number) {
+        thisCar.id = carID;
+
         try {
           await fetchData('garage', 'POST', thisCar);
 
@@ -53,10 +78,17 @@ export default async function createCar() {
 
           if (carWrap && carWrap instanceof HTMLDivElement) {
             const car = new Car(carWrap);
-            car.createContent(newCar.name, newCar.color, numberOfCars);
+            car.createContent(newCar.name, newCar.color, String(carID));
+            const removeButtons = document.querySelectorAll('.remove');
+            const curButton = removeButtons[removeButtons.length - 1];
+            curButton.addEventListener('click', () => {
+              car.remove();
+              removeCar(carID);
+            });
+
             getNumberOfCars(garageInfo as HTMLHeadingElement);
             if (garageInfo) {
-              garageInfo.innerHTML = `Garage (${numberOfCars})`;
+              garageInfo.innerHTML = `Garage (${numberOfCars + 1})`;
             }
           }
         } catch (error) {
@@ -64,8 +96,8 @@ export default async function createCar() {
         }
       }
 
-      saveCarToGarage(newCar);
-      removeCar();
+      const newID = createID();
+      saveCarToGarage(newCar, newID);
     });
   } catch (error) {
     console.error('show error: ', error);
