@@ -21,13 +21,13 @@ export default function showSettings() {
   settingsWrap?.appendChild(buttonsWrap);
 
   const create = new Form(createWrap);
-  create.createInput('text', 'createTextInput', 'textInput');
-  create.createInput('color', 'createColorInput', 'colorInput', '#ffffff');
+  create.createInput('text', 'create-text-input', 'text-input');
+  create.createInput('color', 'create-color-input', 'color-input', '#ffffff');
   create.addButton('Create', () => {});
 
   const update = new Form(updateWrap);
-  update.createInput('text', 'createTextInput', 'textInput');
-  update.createInput('color', 'createColorInput', 'colorInput', '#ffffff');
+  update.createInput('text', 'update-text-input', 'text-input');
+  update.createInput('color', 'update-color-input', 'color-input', '#ffffff');
   update.addButton('Update', () => {});
 
   const race = new Button(buttonsWrap);

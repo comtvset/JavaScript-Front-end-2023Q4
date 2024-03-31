@@ -18,17 +18,20 @@ export default class Car {
   createContent(carName: string, color: string, id: string): HTMLDivElement {
     const controlsWrap = document.createElement('div');
     controlsWrap.classList.add('content-wrap__controls');
+    controlsWrap.setAttribute('id', `wrap${id}`);
 
     const controlsButton = document.createElement('div');
     controlsButton.classList.add('controls__button');
     const selectButton = document.createElement('button');
     selectButton.classList.add('select');
+    selectButton.setAttribute('id', `select${id}`);
     selectButton.textContent = 'select';
     const removeButton = document.createElement('button');
     removeButton.classList.add('remove');
     removeButton.textContent = 'remove';
     const carNameSpan = document.createElement('span');
     carNameSpan.classList.add('content-wrap__car-name');
+    carNameSpan.setAttribute('id', `name${id}`);
     carNameSpan.textContent = carName;
     controlsButton.appendChild(selectButton);
     controlsButton.appendChild(removeButton);
