@@ -5,12 +5,20 @@
   height: 100px;
 }
 
-h1 {
+.garage-title {
   color: white;
+  font-size: 35px;
+  display: flex;
 }
 
-h2 {
+.garage-number {
+  padding-left: 15px;
+}
+
+.page-title {
   color: white;
+  font-size: 25px;
+  display: flex;
 }
 
 button {
@@ -26,4 +34,8 @@ button {
 #update {
   display: flex;
   margin: 5px;
+}
+
+.hideCar {
+  display: none !important;
 }

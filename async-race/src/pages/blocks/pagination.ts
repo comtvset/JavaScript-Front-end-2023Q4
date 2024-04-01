@@ -1,4 +1,5 @@
 import Button from '../../components/button/button';
+import checkPagination from '../../utils/checkPagination';
 
 export default function pagination() {
   const body = document.querySelector('body');
@@ -6,14 +7,10 @@ export default function pagination() {
   pageSelectWrap2.classList.add('pagination');
   body?.appendChild(pageSelectWrap2);
 
-  const prev = new Button(pageSelectWrap2);
-  const next = new Button(pageSelectWrap2);
+  const prevButton = new Button(pageSelectWrap2);
+  const nextButton = new Button(pageSelectWrap2);
+  prevButton.setDisabled();
 
-  prev.addButton('prev', () => {
-    console.log('prev');
-  });
+  checkPagination(nextButton, prevButton);
 
-  next.addButton('next', () => {
-    console.log('next');
-  });
 }

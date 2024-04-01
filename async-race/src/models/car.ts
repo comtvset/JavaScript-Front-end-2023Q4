@@ -88,4 +88,14 @@ export default class Car {
     this.contentWrap.remove();
     this.road.remove();
   }
+
+  addHide() {
+    this.contentWrap.classList.add('hideCar');
+    this.road.classList.add('hideCar');
+  }
+
+  removeHide() {
+    this.contentWrap.classList.remove('hideCar');
+    this.road.classList.remove('hideCar');
+  }
 }

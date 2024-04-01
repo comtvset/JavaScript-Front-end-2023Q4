@@ -1,10 +1,10 @@
 import fetchData from '../services/apiService';
 
-export default async function getNumberOfCars(garageInfo?: HTMLHeadingElement) {
+export default async function getNumberOfCars(garageNumber?: HTMLSpanElement) {
   try {
     const garageData = await fetchData('garage', 'GET');
-    if (garageInfo) {
-      garageInfo.innerHTML = `Garage (${garageData.length})`;
+    if (garageNumber) {
+      garageNumber.innerHTML = `${garageData.length}`;
     }
   } catch (error) {
     console.error('show error: ', error);

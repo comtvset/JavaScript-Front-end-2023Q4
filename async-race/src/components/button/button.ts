@@ -11,6 +11,7 @@ export default class Button {
   addButton(buttonText: string, onClickHandler: () => void) {
     this.button.innerHTML = buttonText;
     this.button.addEventListener('click', onClickHandler);
+    this.button.setAttribute('id', `${buttonText}`);
   }
 
   setDisabled() {

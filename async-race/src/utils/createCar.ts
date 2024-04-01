@@ -1,10 +1,12 @@
 import Car from '../models/car';
 import fetchData from '../services/apiService';
 import updateObjToBuffer, { getCarFormBuffer } from './buffer';
-// import updateObjToBuffer, { getCarFormBuffer } from './buffer';
+import checkNumberOfCars from './checkNumberOfCars';
+import checkPagination from './checkPagination';
 import getNumberOfCars from './getNumberOfCars';
 import removeCar from './removeCar';
 import rgbToHex from './rgbToHex';
+// import testRRR from './test404';
 import updateCar from './updateCar';
 
 interface ICar {
@@ -45,7 +47,7 @@ export default async function createCar() {
 
     formCreate?.addEventListener('submit', async function (event) {
       event.preventDefault();
-
+      checkPagination();
       if (formCreate instanceof HTMLFormElement) {
         const formData = new FormData(formCreate);
         const getTextEntry = formData.get('create-text-input');
@@ -78,16 +80,24 @@ export default async function createCar() {
           await fetchData('garage', 'POST', thisCar);
 
           const carWrap = document.querySelector('.car-wrap');
-          const garageInfo = document.querySelector('h1');
+          const garageNumber = document.querySelector('.garage-number');
 
           if (carWrap && carWrap instanceof HTMLDivElement) {
             const car = new Car(carWrap);
+
             car.createContent(newCar.name, newCar.color, String(carID));
+
+
+            checkNumberOfCars(car, true);
+            checkPagination();
             const removeButtons = document.querySelectorAll('.remove');
             const curRemoveButton = removeButtons[removeButtons.length - 1];
             curRemoveButton.addEventListener('click', () => {
               car.remove();
               removeCar(carID);
+              // testRRR();
+              checkNumberOfCars(car, false);
+              checkPagination();
             });
 
             const selectButtons = document.querySelectorAll('.select');
@@ -127,9 +137,9 @@ export default async function createCar() {
               updateObjToBuffer(newCar.name, newCar.color, carID);
             });
 
-            getNumberOfCars(garageInfo as HTMLHeadingElement);
-            if (garageInfo) {
-              garageInfo.innerHTML = `Garage (${numberOfCars + 1})`;
+            getNumberOfCars(garageNumber as HTMLSpanElement);
+            if (garageNumber) {
+              garageNumber.innerHTML = `${numberOfCars + 1}`;
             }
           }
         } catch (error) {

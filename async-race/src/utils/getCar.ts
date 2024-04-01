@@ -1,8 +1,11 @@
 import Car from '../models/car';
 import fetchData from '../services/apiService';
 import updateObjToBuffer from './buffer';
+import checkNumberOfCars from './checkNumberOfCars';
+import checkPagination from './checkPagination';
 import removeCar from './removeCar';
 import rgbToHex from './rgbToHex';
+// import testRRR from './test404';
 
 export default async function getCar(carWrap?: HTMLHeadingElement) {
   try {
@@ -10,12 +13,20 @@ export default async function getCar(carWrap?: HTMLHeadingElement) {
     if (carWrap) {
       for (const key of garageData) {
         const car = new Car(carWrap);
+
         car.createContent(key.name, key.color, key.id);
+
+        checkNumberOfCars(car, true);
+        checkPagination();
+
         const removeButtons = document.querySelectorAll('.remove');
         const curRemoveButton = removeButtons[removeButtons.length - 1];
         curRemoveButton.addEventListener('click', () => {
           car.remove();
           removeCar(key.id);
+          // testRRR();
+          checkNumberOfCars(car, false);
+          checkPagination();
         });
 
         const selectButtons = document.querySelectorAll('.select');

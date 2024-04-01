@@ -6,13 +6,23 @@ export default function showInfo() {
   garageWrap.classList.add('garage-wrap');
   body?.appendChild(garageWrap);
 
-  const garageInfo = document.createElement('h1');
-  garageWrap.appendChild(garageInfo);
-  garageInfo.innerHTML = 'Garage (loading...)';
+  const garageTitle = document.createElement('span');
+  garageWrap.appendChild(garageTitle);
+  garageTitle.classList.add('garage-title');
+  garageTitle.innerHTML = 'Garage';
+  const garageNumber = document.createElement('span');
+  garageTitle.appendChild(garageNumber);
+  garageNumber.classList.add('garage-number');
+  garageNumber.innerHTML = '(loading...)';
 
-  getNumberOfCars(garageInfo);
+  getNumberOfCars(garageNumber);
 
-  const page = document.createElement('h2');
-  garageWrap.appendChild(page);
-  page.innerHTML = 'Page #1';
+  const pageTitle = document.createElement('span');
+  garageWrap.appendChild(pageTitle);
+  pageTitle.classList.add('page-title');
+  pageTitle.innerHTML = 'Page #';
+  const pageNumber = document.createElement('span');
+  pageTitle.appendChild(pageNumber);
+  pageNumber.classList.add('page-number');
+  pageNumber.innerHTML = '1';
 }
