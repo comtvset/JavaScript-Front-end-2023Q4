@@ -1,0 +1,41 @@
+.settings-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 100px;
+}
+
+.garage-title {
+  color: white;
+  font-size: 35px;
+  display: flex;
+}
+
+.garage-number {
+  padding-left: 15px;
+}
+
+.page-title {
+  color: white;
+  font-size: 25px;
+  display: flex;
+}
+
+button {
+  margin: 3px;
+  padding: 0px 5px 0px 5px;
+}
+
+#create {
+  display: flex;
+  margin: 5px;
+}
+
+#update {
+  display: flex;
+  margin: 5px;
+}
+
+.hideCar {
+  display: none !important;
+}
