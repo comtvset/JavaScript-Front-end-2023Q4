@@ -1,0 +1,47 @@
+{
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^6.10.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-typescript": "^0.14.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "file-loader": "^6.2.0",
+    "html-entities": "^2.5.2",
+    "html-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.2",
+    "validate-branch-name": "^1.3.0",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
+  },
+  "scripts": {
+    "prepare": "cd .. && husky async-race/.husky",
+    "lint:staged": "lint-staged",
+    "validate-branch-name": "validate-branch-name",
+    "dev": "webpack-dev-server --open",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "ci:format": "prettier --check \"src/**/*.ts\""
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache \"src/**.ts\""
+  },
+  "validate-branch-name": {
+    "pattern": "^(feat|fix|refactor|release|chore|init)/RSS-AR.+",
+    "errorMsg": "Invalid branch name"
+  }
+}
