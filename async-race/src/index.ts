@@ -39,5 +39,3 @@ toWinner.addButton('to Winner', () => {
 
 openGarage();
 toGarage.setDisabled();
-
-alert('Привет. Если есть возможность проверить в последний день cros-checka буду очень благодарен!');

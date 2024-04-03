@@ -43,8 +43,13 @@ export default class Car {
     const accelerator = document.createElement('div');
     accelerator.classList.add('accelerator');
     const buttonA = document.createElement('button');
+    buttonA.classList.add('btn-start');
+    // buttonA.setAttribute('data-status', 'started');
+    buttonA.setAttribute('id', `start${id}`);
     buttonA.textContent = 'A';
     const buttonB = document.createElement('button');
+    buttonB.classList.add('btn-reset');
+    buttonB.setAttribute('id', `reset${id}`);
     buttonB.textContent = 'B';
     accelerator.appendChild(buttonA);
     accelerator.appendChild(buttonB);
@@ -54,7 +59,7 @@ export default class Car {
     const carImg = document.createElement('div');
     const svgContent = carModel(id);
     carImg.innerHTML = svgContent;
-    carImg.classList.add('car-img');
+    carImg.classList.add('car-IMG');
     car.appendChild(carImg);
 
     controlsWrapInner.appendChild(accelerator);

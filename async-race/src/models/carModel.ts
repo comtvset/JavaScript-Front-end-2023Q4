@@ -2,7 +2,7 @@ export default function carModel(id:string) {
   const svgContent = `
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
- preserveAspectRatio="xMidYMid meet" class="car-img">
+ preserveAspectRatio="xMidYMid meet" class="car-img car-my-style">
 <metadata>
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
