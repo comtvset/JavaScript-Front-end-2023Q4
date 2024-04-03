@@ -24,6 +24,9 @@ export default async function fetchData(
     const responseData = await response.json();
     return responseData;
   } catch (error) {
-    console.error('show error:', error);
+    if (error === 500) {
+      console.error('Car has been stopped suddenly. It iss engine was broken down.');
+    }
+    throw error;
   }
 }

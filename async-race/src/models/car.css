@@ -35,7 +35,8 @@
 .content-wrap__flag {
   display: flex;
   align-items: flex-end;
-  padding-right: 100px;
+  padding-right: 14%;
+
 }
 
 .controls__wrap {

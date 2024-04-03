@@ -6,6 +6,7 @@ import checkPagination from './checkPagination';
 import getNumberOfCars from './getNumberOfCars';
 import removeCar from './removeCar';
 import rgbToHex from './rgbToHex';
+import readyRace from './startRace';
 // import testRRR from './test404';
 import updateCar from './updateCar';
 
@@ -90,6 +91,8 @@ export default async function createCar() {
 
             checkNumberOfCars(car, true);
             checkPagination();
+            readyRace(carID);
+
             const removeButtons = document.querySelectorAll('.remove');
             const curRemoveButton = removeButtons[removeButtons.length - 1];
             curRemoveButton.addEventListener('click', () => {
