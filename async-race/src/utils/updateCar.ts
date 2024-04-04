@@ -10,11 +10,8 @@ export default async function updateCar(
       name: newName,
       color: newColor,
     };
-    // console.log(requestData);
     await fetchData(`garage/${carID}`, 'PUT', requestData);
   } catch (error) {
     console.error('put error: ', error);
   }
 }
-
-// export function

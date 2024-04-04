@@ -1,7 +1,4 @@
 const BASE_URL = 'http://127.0.0.1:3000/';
-// const GARAGE = 'garage';
-// const WINNERS = 'winners';
-// const response = await fetch(BASE_URL + GARAGE);
 
 export default async function fetchData(
   target: string,

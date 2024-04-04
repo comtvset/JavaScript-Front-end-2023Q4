@@ -6,7 +6,6 @@ import checkPagination from './checkPagination';
 import removeCar from './removeCar';
 import rgbToHex from './rgbToHex';
 import readyRace from './startRace';
-// import testRRR from './test404';
 
 export default async function getCar(carWrap?: HTMLHeadingElement) {
   try {
@@ -26,7 +25,6 @@ export default async function getCar(carWrap?: HTMLHeadingElement) {
         curRemoveButton.addEventListener('click', () => {
           car.remove();
           removeCar(key.id);
-          // testRRR();
           checkNumberOfCars(car, false);
           checkPagination();
         });
@@ -35,6 +33,9 @@ export default async function getCar(carWrap?: HTMLHeadingElement) {
         const curSelectButton = selectButtons[selectButtons.length - 1];
 
         curSelectButton.addEventListener('click', () => {
+          const update = document.querySelector('.update-wrap');
+          update?.classList.remove('disabled');
+
           const createTextInput = document.getElementById('update-text-input');
           const contentWrapWarName = document.getElementById(`name${key.id}`);
           const curCarName: string | undefined = contentWrapWarName?.innerHTML;

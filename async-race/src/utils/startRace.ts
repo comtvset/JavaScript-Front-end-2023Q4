@@ -1,4 +1,5 @@
 import fetchData from '../services/apiService';
+import selectAllCars from './selectAllCars';
 
 interface CarInfo {
   animationFrameId: number | null;
@@ -6,6 +7,40 @@ interface CarInfo {
 }
 
 const cars: { [key: number]: CarInfo } = {};
+
+let statusAllCars: (void | object | undefined)[] = [];
+const winner: number[] = [];
+
+async function checkFinish(status?: void | object) {
+  const btnReset = document.querySelectorAll('.btn-reset');
+  const reset = document.getElementById('reset');
+  const allCars = document.querySelector('.garage-number');
+  const hideCars = document.querySelectorAll('.hideCar');
+
+  const numberOfAllCars = Number(allCars?.innerHTML);
+  const numberOfHideCars = Array.from(hideCars).reduce((acc) => acc + 1, 0);
+
+  let countCurOnPage: number;
+
+  if (numberOfHideCars) {
+    countCurOnPage = numberOfAllCars - numberOfHideCars / 2;
+  } else {
+    countCurOnPage = numberOfAllCars;
+  }
+
+  statusAllCars.push(status);
+
+  btnReset.forEach((item: Element) => {
+    reset?.setAttribute('disabled', 'disabled');
+    if (item instanceof HTMLButtonElement) {
+      if (reset && statusAllCars.length >= countCurOnPage) {
+        reset?.removeAttribute('disabled');
+      } else {
+        reset?.setAttribute('disabled', 'disabled');
+      }
+    }
+  });
+}
 
 async function animate(
   velocityDistance: { velocity: number; distance: number },
@@ -25,6 +60,7 @@ async function animate(
     if (car) {
       if (screenWidth - 250 >= cars[id].positionX) {
         car.style.transform = `translateX(${cars[id].positionX}px)`;
+
         cars[id].animationFrameId = requestAnimationFrame(() =>
           animate({ velocity, distance }, id),
         );
@@ -39,23 +75,28 @@ async function animate(
   }
 }
 
-export default async function readyRace(id: number) {
+export default async function readyRace(id: number, letsgo = false) {
   const startButton = document.getElementById(`start${id}`);
   const resetButton = document.getElementById(`reset${id}`);
-  const reset = document.getElementById('Reset');
-  const allCars = document.querySelectorAll('.car-my-style');
-  if (reset) {
-    reset.addEventListener('click', async () => {
-      allCars.forEach((item) => {
-        if (item instanceof SVGElement) {
-          item.style.transform = 'translateX(0px)';
-          if (startButton) {
-            startButton.removeAttribute('disabled');
-          }
-        }
-      });
+  const race = document.getElementById('race');
+  const reset = document.getElementById('reset');
+
+  if (race && reset) {
+    race.addEventListener('click', async () => {
+      race.setAttribute('disabled', 'disabled');
+      reset.setAttribute('disabled', 'disabled');
     });
   }
+
+  if (reset) {
+    reset.addEventListener('click', async () => {
+      if (startButton && race) {
+        selectAllCars(startButton);
+        race.removeAttribute('disabled');
+      }
+    });
+  }
+
   if (resetButton && startButton) {
     resetButton.addEventListener('click', async () => {
       const carID = document.getElementById(`car${id}`);
@@ -66,104 +107,54 @@ export default async function readyRace(id: number) {
       }
     });
   }
+
+  async function runCar(currentStartButton: HTMLElement) {
+    console.clear();
+    statusAllCars = [];
+    currentStartButton.setAttribute('disabled', 'disabled');
+    resetButton?.setAttribute('disabled', 'disabled');
+    const clickedId = id;
+    if (!isNaN(clickedId)) {
+      cars[clickedId] = {
+        animationFrameId: null,
+        positionX: 0,
+      };
+
+      try {
+        const velocityDistanceData = await fetchData(
+          `engine?id=${clickedId}&status=started`,
+          'PATCH',
+        );
+        animate(velocityDistanceData, clickedId);
+
+        const drive = await fetchData(
+          `engine?id=${clickedId}&status=drive`,
+          'PATCH',
+        );
+        resetButton?.removeAttribute('disabled');
+        await checkFinish(drive);
+        winner.push(clickedId);
+        console.log(winner[0]);
+
+        animate(velocityDistanceData, clickedId);
+      } catch (error) {
+        animate({ velocity: 0, distance: 500000 }, clickedId);
+        resetButton?.removeAttribute('disabled');
+        checkFinish({ success: false });
+      }
+    }
+  }
+
   if (startButton) {
     startButton.addEventListener('click', async () => {
-      startButton.setAttribute('disabled', 'disabled');
-      const clickedId = id;
-      if (!isNaN(clickedId)) {
-        cars[clickedId] = {
-          animationFrameId: null,
-          positionX: 0,
-        };
-
-        try {
-          const velocityDistanceData = await fetchData(
-            `engine?id=${clickedId}&status=started`,
-            'PATCH',
-          );
-          animate(velocityDistanceData, clickedId);
-
-          await fetchData(`engine?id=${clickedId}&status=drive`, 'PATCH');
-
-          // const drive = await fetchData(
-          //   `engine?id=${clickedId}&status=drive`,
-          //   'PATCH',
-          // );
-          // console.log(drive);
-          animate(velocityDistanceData, clickedId);
-        } catch (error) {
-          // const drive = { success: false };
-          // console.log(drive);
-          animate({ velocity: 0, distance: 500000 }, clickedId);
-        }
+      runCar(startButton);
+      for (let i = 0; i < 7; i++) {
+        checkFinish({ success: false });
       }
     });
   }
+
+  if (letsgo && startButton) {
+    runCar(startButton);
+  }
 }
-
-// import fetchData from '../services/apiService';
-
-// let animationFrameId: number | null;
-// let positionX = 0;
-
-// async function animate(
-//   velocityDistance: { velocity: number; distance: number },
-//   id: number,
-// ) {
-//   const carID = document.getElementById(`car${id}`);
-//   const car = carID?.parentElement;
-
-//   const velocity = velocityDistance.velocity;
-//   const distance = velocityDistance.distance;
-
-//   if (velocity && distance) {
-//     const screenWidth = window.innerWidth;
-
-//     positionX += velocity / 30;
-
-//     if (car) {
-//       if (screenWidth - 250 >= positionX) {
-//         car.style.transform = `translateX(${positionX}px)`;
-//         animationFrameId = requestAnimationFrame(() =>
-//           animate({ velocity, distance }, id),
-//         );
-//       }
-//     }
-//   } else {
-//     if (animationFrameId !== null) {
-//       cancelAnimationFrame(animationFrameId);
-//     }
-//     return;
-//   }
-// }
-
-// export default async function readyRace(id: number) {
-//   try {
-//     const startButton = document.getElementById(`start${id}`);
-//     if (startButton) {
-//       startButton.addEventListener('click', async function () {
-//         positionX = 0;
-//         const velocityDistanceData = await fetchData(
-//           `engine?id=${id}&status=started`,
-//           'PATCH',
-//         );
-//         animate(velocityDistanceData, id);
-//         try {
-//           const drive = await fetchData(
-//             `engine?id=${id}&status=drive`,
-//             'PATCH',
-//           );
-//           console.log(drive);
-//           animate(velocityDistanceData, id);
-//         } catch (error) {
-
-//           const drive = { success: false };
-//           console.log(drive);
-//           animate({ velocity: 0, distance: 500000 }, id);
-//         }
-//       });
-//     }
-//   } catch (error) {
-//     console.error('error :');
-//   }
-// }
