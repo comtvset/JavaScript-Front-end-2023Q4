@@ -7,7 +7,6 @@ import getNumberOfCars from './getNumberOfCars';
 import removeCar from './removeCar';
 import rgbToHex from './rgbToHex';
 import readyRace from './startRace';
-// import testRRR from './test404';
 import updateCar from './updateCar';
 
 interface ICar {
@@ -88,7 +87,6 @@ export default async function createCar() {
 
             car.createContent(newCar.name, newCar.color, String(carID));
 
-
             checkNumberOfCars(car, true);
             checkPagination();
             readyRace(carID);
@@ -98,7 +96,6 @@ export default async function createCar() {
             curRemoveButton.addEventListener('click', () => {
               car.remove();
               removeCar(carID);
-              // testRRR();
               checkNumberOfCars(car, false);
               checkPagination();
             });
@@ -107,6 +104,9 @@ export default async function createCar() {
             const curSelectButton = selectButtons[selectButtons.length - 1];
 
             curSelectButton.addEventListener('click', () => {
+              const update = document.querySelector('.update-wrap');
+              update?.classList.remove('disabled');
+
               const contentWrapWarName = document.getElementById(
                 `name${carID}`,
               );
@@ -156,6 +156,9 @@ export default async function createCar() {
 
     formUpdate?.addEventListener('submit', async function (event) {
       event.preventDefault();
+      const update = document.querySelector('.update-wrap');
+      update?.classList.add('disabled');
+
       const createTextInput = document.getElementById('update-text-input');
       const updateColorInput = document.getElementById('update-color-input');
 

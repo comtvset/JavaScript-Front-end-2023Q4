@@ -1,9 +1,10 @@
 import Button from '../components/button/button';
+import fetchData from '../services/apiService';
+import selectAllCars from './selectAllCars';
 let curIndex = 0;
 let curPage = 1;
 
 export default function checkPagination(next?: Button, prev?: Button) {
-
   function updateDisplay() {
     const contentWrap = document.querySelectorAll('.content-wrap');
     const dashedLine = document.querySelectorAll('.dashed-line');
@@ -36,7 +37,7 @@ export default function checkPagination(next?: Button, prev?: Button) {
   }
 
   if (next) {
-    next.addButton('next', () => {
+    next.addButton('next', async () => {
       const pageNumber = document.querySelector('.page-number');
       if (pageNumber) {
         curPage += 1;
@@ -45,6 +46,22 @@ export default function checkPagination(next?: Button, prev?: Button) {
 
       curIndex += 7;
       updateDisplay();
+
+      interface GarageItem {
+        id: number;
+      }
+
+      const garageData = await fetchData('garage', 'GET');
+      const allID = garageData.map((item: GarageItem) => {
+        return item.id;
+      });
+
+      allID.forEach((id: number) => {
+        const startButton = document.getElementById(`start${id}`);
+        if (startButton) {
+          selectAllCars(startButton, true);
+        }
+      });
     });
   }
 
@@ -62,4 +79,3 @@ export default function checkPagination(next?: Button, prev?: Button) {
 
   updateDisplay();
 }
-

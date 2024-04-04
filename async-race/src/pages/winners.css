@@ -1,0 +1,20 @@
+#table-container {
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border: 2px solid rgb(189, 189, 189);
+  color: rgb(212, 212, 212);
+}
+
+th {
+  padding: 15px;
+}
+td {
+  padding: 15px;
+}
+
+.szie-color {
+  padding: 0;
+}

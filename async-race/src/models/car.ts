@@ -44,7 +44,6 @@ export default class Car {
     accelerator.classList.add('accelerator');
     const buttonA = document.createElement('button');
     buttonA.classList.add('btn-start');
-    // buttonA.setAttribute('data-status', 'started');
     buttonA.setAttribute('id', `start${id}`);
     buttonA.textContent = 'A';
     const buttonB = document.createElement('button');

@@ -1,5 +1,7 @@
 import Button from '../../components/button/button';
 import Form from '../../components/form/form';
+import fetchData from '../../services/apiService';
+import readyRace from '../../utils/startRace';
 
 export default function showSettings() {
   const body = document.querySelector('body');
@@ -14,6 +16,7 @@ export default function showSettings() {
 
   const updateWrap = document.createElement('div');
   updateWrap.classList.add('update-wrap');
+  updateWrap.classList.add('disabled');
   settingsWrap?.appendChild(updateWrap);
 
   const buttonsWrap = document.createElement('div');
@@ -34,15 +37,30 @@ export default function showSettings() {
   const reset = new Button(buttonsWrap);
   const generate = new Button(buttonsWrap);
 
-  race.addButton('Race', () => {
-    console.log('Run race');
+  race.addButton('Race', async () => {
+    interface GarageItem {
+      id: number;
+    }
+    const pageNumber = document.querySelector('.page-number');
+    const curPageNumber = Number(pageNumber?.innerHTML);
+    const garageData = await fetchData('garage', 'GET');
+
+    const pageSize = 7;
+    const startIndex = (curPageNumber - 1) * pageSize;
+    const endIndex = curPageNumber * pageSize;
+
+    const currentPageItems = garageData.slice(startIndex, endIndex);
+
+    const allID = currentPageItems.map((item: GarageItem) => {
+      return item.id;
+    });
+
+    allID.forEach((item: number) => {
+      readyRace(item, true);
+    });
   });
 
-  reset.addButton('Reset', () => {
-    console.log('Click reset');
-  });
+  reset.addButton('Reset', () => {});
 
-  generate.addButton('Generate Cars', () => {
-    console.log('Generate Cars');
-  });
+  generate.addButton('Generate Cars', () => {});
 }

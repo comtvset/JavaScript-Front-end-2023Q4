@@ -1,3 +1,4 @@
+import { generateCars } from '../utils/generateCars';
 import addCar from './blocks/controlGarage';
 import showInfo from './blocks/infoGarage';
 import pagination from './blocks/pagination';
@@ -8,4 +9,10 @@ export default function openGarage() {
   showInfo();
   addCar();
   pagination();
+
+  const generate = document.getElementById('generatecars');
+  generate?.addEventListener('click', async function (event) {
+    event.preventDefault();
+    generateCars(100);
+  });
 }
