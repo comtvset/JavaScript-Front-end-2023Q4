@@ -81,6 +81,8 @@ export default async function readyRace(id: number, letsgo = false) {
   const race = document.getElementById('race');
   const reset = document.getElementById('reset');
 
+  resetButton?.setAttribute('disabled', 'disabled');
+
   if (race && reset) {
     race.addEventListener('click', async () => {
       race.setAttribute('disabled', 'disabled');
@@ -93,6 +95,7 @@ export default async function readyRace(id: number, letsgo = false) {
       if (startButton && race) {
         selectAllCars(startButton);
         race.removeAttribute('disabled');
+        resetButton?.setAttribute('disabled', 'disabled');
       }
     });
   }
@@ -104,6 +107,7 @@ export default async function readyRace(id: number, letsgo = false) {
       if (car) {
         car.style.transform = 'translateX(0px)';
         startButton.removeAttribute('disabled');
+        resetButton?.setAttribute('disabled', 'disabled');
       }
     });
   }
@@ -134,7 +138,6 @@ export default async function readyRace(id: number, letsgo = false) {
         resetButton?.removeAttribute('disabled');
         await checkFinish(drive);
         winner.push(clickedId);
-        console.log(winner[0]);
 
         animate(velocityDistanceData, clickedId);
       } catch (error) {
