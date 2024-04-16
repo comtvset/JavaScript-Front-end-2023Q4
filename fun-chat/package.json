@@ -35,7 +35,8 @@
     "validate-branch-name": "validate-branch-name",
     "dev": "webpack-dev-server --open",
     "format": "prettier --write \"src/**/*.ts\"",
-    "ci:format": "prettier --check \"src/**/*.ts\""
+    "ci:format": "prettier --check \"src/**/*.ts\"",
+    "lint": "eslint --cache \"src/**.ts\""
   },
   "lint-staged": {
     "*.ts": "eslint --cache \"src/**.ts\""
