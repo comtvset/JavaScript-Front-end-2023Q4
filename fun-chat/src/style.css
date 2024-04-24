@@ -19,18 +19,18 @@ button {
   padding: 3px;
   border: 1px solid grey;
   border-radius: 5px;
-  transition: .2s ease-in;
 }
 
-button:hover {
+button:active {
   background-color: rgb(180, 180, 180);
 }
 
 a {
+  color: rgba(245, 236, 157, 0.918);
   text-decoration: none;
-  transition: .2s ease-in;
+  transition: .1s ease-in;
 }
 
 a:hover {
-  color: rgb(180, 180, 180);
+  color: rgb(35, 82, 235);
 }

@@ -1,7 +1,7 @@
 .about-page {
-  width: 300px;
+  width: 400px;
   background-color: rgb(165, 122, 42);
-  color: yellow;
+  color: rgba(245, 236, 157, 0.918);
 
   border: 2px solid rgb(71, 71, 71);
   border-radius: 5px;
