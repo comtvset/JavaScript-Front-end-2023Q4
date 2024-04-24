@@ -2,15 +2,13 @@ import openAboutWindow from '../pages/about/aboutPage';
 import openLoginWindow from '../pages/login/loginPage';
 import openMainWindow from '../pages/main/mainPage';
 
-export default function goTo(str: string) {
+export default function entry(str: string, nickname?: string) {
   const body = document.querySelector('body');
   if (body) {
     while (body.firstChild) {
       body.removeChild(body.firstChild);
     }
   }
-
-
 
   if (str === 'about') {
     openAboutWindow();
@@ -23,7 +21,9 @@ export default function goTo(str: string) {
   }
 
   if (str === 'main') {
-    openMainWindow();
+    if (nickname) {
+      openMainWindow(nickname);
+    }
     // history.pushState({}, '', `${str}`);
   }
 }

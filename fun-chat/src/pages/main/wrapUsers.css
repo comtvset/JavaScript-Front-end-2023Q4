@@ -25,8 +25,45 @@
 }
 
 .wrap-users {
-  background-color: rgba(138, 138, 138, 0.479);
+  /* background-color: rgba(138, 138, 138, 0.479); */
   min-height: 100px;
   max-height: 450px;
   width: 100%;
+  overflow-y: scroll;
+}
+
+.wrap-users::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.wrap-users::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.wrap-user {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.wrap-user:hover {
+  background: rgba(122, 122, 119, 0.404);
+}
+
+.list-status {
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50px;
+}
+
+.hide-bot {
+  display: none;
+}
+
+.wrap-info-user {
+  height: 20px;
 }

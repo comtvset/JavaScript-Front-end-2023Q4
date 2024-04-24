@@ -2,20 +2,21 @@ import MainWindow from './mainWindow';
 import './mainPage.css';
 import './wrapDialog.css';
 import './wrapUsers.css';
-import goTo from '../../components/router';
+import entry from '../../components/router';
+import chooseUser from '../../services/useCurrentUser';
 
-export default function openMainWindow() {
+export default function openMainWindow(nickname: string) {
   const body = document.querySelector('body') as HTMLBodyElement;
   const myMainWindow = new MainWindow(body, 'main-page');
   const mainPage = myMainWindow.getClass();
   const myHeader = new MainWindow(mainPage, 'header');
-  myHeader.addSpan('CurrentUser', 'cur-user', 'user');
+  myHeader.addSpan(nickname, 'cur-user', 'user');
   myHeader.addSpan('FunChat', 'title-header', 'title-header');
   myHeader.addButton('About', 'button-main', 'button-main-about', 'click', () =>
-    goTo('about'),
+    entry('about'),
   );
   myHeader.addButton('Exit', 'button-main', 'button-main-exit', 'click', () =>
-    goTo('login'),
+    entry('login'),
   );
 
   const mainContainer = new MainWindow(mainPage, 'main-container');
@@ -34,8 +35,8 @@ export default function openMainWindow() {
 
   const wrapInfoUser = wrapDialog.getClass();
   const myInfoUser = new MainWindow(wrapInfoUser, 'wrap-info-user');
-  myInfoUser.addSpan('ChatUser', 'chat-user', 'user');
-  myInfoUser.addSpan('Online', 'status-user', 'user');
+  myInfoUser.addSpan('', 'chat-user', 'user');
+  myInfoUser.addSpan('', 'status-user', 'user');
 
   const wrapMessages = wrapDialog.getClass();
   const myWrapMessages = new MainWindow(wrapMessages, 'wrap-messages');
@@ -52,7 +53,7 @@ export default function openMainWindow() {
     'button-main',
     'button-send-message',
     'submit',
-    () => console.log('Submit'),
+    () => {},
     'submit',
   );
 
@@ -60,4 +61,11 @@ export default function openMainWindow() {
   myFooter.addLink('RSSchool', 'https://rs.school/', 'footer-span');
   myFooter.addLink('danArti', 'https://github.com/comtvset', 'footer-span');
   myFooter.addSpan('2024', 'footer-year', 'footer-span');
+
+  const btnSend = document.getElementById('button-send-message');
+  if (btnSend) {
+    btnSend.setAttribute('disabled', 'disabled');
+  }
+
+  chooseUser();
 }

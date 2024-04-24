@@ -76,6 +76,7 @@ export default class Page {
     a.innerHTML = linkText;
     a.classList.add(linkClass);
     a.setAttribute('href', link);
+    a.setAttribute('target', 'blank');
     this.element.appendChild(a);
   }
 
