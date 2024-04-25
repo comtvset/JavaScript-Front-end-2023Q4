@@ -1,6 +1,21 @@
+import checkDelivery from '../services/checkDelivery';
 import createMessage from '../services/createMessage';
 import createUsersList from '../services/createUserList';
+import newMessage from '../services/newMessage';
 
+interface IMessage {
+  datetime: number;
+  from: string;
+  id: string;
+  status: {
+    isDelivered: boolean;
+    isEdited: boolean;
+    isReaded: boolean;
+  };
+  text: string;
+  to: string;
+}
+let count = 0;
 export default async function openSocket(name: string, password: string) {
   const user = {
     id: `id_${name}`,
@@ -28,14 +43,12 @@ export default async function openSocket(name: string, password: string) {
   const socket = new WebSocket('ws://127.0.0.1:4000');
 
   socket.addEventListener('open', function () {
-    // Отправка запроса на сервер
     socket.send(JSON.stringify(user));
     socket.send(JSON.stringify(usersActive));
     socket.send(JSON.stringify(usersInActive));
     createUsersList('bot', true, true);
   });
 
-  // Обработчик события получения сообщения от сервера
   socket.addEventListener('message', function (event) {
     const messageData = JSON.parse(event.data);
 
@@ -43,7 +56,6 @@ export default async function openSocket(name: string, password: string) {
 
     function updateUser() {
       const usersList = messageData.payload;
-      // console.log(usersList);
       if (usersList.users) {
         for (let i = 0; i < usersList.users.length; i++) {
           createUsersList(
@@ -59,6 +71,31 @@ export default async function openSocket(name: string, password: string) {
     if (messageData.type === 'MSG_SEND') {
       const message = messageData.payload.message;
       createMessage(message);
+      newMessage(message);
+    }
+
+    if (messageData.type === 'MSG_FROM_USER') {
+      const messages = messageData.payload.messages;
+      messages.forEach((message: IMessage) => {
+        createMessage(message);
+      });
+    }
+
+    if (messageData.type === 'MSG_DELIVER') {
+      const message = messageData.payload.message;
+      checkDelivery(message);
+    }
+
+    if (messageData.type === 'MSG_READ') {
+      console.log('Прочитано');
+    }
+
+    if (messageData.type === 'MSG_DELETE') {
+      console.log('Удалено');
+    }
+
+    if (messageData.type === 'MSG_EDIT') {
+      console.log('Редактировано');
     }
 
     if (messageData.type === 'USER_EXTERNAL_LOGIN') {
@@ -78,6 +115,32 @@ export default async function openSocket(name: string, password: string) {
     }
   });
 
+  const usersWrap = document.querySelector('.wrap-users');
+  if (usersWrap) {
+    usersWrap.addEventListener('click', function (event) {
+      const wrapMessages = document.querySelector('.wrap-messages');
+
+      if (wrapMessages) {
+        wrapMessages.innerHTML = '';
+      }
+
+      const clickedElement = event.target as HTMLElement;
+      if (clickedElement) {
+        const login = clickedElement.innerText.split('\n')[0];
+        const usersMessagesHistory = {
+          id: '&&&TEST&&&',
+          type: 'MSG_FROM_USER',
+          payload: {
+            user: {
+              login: login,
+            },
+          },
+        };
+        socket.send(JSON.stringify(usersMessagesHistory));
+      }
+    });
+  }
+
   const send = document.getElementById('button-send-message');
   const chatUser = document.getElementById('chat-user');
   const sendMessage = document.getElementById('wrap-send-message');
@@ -87,7 +150,7 @@ export default async function openSocket(name: string, password: string) {
       if (sendMessage.value !== '') {
         if (sendMessage) {
           const message = {
-            id: `id_${name}`,
+            id: `${count++}`,
             type: 'MSG_SEND',
             payload: {
               message: {
@@ -118,7 +181,7 @@ export default async function openSocket(name: string, password: string) {
         if (event.code === 'Enter' && sendMessage.value !== '') {
           if (sendMessage) {
             const message = {
-              id: `id_${name}`,
+              id: `${count++}`,
               type: 'MSG_SEND',
               payload: {
                 message: {

@@ -5,12 +5,17 @@
   border-radius: 5px;
   flex-grow: 2;
   margin: 2px;
+  padding: 5px;
+  max-height: 500px;
 }
 
 .wrap-info-user {
   display: flex;
   justify-content: space-around;
-  padding: 5px;
+  margin: 5px;
+  height: 20px;
+  width: 100%;
+  border-bottom: 1px dashed rgb(71, 71, 71);
 }
 
 #status-user {
@@ -18,8 +23,21 @@
 }
 
 .wrap-messages {
+  max-height: 400px;
   min-height: 400px;
-  background-color: rgba(138, 138, 138, 0.479);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.wrap-messages::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.wrap-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 .wrap-send-message-user {
@@ -38,4 +56,65 @@
   height: 30px;
   flex-grow: 1;
   padding-left: 5px;
+}
+
+.message-container {
+  margin: 5px;
+  overflow-wrap: break-word;
+}
+
+.message-wrap {
+  max-width: 200px;
+  min-width: 200px;
+  background-color: #6fabaca6;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.message-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sender {
+  font-size: 10px;
+  color: #efe46e;
+}
+
+.time {
+  font-size: 10px;
+  color: #efe46e;
+}
+
+.message-text {
+  padding: 5px 0px 5px 0px;
+}
+.message-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-delivered {
+  font-size: 10px;
+  color: #efe46e;
+}
+
+.message-fixed {
+  font-size: 10px;
+  color: #efe46e;
+}
+
+.trash {
+  font-size: 10px;
+  cursor: pointer;
 }

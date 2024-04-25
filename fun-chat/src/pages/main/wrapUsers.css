@@ -25,7 +25,6 @@
 }
 
 .wrap-users {
-  /* background-color: rgba(138, 138, 138, 0.479); */
   min-height: 100px;
   max-height: 450px;
   width: 100%;
@@ -39,18 +38,21 @@
 
 .wrap-users::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
-
 
 .wrap-user {
   display: flex;
   align-items: center;
   text-align: center;
   cursor: pointer;
+  padding: 3px;
+  border-radius: 5px;
 }
 
 .wrap-user:hover {
   background: rgba(122, 122, 119, 0.404);
+  padding: 3px;
 }
 
 .list-status {
@@ -58,12 +60,23 @@
   height: 7px;
   margin-right: 5px;
   border-radius: 50px;
+  pointer-events: none;
 }
 
 .hide-bot {
   display: none;
 }
 
-.wrap-info-user {
-  height: 20px;
+.new-message {
+  opacity: 0;
+  background-color: rgba(42, 116, 165, 0.555);
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  margin-left: 5px;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }

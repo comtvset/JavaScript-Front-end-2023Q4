@@ -51,7 +51,6 @@ export default function checkUser(
     const activeUser = usersList.users;
     for (let i = 0; i < activeUser.length; i++) {
       if (activeUser[i].login === nicknameValue) {
-
         sessionStorage.setItem('$$$nickname', '');
         sessionStorage.setItem('$$$password', '');
         alert('A user with this login is already authorized');
@@ -71,7 +70,6 @@ export default function checkUser(
             entry('main', nicknameValue);
             openSocket(nicknameValue, passwordValue);
             socket.close();
-            //****запустить чат
           } else {
             alert('Password is wrong');
             sessionStorage.setItem('$$$nickname', '');
@@ -82,14 +80,12 @@ export default function checkUser(
           entry('main', nicknameValue);
           openSocket(nicknameValue, passwordValue);
           socket.close();
-          //****запустить чат
         }
       } else {
         saveUser(nicknameValue, passwordValue);
         entry('main', nicknameValue);
         openSocket(nicknameValue, passwordValue);
         socket.close();
-        //****запустить чат
       }
     }
   });
