@@ -12,18 +12,15 @@ export default function entry(str: string, nickname?: string) {
 
   if (str === 'about') {
     openAboutWindow();
-    // history.pushState({}, '', `${str}`);
   }
 
   if (str === 'login') {
     openLoginWindow();
-    // history.pushState({}, '', `${str}`);
   }
 
   if (str === 'main') {
     if (nickname) {
       openMainWindow(nickname);
     }
-    // history.pushState({}, '', `${str}`);
   }
 }
