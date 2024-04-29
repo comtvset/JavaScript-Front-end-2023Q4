@@ -1,4 +1,3 @@
-YouTube video link;
-Link to your Reveal slide deck;
-(Optional) Presentation transcript link;
-(Optional) Additional comments.
+YouTube video [link](https://);
+[Link](https://comtvset.github.io/Presentation/) to my Reveal slide deck;
+Presentation transcript [link](https://docs.google.com/document/d/1XRI-hgrEbFpF1I_IYODcDt3BpmAcIdS8UUfsLvZaiX4/edit?usp=sharing);
